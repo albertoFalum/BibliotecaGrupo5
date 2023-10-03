@@ -18,6 +18,17 @@ public class Libro {
     private String autor;
     private boolean estado;
 
+    public Libro() {
+    }
+
+    public Libro(String nombre, String editorial, Tipo tipo, String autor, boolean estado) {
+        this.nombre = nombre;
+        this.editorial = editorial;
+        this.tipo = tipo;
+        this.autor = autor;
+        this.estado = estado;
+    }
+
     public Libro(int isbn, String nombre, String editorial, Tipo tipo, String autor, boolean estado) {
         this.isbn = isbn;
         this.nombre = nombre;

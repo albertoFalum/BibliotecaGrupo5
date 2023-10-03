@@ -9,5 +9,6 @@ package bibliotecagrupo5.Entidades;
  * @author Leandro
  */
 public enum Tipo {
-    
+    INGENIERIA,LITERATURA,INFORMATICA,HISTORIA,AUTOAYUDA,TECNICOS,RELIGIOSO,ILUSTRATIVO,POETICOS,BIBIOGRAFICOS,OTROS;
 }
+
