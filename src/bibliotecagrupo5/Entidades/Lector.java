@@ -8,7 +8,7 @@ package bibliotecagrupo5.Entidades;
  *
  * @author manue
  */
-public class Letor {
+public class Lector {
     private int nroSocio;
     private String nombre;
     private String apellido;
@@ -16,10 +16,10 @@ public class Letor {
     private String mail;
     private boolean estado;
 
-    public Letor() {
+    public Lector() {
     }
 
-    public Letor(String nombre, String apellido, String domicilio, String mail, boolean estado) {
+    public Lector(String nombre, String apellido, String domicilio, String mail, boolean estado) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.domicilio = domicilio;
@@ -27,7 +27,7 @@ public class Letor {
         this.estado = estado;
     }
 
-    public Letor(int nroSocio, String nombre, String apellido, String domicilio, String mail, boolean estado) {
+    public Lector(int nroSocio, String nombre, String apellido, String domicilio, String mail, boolean estado) {
         this.nroSocio = nroSocio;
         this.nombre = nombre;
         this.apellido = apellido;
