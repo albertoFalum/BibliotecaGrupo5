@@ -9,5 +9,5 @@ package bibliotecagrupo5.Entidades;
  * @author Leandro
  */
 public enum Condicion {
-    
+    PRESTADO,RETRASO,REPARACION,DISPONIBLE;
 }
