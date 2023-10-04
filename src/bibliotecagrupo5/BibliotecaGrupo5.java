@@ -16,20 +16,23 @@ public class BibliotecaGrupo5 {
     public static void main(String[] args) {
         // TODO code application logic here
         
-//        LibroData librodata=new LibroData();
+       LibroData librodata=new LibroData();
 //        Libro libro= new Libro(422, "Santa Evita", "Tomas Eloy Martines", 1975, Tipo.LITERATURA, "Sudamericana", true);
 //        librodata.guardarLibro(libro);
 
-        LibroData librodata=new LibroData();
+
 //        Libro libro= new Libro(1,422, "Santa Evita", "Tomas Eloy Martinez", 1975, Tipo.LITERATURA, "Sudamericana", true);
 //        librodata.modificarLibro(libro);
 //        Libro libro2=librodata.buscarLibro(1);
 //        System.out.println(libro2);
         
-        Libro libro3=librodata.buscarLibroPorTitulo("santa evita");
-        System.out.println(libro3);
+//        Libro libro3=librodata.buscarLibroPorTitulo("santa evita");
+//        System.out.println(libro3);
         
-        librodata.eliminarLibro(1);
+//        librodata.eliminarLibro(1);
+        
+       Libro libro4= librodata.buscarLibroPorIsbn(422);
+        System.out.println(libro4);
     }
    
 }

@@ -212,11 +212,11 @@ public class LibroData {
                 libro.setEstado(true);
 
             } else {
-                JOptionPane.showMessageDialog(null, "no existe el libro");
+                JOptionPane.showMessageDialog(null, "No existe el libro");
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Libro:");
+            JOptionPane.showMessageDialog(null, "Error LD7 - Error al acceder a la tabla Libro: "+ex.getMessage());
         }
         return libro;
     }
