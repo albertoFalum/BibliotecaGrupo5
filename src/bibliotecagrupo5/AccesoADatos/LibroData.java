@@ -98,9 +98,9 @@ public class LibroData {
         }
     }
 
-    public List <Libro> listarLibros(){
+    public List<Libro> listarLibros() {
         String sql = "SELECT * FROM libro WHERE estado = 1";
-        
+
         ArrayList<Libro> libros = new ArrayList<>();
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -124,12 +124,12 @@ public class LibroData {
             ps.close();
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "ERROR LD4 - Error al acceder a la tabla Libro: "+ex.getMessage());
+            JOptionPane.showMessageDialog(null, "ERROR LD4 - Error al acceder a la tabla Libro: " + ex.getMessage());
         }
         return libros;
     }
-    
-    public Libro buscarLibro(int id){
+
+    public Libro buscarLibro(int id) {
         Libro libro = null;
         String sql = "SELECT isbn, titulo, autor, anio, tipo, editorial FROM libro WHERE idLibro=? AND estado = 1";
 
@@ -157,37 +157,67 @@ public class LibroData {
             }
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "ERROR LD5 - Error al acceder a la tabla Libro: "+ex.getMessage());
+
+            JOptionPane.showMessageDialog(null, "ERROR LD5 - Error al acceder a la tabla Libro: " + ex.getMessage());
 
         }
         return libro;
     }
-    public Libro buscarLibroPorTitulo(String tituloBuscado){
-    Libro libro=null;
-    
-    String sql="SELECT idLibro,isbn,titulo,autor,anio,tipo,editorial FROM libro WHERE UPPER(titulo)=UPPER(?) AND estado=1";
-    try{   
-        PreparedStatement Ps=con.prepareStatement(sql);
-        Ps.setString(1, tituloBuscado);
-        
-        ResultSet rs=Ps.executeQuery();
-        if(rs.next()){
-            libro=new Libro();
-            libro.setIdLibro(rs.getInt("idLibro"));
-            libro.setIsbn(rs.getInt("isbn"));
-            libro.setTitulo(rs.getString("titulo"));
-            libro.setAutor(rs.getString("autor"));
-            libro.setAnio(rs.getInt("anio"));
-            libro.setTipo(Tipo.valueOf(rs.getString("tipo")));
-            libro.setEditorial(rs.getString("editorial"));
-            libro.setEstado(true);
-        }else{
-            JOptionPane.showMessageDialog(null, "No existe el Libro");
+
+    public Libro buscarLibroPorTitulo(String tituloBuscado) {
+        Libro libro = null;
+
+        String sql = "SELECT idLibro,isbn,titulo,autor,anio,tipo,editorial FROM libro WHERE UPPER(titulo)=UPPER(?) AND estado=1";
+        try {
+            PreparedStatement Ps = con.prepareStatement(sql);
+            Ps.setString(1, tituloBuscado);
+
+            ResultSet rs = Ps.executeQuery();
+            if (rs.next()) {
+                libro = new Libro();
+                libro.setIdLibro(rs.getInt("idLibro"));
+                libro.setIsbn(rs.getInt("isbn"));
+                libro.setTitulo(rs.getString("titulo"));
+                libro.setAutor(rs.getString("autor"));
+                libro.setAnio(rs.getInt("anio"));
+                libro.setTipo(Tipo.valueOf(rs.getString("tipo")));
+                libro.setEditorial(rs.getString("editorial"));
+                libro.setEstado(true);
+            } else {
+                JOptionPane.showMessageDialog(null, "No existe el Libro");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "ERROR LD6 - Error al acceder a la tabla Libro " + ex.getMessage());
         }
-    }catch(SQLException ex){
-        JOptionPane.showMessageDialog(null, "ERROR LD6 - Error al acceder a la tabla Libro "+ex.getMessage());
-    }
-    return libro;
+        return libro;
     }
 
+    public Libro buscarLibroPorIsbn(int isbn) {
+        String sql = "SELECT idLibro, isbn, titulo, autor, anio, tipo, editorial FROM libro WHERE isbn = ? AND estado = 1 ";
+        Libro libro = null;
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, isbn);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+
+                libro = new Libro();
+                libro.setIdLibro(rs.getInt("idLibro"));
+                libro.setIsbn(rs.getInt("isbn"));
+                libro.setTitulo(rs.getString("titulo"));
+                libro.setAutor(rs.getString("autor"));
+                libro.setAnio(rs.getInt("anio"));
+                libro.setTipo(Tipo.valueOf(rs.getString("tipo")));
+                libro.setEditorial(rs.getString("editorial"));
+                libro.setEstado(true);
+
+            } else {
+                JOptionPane.showMessageDialog(null, "no existe el libro");
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Libro:");
+        }
+        return libro;
+    }
 }
