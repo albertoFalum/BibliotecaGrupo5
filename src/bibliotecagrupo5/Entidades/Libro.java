@@ -19,7 +19,7 @@ public class Libro {
     private Tipo tipo;
     private String editorial;
     private boolean estado;
-
+    
     public Libro() {
     }
 
@@ -30,7 +30,7 @@ public class Libro {
         this.anio = anio;
         this.tipo = tipo;
         this.editorial = editorial;
-        this.estado = estado;
+        this.estado = estado; 
     }
 
     public Libro(int idLibro, int isbn, String titulo, String autor, int anio, Tipo tipo, String editorial, boolean estado) {
@@ -41,7 +41,7 @@ public class Libro {
         this.anio = anio;
         this.tipo = tipo;
         this.editorial = editorial;
-        this.estado = estado;
+        this.estado = estado;   
     }
 
     public int getIdLibro() {
