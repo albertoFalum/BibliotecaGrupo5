@@ -157,7 +157,7 @@ public class LibroData {
             }
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "ERROR LD5 - Error al acceder a la tabla Alumno: "+ex.getMessage());
+            JOptionPane.showMessageDialog(null, "ERROR LD5 - Error al acceder a la tabla Libro: "+ex.getMessage());
 
         }
         return libro;
