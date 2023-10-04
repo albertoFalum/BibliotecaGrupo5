@@ -21,7 +21,7 @@ public class BibliotecaGrupo5 {
 //        librodata.guardarLibro(libro);
 
         LibroData librodata=new LibroData();
-        Libro libro= new Libro(1,422, "Santa Evita 2", "Tomas Eloy Martines", 1975, Tipo.LITERATURA, "Sudamericana", true);
+        Libro libro= new Libro(1,422, "Santa Evita", "Tomas Eloy Martinez", 1975, Tipo.LITERATURA, "Sudamericana", true);
         librodata.modificarLibro(libro);
         
     }

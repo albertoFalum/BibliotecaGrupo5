@@ -99,7 +99,7 @@ public class LibroData {
     }
 
     public List <Libro> listarLibros(){
-        String sql = "SELECT * FROM alumno WHERE estado = 1";
+        String sql = "SELECT * FROM libro WHERE estado = 1";
         
         ArrayList<Libro> libros = new ArrayList<>();
         try {
@@ -131,7 +131,7 @@ public class LibroData {
     
     public Libro buscarLibro(int id){
         Libro libro = null;
-        String sql = "SELECT isbn, titulo, autor, anio, tipo, editorial FROM alumno WHERE idLibro=? AND estado = 1";
+        String sql = "SELECT isbn, titulo, autor, anio, tipo, editorial FROM libro WHERE idLibro=? AND estado = 1";
 
         try {
             PreparedStatement ps = con.prepareStatement(sql);
