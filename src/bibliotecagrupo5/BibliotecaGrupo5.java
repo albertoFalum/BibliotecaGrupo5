@@ -1,5 +1,9 @@
 package bibliotecagrupo5;
 
+import bibliotecagrupo5.AccesoADatos.LibroData;
+import bibliotecagrupo5.Entidades.Libro;
+import bibliotecagrupo5.Entidades.Tipo;
+
 /**
  *
  * @author BETO
@@ -11,6 +15,11 @@ public class BibliotecaGrupo5 {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        
+        LibroData librodata=new LibroData();
+        Libro libro= new Libro(1, 422, "Santa Evita 2", "Tomas Eloy Martines", 1975, Tipo.LITERATURA, "Sudamericana", true);
+        //librodata.guardarLibro(libro);
+        librodata.modificarLibro(libro);
     }
     
 }
