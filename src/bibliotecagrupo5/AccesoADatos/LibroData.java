@@ -162,5 +162,31 @@ public class LibroData {
         }
         return libro;
     }
+    public Libro buscarLibroPorTitulo(String titulo){
+    Libro libro=null;
+    
+    String sql="SELECT isbn,autor,anio,tipo,editorial FROM libro WHERE UPPER(titulo)=UPPER(?) titulo=? AND estado=1";
+    try{   
+        PreparedStatement Ps=con.prepareStatement(sql);
+        Ps.setString(1, titulo);
+        
+        ResultSet rs=Ps.executeQuery();
+        if(rs.next()){
+            libro=new Libro();
+            libro.setTitulo(titulo);
+            libro.setIsbn(rs.getInt("isbn"));
+            libro.setAutor(rs.getString("autor"));
+            libro.setAnio(rs.getInt("anio"));
+            libro.setTipo(Tipo.valueOf(rs.getString("tipo")));
+            libro.setEditorial(rs.getString("editorial"));
+            libro.setEstado(true);
+        }else{
+            JOptionPane.showMessageDialog(null, "No existe el Libro");
+        }
+    }catch(SQLException ex){
+        JOptionPane.showMessageDialog(null, "Error al acceder a la tabla libro LD7-"+ex);
+    }
+    return libro;
+    }
 
 }
