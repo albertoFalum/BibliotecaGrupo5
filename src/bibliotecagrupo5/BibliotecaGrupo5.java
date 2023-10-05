@@ -30,19 +30,19 @@ public class BibliotecaGrupo5 {
         
 //        Libro libro3=librodata.buscarLibroPorTitulo("santa evita");
 //        System.out.println(libro3);
-<<<<<<< Updated upstream
+
         
 //        librodata.eliminarLibro(1);
         
-       Libro libro4= librodata.buscarLibroPorIsbn(422);
-        System.out.println(libro4);
-=======
+//       Libro libro4= librodata.buscarLibroPorIsbn(422);
+//        System.out.println(libro4);
+
 //        
 //        librodata.eliminarLibro(1);
         LectorData lectordata=new LectorData();
-        Lector lector=new Lector(1, "leandro", "cuello", "sudamerica1238", "leandro@gmail.com", true);
-        lectordata.modificarLector(lector);
->>>>>>> Stashed changes
+//        Lector lector=new Lector(1, "lucas", "cuello", "sudamerica1238", "leandro@gmail.com", true);
+//        lectordata.modificarLector(lector);
+           lectordata.eliminarLector(1);
     }
    
 }
