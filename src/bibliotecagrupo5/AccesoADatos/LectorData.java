@@ -48,21 +48,20 @@ public class LectorData {
             ps.close();
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "ERROR LD1 - Error al acceder a la tabla lector: " + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "ERROR LeD1 - Error al acceder a la tabla lector: " + ex.getMessage());
 
         }
     }
       public void modificarLector(Lector lector) {
-        String sql = "UPDATE lector SET nombre = ?, apellido = ?, domicilio = ?, mail = ?, estado = ? WHERE nroSocio = ?";
+        String sql = "UPDATE lector SET nombre = ?, apellido = ?, domicilio = ?, mail = ? WHERE nroSocio = ?";
 
         try {
-            PreparedStatement ps = con.prepareStatement(sql);          
+            PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, lector.getNombre());
             ps.setString(2, lector.getApellido());
             ps.setString(3, lector.getDomicilio());
             ps.setString(4, lector.getMail());
-            ps.setBoolean(5, lector.isEstado());
-            ps.setInt(6, lector.getNroSocio());
+            ps.setInt(5, lector.getNroSocio());
           
             int exito = ps.executeUpdate();
 
@@ -73,7 +72,7 @@ public class LectorData {
             }
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "ERROR LD2 - Error al acceder a la tabla Lector: " + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "ERROR LeD2 - Error al acceder a la tabla Lector: " + ex.getMessage());
         }
     }
        public void eliminarLector(int id) {
@@ -90,7 +89,7 @@ public class LectorData {
             }
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "ERROR LD3 - Error al acceder a la tabla Lector: " + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "ERROR LeD3 - Error al acceder a la tabla Lector: " + ex.getMessage());
         }
     }
 
