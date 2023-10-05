@@ -5,6 +5,7 @@ import bibliotecagrupo5.AccesoADatos.LibroData;
 import bibliotecagrupo5.Entidades.Lector;
 import bibliotecagrupo5.Entidades.Libro;
 import bibliotecagrupo5.Entidades.Tipo;
+import java.util.TreeSet;
 
 /**
  *
@@ -39,10 +40,17 @@ public class BibliotecaGrupo5 {
 
 //        
 //        librodata.eliminarLibro(1);
-        LectorData lectordata=new LectorData();
-       Lector lector=new Lector(1, "lucas", "cuello", "sudamerica1238", "leandro@gmail.com", true);
-        lectordata.modificarLector(lector);
+//        LectorData lectordata=new LectorData();
+//       Lector lector=new Lector(1, "lucas", "cuello", "sudamerica1238", "leandro@gmail.com", true);
+//        lectordata.modificarLector(lector);
 //          lectordata.eliminarLector(1);
+        
+        TreeSet<Libro> listaPorTipo=librodata.listarLibrosPorAutor("Gabriel Garcia Marquez");
+        
+        for(Libro aux:listaPorTipo){
+            System.out.println(aux);
+        
+        }
     }
    
 }
