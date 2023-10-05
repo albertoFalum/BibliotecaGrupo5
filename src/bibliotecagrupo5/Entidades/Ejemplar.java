@@ -5,7 +5,7 @@ package bibliotecagrupo5.Entidades;
  *
  * @author Leandro
  */
-public class Ejemplar {
+public class Ejemplar implements Comparable<Ejemplar>{
     private int codigo;
     private Libro Libro;
     private int cantidad;
@@ -73,6 +73,14 @@ public class Ejemplar {
     @Override
     public String toString() {
         return "Ejemplar{" + "codigo=" + codigo + ", Libro=" + Libro + ", cantidad=" + cantidad + ", estado=" + estado + ", condicion=" + condicion + '}';
+    }
+
+    @Override
+    public int compareTo(Ejemplar e) {
+        String condicion1=this.condicion.toString();
+        String condicion2=e.condicion.toString();
+        
+        return condicion1.compareTo(condicion2);
     }
     
     

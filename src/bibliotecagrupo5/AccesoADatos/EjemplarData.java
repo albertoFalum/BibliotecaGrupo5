@@ -8,8 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.TreeSet;
 import javax.swing.JOptionPane;
 
 /**
@@ -52,7 +51,7 @@ public class EjemplarData {
         }
     }
     
-     public void modificarEjemplar(Ejemplar ejemplar) {
+    public void modificarEjemplar(Ejemplar ejemplar) {
         String sql = "UPDATE ejemplar SET cantidad = ?, condición = ? WHERE codigo = ?";
 
         try {
@@ -92,10 +91,10 @@ public class EjemplarData {
         }
     }
 
-    public List <Ejemplar> listarEjemplares(){
+    public TreeSet <Ejemplar> listarEjemplares(){
         String sql = "SELECT * FROM ejemplar WHERE estado = 1";
         
-        ArrayList<Ejemplar> ejemplares = new ArrayList<>();
+        TreeSet<Ejemplar> ejemplares = new TreeSet<>();
         try {
             PreparedStatement ps = con.prepareStatement(sql);
 
@@ -149,5 +148,90 @@ public class EjemplarData {
         return ejemplar;
     }
      
-     
+    public TreeSet <Ejemplar> listarEjemplaresPorLibro(int idL){
+        String sql = "SELECT * FROM ejemplar WHERE idLibro = ? AND estado = 1";
+        
+        TreeSet<Ejemplar> ejemplares = new TreeSet<>();
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idL);
+            
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+
+                Ejemplar ejemplar = new Ejemplar();
+                ejemplar.setCodigo(rs.getInt("codigo"));
+                ejemplar.setLibro(librodata.buscarLibro(idL));
+                ejemplar.setCondicion(Condicion.valueOf(rs.getString("condicion")));
+                ejemplar.setEstado(rs.getBoolean("estado"));
+
+                ejemplares.add(ejemplar);
+
+            }
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "ERROR ED6 - Error al acceder a la tabla Ejemplar: "+ex.getMessage());
+        }
+        return ejemplares;
+    }
+    
+    public TreeSet <Ejemplar> listarEjemplaresPorCondicion(String condicionABuscar){
+        String sql = "SELECT * FROM ejemplar WHERE condicion=? AND estado = 1";
+        
+        TreeSet<Ejemplar> ejemplares = new TreeSet<>();
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, condicionABuscar);
+            
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+
+                Ejemplar ejemplar = new Ejemplar();
+                ejemplar.setCodigo(rs.getInt("codigo"));
+                ejemplar.setLibro(librodata.buscarLibro(rs.getInt("idLibro")));
+                ejemplar.setCondicion(Condicion.valueOf(rs.getString("condicion")));
+                ejemplar.setEstado(rs.getBoolean("estado"));
+
+                ejemplares.add(ejemplar);
+
+            }
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "ERROR ED7 - Error al acceder a la tabla Ejemplar: "+ex.getMessage());
+        }
+        return ejemplares;
+    }
+    
+    public TreeSet <Ejemplar> listarEjemplaresPorLibroYCondicion(int idL, String condicionABuscar){
+           String sql = "SELECT * FROM ejemplar WHERE idLibro = ? AND condicion=? AND estado = 1";
+        
+        TreeSet<Ejemplar> ejemplares = new TreeSet<>();
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idL);
+            ps.setString(2, condicionABuscar);
+            
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+
+                Ejemplar ejemplar = new Ejemplar();
+                ejemplar.setCodigo(rs.getInt("codigo"));
+                ejemplar.setLibro(librodata.buscarLibro(idL));
+                ejemplar.setCondicion(Condicion.valueOf(rs.getString("condicion")));
+                ejemplar.setEstado(rs.getBoolean("estado"));
+
+                ejemplares.add(ejemplar);
+
+            }
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "ERROR ED8 - Error al acceder a la tabla Ejemplar: "+ex.getMessage());
+        }
+        return ejemplares;
+    }
 }
+
+

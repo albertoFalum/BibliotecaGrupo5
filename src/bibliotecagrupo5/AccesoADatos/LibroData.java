@@ -1,6 +1,5 @@
 package bibliotecagrupo5.AccesoADatos;
 
-import biblioteca.Comparadores.ComparacionesLibros;
 import bibliotecagrupo5.Entidades.Libro;
 import bibliotecagrupo5.Entidades.Tipo;
 import java.sql.Connection;
@@ -101,7 +100,7 @@ public class LibroData {
     public TreeSet<Libro> listarLibros() {
         String sql = "SELECT * FROM libro WHERE estado = 1";
 
-        TreeSet<Libro> libros = new TreeSet<>(ComparacionesLibros.ordenadosPorTituloAZ);
+        TreeSet<Libro> libros = new TreeSet<>();
         try {
             PreparedStatement ps = con.prepareStatement(sql);
 
@@ -224,7 +223,7 @@ public class LibroData {
     public TreeSet<Libro> listarLibrosPorAutor(String autorABuscar){
         String sql = "SELECT * FROM libro WHERE UPPER(autor)= UPPER (?) AND estado = 1";
 
-        TreeSet<Libro> libros = new TreeSet<>(ComparacionesLibros.ordenadosPorTituloAZ);
+        TreeSet<Libro> libros = new TreeSet<>();
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, autorABuscar);
@@ -257,7 +256,7 @@ public class LibroData {
      public TreeSet<Libro> listarLibrosPorTipo(String categoria){
         String sql = "SELECT * FROM libro WHERE tipo=? AND estado = 1";
 
-        TreeSet<Libro> libros = new TreeSet<>(ComparacionesLibros.ordenadosPorTituloAZ);
+        TreeSet<Libro> libros = new TreeSet<>();
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, categoria);

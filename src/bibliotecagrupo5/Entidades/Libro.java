@@ -6,7 +6,7 @@ package bibliotecagrupo5.Entidades;
  *
  * @author Leandro
  */
-public class Libro {
+public class Libro implements Comparable<Libro>{
     private int idLibro;
     private int isbn;
     private String titulo;
@@ -107,6 +107,11 @@ public class Libro {
     @Override
     public String toString() {
         return "Libro{" + "idLibro=" + idLibro + ", isbn=" + isbn + ", titulo=" + titulo + ", autor=" + autor + ", anio=" + anio + ", tipo=" + tipo + ", editorial=" + editorial + ", estado=" + estado + '}';
+    }
+
+    @Override
+    public int compareTo(Libro t) {
+        return titulo.compareToIgnoreCase(t.getTitulo());
     }
 
     
