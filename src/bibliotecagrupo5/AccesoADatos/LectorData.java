@@ -75,7 +75,35 @@ public class LectorData {
             JOptionPane.showMessageDialog(null, "ERROR LeD2 - Error al acceder a la tabla Lector: " + ex.getMessage());
         }
     }
-       public void eliminarLector(int id) {
+    
+       public Lector buscarLectorPorNombreApellido(String nom ,String ape) {
+        String sql = "SELECT nroSocio,nombre,apellido,domicilio,mail,estado FROM lector WHERE UPPER(nombre) =UPPER (?) AND UPPER(apellido)=UPPER(?) AND estado = 1 ";
+        Lector lector = null;
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, nom);
+            ps.setString(2,ape);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                lector.setNroSocio(rs.getInt("nroSocio"));
+                lector.setNombre(rs.getString("nombre"));
+                lector.setApellido(rs.getString("apellido"));
+                lector.setDomicilio(rs.getString("domicilio"));
+                lector.setMail(rs.getString("mail"));
+                lector.setEstado(rs.getBoolean("estado"));
+                
+                
+
+            } else {
+                JOptionPane.showMessageDialog(null, "No existe el lector");
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error LeD3 - Error al acceder a la tabla Lector: "+ex.getMessage());
+        }
+        return lector;
+    }
+          public void desactivarLector(int id) {
         String sql = "UPDATE lector SET estado = 0 WHERE nroSocio = ?";
         try {
 
@@ -89,8 +117,24 @@ public class LectorData {
             }
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "ERROR LeD3 - Error al acceder a la tabla Lector: " + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "ERROR LeD4 - Error al acceder a la tabla Lector: " + ex.getMessage());
         }
     }
+             public void activarLector(int id) {
+        String sql = "UPDATE lector SET estado = 1 WHERE nroSocio = ?";
+        try {
 
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            int exito = ps.executeUpdate();
+            if (exito == 1) {
+
+                JOptionPane.showMessageDialog(null, "Lector agregado");
+
+            }
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "ERROR LeD5 - Error al acceder a la tabla Lector: " + ex.getMessage());
+        }
+    }
 }
