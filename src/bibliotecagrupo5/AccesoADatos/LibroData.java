@@ -224,7 +224,7 @@ public class LibroData {
     public TreeSet<Libro> listarLibrosPorAutor(String autorABuscar){
         String sql = "SELECT * FROM libro WHERE UPPER(autor)= UPPER (?) AND estado = 1";
 
-        TreeSet<Libro> libros = new TreeSet<>(ComparacionesLibros.ordenadosPorAutorAZ);
+        TreeSet<Libro> libros = new TreeSet<>(ComparacionesLibros.ordenadosPorTituloAZ);
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, autorABuscar);
