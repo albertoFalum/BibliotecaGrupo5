@@ -56,13 +56,13 @@ public class LectorData {
         String sql = "UPDATE lector SET nombre = ?, apellido = ?, domicilio = ?, mail = ?, estado = ? WHERE nroSocio = ?";
 
         try {
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, lector.getNroSocio());
-            ps.setString(2, lector.getNombre());
-            ps.setString(3, lector.getApellido());
-            ps.setString(4, lector.getDomicilio());
-            ps.setString(5, lector.getMail());
-            ps.setBoolean(6, lector.isEstado());
+            PreparedStatement ps = con.prepareStatement(sql);          
+            ps.setString(1, lector.getNombre());
+            ps.setString(2, lector.getApellido());
+            ps.setString(3, lector.getDomicilio());
+            ps.setString(4, lector.getMail());
+            ps.setBoolean(5, lector.isEstado());
+            ps.setInt(6, lector.getNroSocio());
           
             int exito = ps.executeUpdate();
 
