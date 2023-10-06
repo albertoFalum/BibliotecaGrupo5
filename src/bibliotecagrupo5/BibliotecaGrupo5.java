@@ -26,8 +26,8 @@ public class BibliotecaGrupo5 {
 
 //        Libro libro= new Libro(1,422, "Santa Evita", "Tomas Eloy Martinez", 1975, Tipo.LITERATURA, "Sudamericana", true);
 //        librodata.modificarLibro(libro);
-//        Libro libro2=librodata.buscarLibro(1);
-//        System.out.println(libro2);
+        Libro libro2=librodata.buscarLibro(1);
+        System.out.println(libro2);
         
 //        Libro libro3=librodata.buscarLibroPorTitulo("santa evita");
 //        System.out.println(libro3);
@@ -45,12 +45,12 @@ public class BibliotecaGrupo5 {
 //        lectordata.modificarLector(lector);
 //          lectordata.eliminarLector(1);
         
-        TreeSet<Libro> listaPorTipo=librodata.listarLibrosPorAutor("Gabriel Garcia Marquez");
-        
-        for(Libro aux:listaPorTipo){
-            System.out.println(aux);
-        
-        }
+//        TreeSet<Libro> listaPorTipo=librodata.listarLibrosPorAutor("Gabriel Garcia Marquez");
+//        
+//        for(Libro aux:listaPorTipo){
+//            System.out.println(aux);
+//        
+//        }
     }
    
 }

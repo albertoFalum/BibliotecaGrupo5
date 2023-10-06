@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -15,6 +16,7 @@ import javax.swing.JOptionPane;
 public class FormularioUsuario extends javax.swing.JInternalFrame {
 
     private Connection con = null;
+    JFrame login=new Login();
     ArrayList<String> listaUsuarios=null;
 
     /**
@@ -265,6 +267,8 @@ public class FormularioUsuario extends javax.swing.JInternalFrame {
 
                     if (exito == 1) {
                         JOptionPane.showMessageDialog(this, "Usuario guardado correctamente");
+                        borrarCampos();
+                        
                     }
 
                 } else {
@@ -322,6 +326,7 @@ public class FormularioUsuario extends javax.swing.JInternalFrame {
     private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
         // TODO add your handling code here:
         dispose();
+        login.setVisible(true);
     }//GEN-LAST:event_jbSalirActionPerformed
 
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed

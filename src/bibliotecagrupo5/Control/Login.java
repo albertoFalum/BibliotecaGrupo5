@@ -113,7 +113,7 @@ public class Login extends javax.swing.JFrame {
                                 .addComponent(jbNuevoUsuario)
                                 .addGap(62, 62, 62)
                                 .addComponent(jbCancelar)))))
-                .addContainerGap(103, Short.MAX_VALUE))
+                .addContainerGap(85, Short.MAX_VALUE))
         );
         jdpEscritorioLoginLayout.setVerticalGroup(
             jdpEscritorioLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -141,8 +141,9 @@ public class Login extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jdpEscritorioLogin)
-                .addContainerGap())
+                .addGap(18, 18, 18))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
