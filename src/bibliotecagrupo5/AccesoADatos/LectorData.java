@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.TreeSet;
 import javax.swing.JOptionPane;
 
 /**
@@ -136,5 +137,33 @@ public class LectorData {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "ERROR LeD5 - Error al acceder a la tabla Lector: " + ex.getMessage());
         }
+    }
+             public TreeSet<Lector> listarLector() {
+        String sql = "SELECT * FROM lector WHERE estado = 1";
+
+        TreeSet<Lector> lectores = new TreeSet<>();
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+
+                Lector lector = new Lector();
+                lector.setNroSocio(rs.getInt("nroSocio"));
+                lector.setNombre(rs.getString("nombre"));
+                lector.setApellido(rs.getString("apellido"));
+                lector.setDomicilio(rs.getString("domicilio"));
+                lector.setMail(rs.getString("mail"));
+                lector.setEstado(rs.getBoolean("estado"));
+                
+                lectores.add(lector);
+
+            }
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "ERROR LeD6 - Error al acceder a la tabla Lector: " + ex.getMessage());
+        }
+        return lectores;
     }
 }
