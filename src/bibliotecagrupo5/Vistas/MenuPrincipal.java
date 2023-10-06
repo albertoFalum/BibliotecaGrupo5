@@ -66,7 +66,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Edit");
+        jMenu2.setText("Lector");
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
