@@ -41,6 +41,25 @@ public class Conexion {
         return connection;
     }
     
+    public static Connection getConexion2(String BD2){
+        if(connection==null){
+        
+            try {
+                Class.forName(DRIVER);
+                
+                connection=DriverManager.getConnection(URL+BD2, USUARIO, PASSWORD);
+                
+                //JOptionPane.showMessageDialog(null, "Conexion exitosa a la base de datos "+BD);
+                System.out.println("Conexion exitosa a la base de datos");
+            } catch (ClassNotFoundException ex) {
+                JOptionPane.showMessageDialog(null, "Error al cargar el driver: "+ex.getMessage());
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Error al conectarse a la base de datos: "+ex.getMessage());
+            }
+        }
+        return connection;
+    }
+    
     public static void desconectar(){
         try {
             connection.close();
