@@ -19,12 +19,12 @@ import javax.swing.JOptionPane;
  */
 public class PrestamoData {
     private Connection con=null;
-    private EjemplarData ejemplardata;
+    private EjemplarData ejemplarData;
     private LectorData lectorData;
  
     public PrestamoData() {
        con=Conexion.getConexion();
-       ejemplardata=new EjemplarData();
+       ejemplarData=new EjemplarData();
        lectorData=new LectorData();
     }
      public void guardarPrestamo(Prestamo  prestamo) {
@@ -127,5 +127,35 @@ public class PrestamoData {
             JOptionPane.showMessageDialog(null, "Error PD4 - Error al acceder a la tabla Prestamo: "+ex.getMessage());
         }
         return listaLectorPrestamoVencido;
+    } 
+    
+    public TreeSet<Prestamo> obtenerPrestamosVencidos(LocalDate fechaActual){
+        TreeSet<Prestamo> listaPrestamosVencidos=new TreeSet<>();
+        
+        try {
+            String sql="SELECT * FROM prestamo WHERE fechaFin<? AND estado=1";
+            
+            PreparedStatement ps=con.prepareStatement(sql);
+            ps.setDate(1, Date.valueOf(fechaActual));
+            
+            ResultSet rs= ps.executeQuery();
+            
+            while(rs.next()){
+                Prestamo prestamo=new Prestamo();
+                prestamo.setIdPrestamo(rs.getInt("idPrestamo"));
+                prestamo.setFechaInicio(rs.getDate("fechaInicio").toLocalDate());
+                prestamo.setFechaFin(rs.getDate("fechaFin").toLocalDate());
+                prestamo.setEjemplar(ejemplarData.buscarEjemplar(rs.getInt("codigo")));
+                prestamo.setLector(lectorData.buscarLectorPorNroSocio(rs.getInt("nroSocio")));
+                prestamo.setEstado(true);
+                
+                listaPrestamosVencidos.add(prestamo);     
+            }
+            ps.close();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error PD5 - Error al acceder a la tabla Prestamo: "+ex.getMessage());
+        }
+        return listaPrestamosVencidos;
     } 
 }
