@@ -50,7 +50,7 @@ public class BibliotecaGrupo5 {
 //        
 //        librodata.eliminarLibro(1);
 //        LectorData lectordata=new LectorData();
-       Lector lector=new Lector(1, "lucas", "cuello", "sudamerica1238", "leandro@gmail.com", true);
+       Lector lector=new Lector(1, "lucas", "cuello",123, "sudamerica1238", "leandro@gmail.com", true);
 //        lectordata.modificarLector(lector);
 //          lectordata.eliminarLector(1);
         
