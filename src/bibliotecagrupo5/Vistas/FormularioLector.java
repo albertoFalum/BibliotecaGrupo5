@@ -304,9 +304,10 @@ public class FormularioLector extends javax.swing.JInternalFrame {
 
     private void jtexApellidoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtexApellidoKeyReleased
         // TODO add your handling code here:
-        TreeSet<String> lector = new TreeSet<>();
-        /* TreeSet < Lector > listarLector();
-        for(Lectores lec : TreeSet < Lector > listarLector() {
+
+        TreeSet<Lector> listarLector = lecData.listarLector();
+
+        for (Lector lec : listarLector) {
 
             if (lec.getApellido().startsWith(jtexApellido.getText())) {
 
@@ -318,10 +319,12 @@ public class FormularioLector extends javax.swing.JInternalFrame {
                     lec.getMail()
 
                 });
-
+                jrbEliminar.setEnabled(true);
+                jrbModificar.setEnabled(true);
+                //borrarTabla();
             }
 
-        }*/
+        }
     }//GEN-LAST:event_jtexApellidoKeyReleased
 
     private void jrbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbSalirActionPerformed
@@ -353,8 +356,6 @@ public class FormularioLector extends javax.swing.JInternalFrame {
                 String domicilio = jtfDomicilio.getText();
                 String mail = jtfMail.getText();
                 boolean estado = jrbEstado.isSelected();
-                
-                lectorAux = lecData.buscarLectorPorNombreApellido(nombre, mail)
 
                 if (lectorAux == null) {
                     lector = new Lector(nroSocio, nombre, apellido, domicilio, mail, estado);
@@ -426,7 +427,11 @@ public class FormularioLector extends javax.swing.JInternalFrame {
     }
 
     private boolean comprobarCamposVacios() {
-        return jtfNroSocio.getText().isEmpty()||jtfNombre.getText().isEmpty() || jtfApellido.getText().isEmpty() || jtfDomicilio.getText().isEmpty() || jtfMail.getText().isEmpty();
+        return jtfNroSocio.getText().isEmpty() || jtfNombre.getText().isEmpty() || jtfApellido.getText().isEmpty() || jtfDomicilio.getText().isEmpty() || jtfMail.getText().isEmpty();
 
+    }
+
+    private void borrarTabla() {
+        modelo.setRowCount(0);
     }
 }
