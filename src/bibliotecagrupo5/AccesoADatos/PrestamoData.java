@@ -1,6 +1,7 @@
 
 package bibliotecagrupo5.AccesoADatos;
 
+import bibliotecagrupo5.Entidades.Lector;
 import bibliotecagrupo5.Entidades.Prestamo;
 import java.sql.Connection;
 import java.sql.Date;
@@ -8,8 +9,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
+import java.time.LocalDate;
+import java.util.TreeSet;
 import javax.swing.JOptionPane;
 
 /**
@@ -51,7 +52,7 @@ public class PrestamoData {
             ps.close();
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "ERROR P1 - Error al acceder a la tabla Libro: " + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "ERROR PD1 - Error al acceder a la tabla Prestamo: " + ex.getMessage());
 
         }
         
@@ -75,7 +76,7 @@ public class PrestamoData {
             }
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "ERROR P2 - Error al acceder a la tabla Prestamo: " + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "ERROR PD2 - Error al acceder a la tabla Prestamo: " + ex.getMessage());
         }
     }
      public void eliminarPrestamo(int idPresta) {
@@ -93,7 +94,38 @@ public class PrestamoData {
             }
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "ERROR P3 - Error al acceder a la tabla Prestamo: " + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "ERROR PD3 - Error al acceder a la tabla Prestamo: " + ex.getMessage());
         }
     }
+     
+    public TreeSet<Lector> obtenerLectoresPrestamoVencido(LocalDate fechaActual){
+        TreeSet<Lector> listaLectorPrestamoVencido=new TreeSet<>();
+        
+        try {
+            String sql="SELECT prestamo.nroSocio, nombre, apellido, domicilio, mail, lector.estado FROM prestamo, "
+                    + "lector WHERE prestamo.nroSocio=lector.nroSocio AND fechaFin<?";
+            
+            PreparedStatement ps=con.prepareStatement(sql);
+            ps.setDate(1, Date.valueOf(fechaActual));
+            
+            ResultSet rs= ps.executeQuery();
+            
+            while(rs.next()){
+                Lector lector=new Lector();
+                lector.setNroSocio(rs.getInt("nroSocio"));
+                lector.setNombre(rs.getString("nombre"));
+                lector.setApellido(rs.getString("apellido"));
+                lector.setDomicilio(rs.getString("domicilio"));
+                lector.setMail(rs.getString("mail"));
+                lector.setEstado(rs.getBoolean("estado"));
+                
+                listaLectorPrestamoVencido.add(lector);     
+            }
+            ps.close();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error PD4 - Error al acceder a la tabla Prestamo: "+ex.getMessage());
+        }
+        return listaLectorPrestamoVencido;
+    } 
 }
