@@ -28,17 +28,18 @@ public class LectorData {
     }
 
     public void guardarLector(Lector lector) {
-        String sql = "INSERT INTO lector( nombre, apellido, domicilio, mail, estado)"
-                + "VALUES(?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO lector( nombre, apellido, dni, domicilio, mail, estado)"
+                + "VALUES(?, ?, ?, ?, ?, ?)";
 
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
             ps.setString(1, lector.getNombre());
             ps.setString(2, lector.getApellido());
-            ps.setString(3, lector.getDomicilio());
-            ps.setString(4, lector.getMail());
-            ps.setBoolean(5, lector.isEstado());
+            ps.setInt(3, lector.getDNI());
+            ps.setString(4, lector.getDomicilio());
+            ps.setString(5, lector.getMail());
+            ps.setBoolean(6, lector.isEstado());
             ps.executeUpdate();
 
             ResultSet rs = ps.getGeneratedKeys();
@@ -57,15 +58,16 @@ public class LectorData {
     }
 
     public void modificarLector(Lector lector) {
-        String sql = "UPDATE lector SET nombre = ?, apellido = ?, domicilio = ?, mail = ? WHERE nroSocio = ?";
+        String sql = "UPDATE lector SET nombre = ?, apellido = ?, dni=?, domicilio = ?, mail = ? WHERE nroSocio = ?";
 
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, lector.getNombre());
             ps.setString(2, lector.getApellido());
-            ps.setString(3, lector.getDomicilio());
-            ps.setString(4, lector.getMail());
-            ps.setInt(5, lector.getNroSocio());
+            ps.setInt(3, lector.getDNI());
+            ps.setString(4, lector.getDomicilio());
+            ps.setString(5, lector.getMail());
+            ps.setInt(6, lector.getNroSocio());
 
             int exito = ps.executeUpdate();
 
@@ -81,7 +83,7 @@ public class LectorData {
     }
 
     public Lector buscarLectorPorNombreApellido(String nom, String ape) {
-        String sql = "SELECT nroSocio,nombre,apellido,domicilio,mail,estado FROM lector WHERE UPPER(nombre) =UPPER (?) AND UPPER(apellido)=UPPER(?) AND estado = 1 ";
+        String sql = "SELECT nroSocio,nombre,apellido,dni,domicilio,mail,estado FROM lector WHERE UPPER(nombre) =UPPER (?) AND UPPER(apellido)=UPPER(?) AND estado = 1 ";
         Lector lector = null;
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -92,6 +94,7 @@ public class LectorData {
                 lector.setNroSocio(rs.getInt("nroSocio"));
                 lector.setNombre(rs.getString("nombre"));
                 lector.setApellido(rs.getString("apellido"));
+                lector.setDNI(rs.getInt("dni"));
                 lector.setDomicilio(rs.getString("domicilio"));
                 lector.setMail(rs.getString("mail"));
                 lector.setEstado(rs.getBoolean("estado"));
@@ -156,6 +159,7 @@ public class LectorData {
                 lector.setNroSocio(rs.getInt("nroSocio"));
                 lector.setNombre(rs.getString("nombre"));
                 lector.setApellido(rs.getString("apellido"));
+                lector.setDNI(rs.getInt("dni"));
                 lector.setDomicilio(rs.getString("domicilio"));
                 lector.setMail(rs.getString("mail"));
                 lector.setEstado(rs.getBoolean("estado"));
@@ -187,6 +191,7 @@ public class LectorData {
                 lector.setNroSocio(nroABuscar);
                 lector.setNombre(rs.getString("nombre"));
                 lector.setApellido(rs.getString("apellido"));
+                lector.setDNI(rs.getInt("dni"));
                 lector.setDomicilio(rs.getString("domicilio"));
                 lector.setMail(rs.getString("mail"));
                 lector.setEstado(rs.getBoolean("estado"));

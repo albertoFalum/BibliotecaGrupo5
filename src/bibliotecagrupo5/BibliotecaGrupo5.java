@@ -25,11 +25,6 @@ public class BibliotecaGrupo5 {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-=======
-=======
->>>>>>> main
         
        LibroData librodata=new LibroData();
 //        Libro libro= new Libro(422, "Santa Evita", "Tomas Eloy Martines", 1975, Tipo.LITERATURA, "Sudamericana", true);
@@ -38,15 +33,6 @@ public class BibliotecaGrupo5 {
 
         Libro libro= new Libro(1,422, "Santa Evita", "Tomas Eloy Martinez", 1975, Tipo.LITERATURA, "Sudamericana", true);
 //        librodata.modificarLibro(libro);
-<<<<<<< HEAD
-        Libro libro2=librodata.buscarLibro(1);
-        System.out.println(libro2);
-        
-//        Libro libro3=librodata.buscarLibroPorTitulo("santa evita");
-//        System.out.println(libro3);
-//            EjemplarData ejemplardata=new EjemplarData();
-//            Ejemplar ejemplar=new Ejemplar(1,libro, 2, true, Condicion.DISPONIBLE);
-=======
 //        Libro libro2=librodata.buscarLibro(1);
 //        System.out.println(libro2);
         
@@ -54,7 +40,6 @@ public class BibliotecaGrupo5 {
 //        System.out.println(libro3);
             EjemplarData ejemplardata=new EjemplarData();
             Ejemplar ejemplar=new Ejemplar(1,libro, 2, true, Condicion.DISPONIBLE);
->>>>>>> main
 //            ejemplardata.guardarEjemplar(ejemplar);
             
 //        librodata.eliminarLibro(1);
@@ -65,11 +50,7 @@ public class BibliotecaGrupo5 {
 //        
 //        librodata.eliminarLibro(1);
 //        LectorData lectordata=new LectorData();
-<<<<<<< HEAD
-//       Lector lector=new Lector(1, "lucas", "cuello", "sudamerica1238", "leandro@gmail.com", true);
-=======
-       Lector lector=new Lector(1, "lucas", "cuello", "sudamerica1238", "leandro@gmail.com", true);
->>>>>>> main
+       Lector lector=new Lector(1, "lucas", "cuello",123, "sudamerica1238", "leandro@gmail.com", true);
 //        lectordata.modificarLector(lector);
 //          lectordata.eliminarLector(1);
         
@@ -77,10 +58,6 @@ public class BibliotecaGrupo5 {
 //        
 //        for(Libro aux:listaPorTipo){
 //            System.out.println(aux);
-<<<<<<< HEAD
-
-=======
->>>>>>> main
         
 //        }
           PrestamoData prestamodata=new PrestamoData();
@@ -89,24 +66,12 @@ public class BibliotecaGrupo5 {
 //           prestamo.setFechaFin(LocalDate.of(1998, Month.MARCH, 5));
 //          prestamodata.modificarEjemplar(prestamo);
 //            prestamodata.eliminarPrestamo(4);
-<<<<<<< HEAD
-            TreeSet<Prestamo> listarPrestamos=prestamodata.listarPrestamos();
-            for(Prestamo aux:listarPrestamos){
-                System.out.println(aux);
-            }
-//        
-//        }
-
->>>>>>> Stashed changes
-    }
-=======
             
          TreeSet<Lector> lectores=prestamodata.obtenerLectoresPrestamoVencido(LocalDate.now());
          
          for(Lector aux:lectores){
              System.out.println(aux);
          }
->>>>>>> main
     
     }
    
