@@ -8,7 +8,7 @@ package bibliotecagrupo5.Entidades;
  *
  * @author manue
  */
-public class Lector {
+public class Lector implements Comparable<Lector>{
     private int nroSocio;
     private String nombre;
     private String apellido;
@@ -87,6 +87,17 @@ public class Lector {
    
     @Override
     public String toString() {
-        return "Letor{" + "nroSocio=" + nroSocio + ", nombre=" + nombre + ", apellido=" + apellido + ", domicilio=" + domicilio + ", mail=" + mail + ", estado=" + estado + '}';
+        return "Lector{" + "nroSocio=" + nroSocio + ", nombre=" + nombre + ", apellido=" + apellido + ", domicilio=" + domicilio + ", mail=" + mail + ", estado=" + estado + '}';
     }   
+
+    @Override
+    public int compareTo(Lector l) {
+       int resultado= this.apellido.compareToIgnoreCase(l.getApellido());
+       
+       if(resultado==0){
+           resultado= this.nombre.compareToIgnoreCase(l.getNombre());
+       }
+       
+       return resultado;
+    }
 }

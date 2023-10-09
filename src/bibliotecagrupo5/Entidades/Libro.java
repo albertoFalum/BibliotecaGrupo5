@@ -1,16 +1,12 @@
 package bibliotecagrupo5.Entidades;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 
 
 /**
  *
  * @author Leandro
  */
-public class Libro {
+public class Libro implements Comparable<Libro>{
     private int idLibro;
     private int isbn;
     private String titulo;
@@ -19,7 +15,7 @@ public class Libro {
     private Tipo tipo;
     private String editorial;
     private boolean estado;
-
+    
     public Libro() {
     }
 
@@ -30,7 +26,7 @@ public class Libro {
         this.anio = anio;
         this.tipo = tipo;
         this.editorial = editorial;
-        this.estado = estado;
+        this.estado = estado; 
     }
 
     public Libro(int idLibro, int isbn, String titulo, String autor, int anio, Tipo tipo, String editorial, boolean estado) {
@@ -41,7 +37,7 @@ public class Libro {
         this.anio = anio;
         this.tipo = tipo;
         this.editorial = editorial;
-        this.estado = estado;
+        this.estado = estado;   
     }
 
     public int getIdLibro() {
@@ -111,6 +107,11 @@ public class Libro {
     @Override
     public String toString() {
         return "Libro{" + "idLibro=" + idLibro + ", isbn=" + isbn + ", titulo=" + titulo + ", autor=" + autor + ", anio=" + anio + ", tipo=" + tipo + ", editorial=" + editorial + ", estado=" + estado + '}';
+    }
+
+    @Override
+    public int compareTo(Libro t) {
+        return titulo.compareToIgnoreCase(t.getTitulo());
     }
 
     
