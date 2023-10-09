@@ -61,11 +61,17 @@ public class BibliotecaGrupo5 {
         
 //        }
           PrestamoData prestamodata=new PrestamoData();
-          Prestamo prestamo=new Prestamo(3,LocalDate.of(1998, Month.MARCH, 24), LocalDate.of(1999, Month.MAY, 14), ejemplar, lector, true);
+//          Prestamo prestamo=new Prestamo(3,LocalDate.of(1998, Month.MARCH, 24), LocalDate.of(1999, Month.MAY, 14), ejemplar, lector, true);
 //          prestamodata.guardarPrestamo(prestamo);
 //           prestamo.setFechaFin(LocalDate.of(1998, Month.MARCH, 5));
 //          prestamodata.modificarEjemplar(prestamo);
-            prestamodata.eliminarPrestamo(4);
+//            prestamodata.eliminarPrestamo(4);
+            
+         TreeSet<Lector> lectores=prestamodata.obtenerLectoresPrestamoVencido(LocalDate.now());
+         
+         for(Lector aux:lectores){
+             System.out.println(aux);
+         }
     
     }
    
