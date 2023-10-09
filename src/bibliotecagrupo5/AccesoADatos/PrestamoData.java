@@ -109,7 +109,7 @@ public class PrestamoData {
         TreeSet<Lector> listaLectorPrestamoVencido = new TreeSet<>();
 
         try {
-            String sql = "SELECT prestamo.nroSocio, nombre, apellido, domicilio, mail, lector.estado FROM prestamo, "
+            String sql = "SELECT prestamo.nroSocio, nombre, apellido, dni, domicilio, mail, lector.estado FROM prestamo, "
                     + "lector WHERE prestamo.nroSocio=lector.nroSocio AND fechaFin<?";
 
             PreparedStatement ps = con.prepareStatement(sql);
@@ -122,6 +122,7 @@ public class PrestamoData {
                 lector.setNroSocio(rs.getInt("nroSocio"));
                 lector.setNombre(rs.getString("nombre"));
                 lector.setApellido(rs.getString("apellido"));
+                lector.setDNI(rs.getInt("dni"));
                 lector.setDomicilio(rs.getString("domicilio"));
                 lector.setMail(rs.getString("mail"));
                 lector.setEstado(rs.getBoolean("estado"));
