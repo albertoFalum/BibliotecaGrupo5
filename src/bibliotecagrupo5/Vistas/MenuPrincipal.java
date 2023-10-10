@@ -118,7 +118,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         jdpEscritorio.removeAll();
         jdpEscritorio.repaint();
-        FormularioLector flec = new FormularioLector();
+        GestionDeLector flec = new GestionDeLector();
         flec.setVisible(true);
         jdpEscritorio.add(flec);
          jdpEscritorio.moveToFront(flec);
