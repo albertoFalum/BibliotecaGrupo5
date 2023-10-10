@@ -16,8 +16,8 @@ import javax.swing.JOptionPane;
 public class FormularioUsuario extends javax.swing.JInternalFrame {
 
     private Connection con = null;
-    JFrame login=new Login();
-    ArrayList<String> listaUsuarios=null;
+    JFrame login = new Login();
+    ArrayList<String> listaUsuarios = new ArrayList<>();
 
     /**
      * Creates new form FormularioUsuario
@@ -27,6 +27,8 @@ public class FormularioUsuario extends javax.swing.JInternalFrame {
         con = Conexion.getConexion2("login");
         jbEliminar.setEnabled(false);
         habilitarCampos();
+
+        llenarListaUsuarios();
     }
 
     /**
@@ -241,36 +243,43 @@ public class FormularioUsuario extends javax.swing.JInternalFrame {
 
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
         // TODO add your handling code here:
-                 
+
         try {
 
             if (!comprobarCamposVacios()) {
                 if (validarContraseñasIguales()) {
-                    
-                    
+
                     String usuario = jtfUsuario.getText();
-                    String contraseña = jpfContrasenia.getText();
-                    String nombre = jtfNombre.getText();
-                    String apellido = jtfApellido.getText();
-                    String email = jtfEmail.getText();
-              
-                    String sql = "INSERT INTO usuario (user, password, nombre, apellido, email) VALUES (?,?,?,?,?)";
-                    PreparedStatement ps = con.prepareStatement(sql);
 
-                    ps.setString(1, usuario);
-                    ps.setString(2, contraseña);
-                    ps.setString(3, nombre);
-                    ps.setString(4, apellido);
-                    ps.setString(5, email);
+                    if (validarUsuario(usuario)) {
 
-                    int exito = ps.executeUpdate();
+                        String contraseña = jpfContrasenia.getText();
+                        String nombre = jtfNombre.getText();
+                        String apellido = jtfApellido.getText();
+                        String email = jtfEmail.getText();
 
-                    if (exito == 1) {
-                        JOptionPane.showMessageDialog(this, "Usuario guardado correctamente");
-                        borrarCampos();
+                        String sql = "INSERT INTO usuario (user, password, nombre, apellido, email) VALUES (?,?,?,?,?)";
+                        PreparedStatement ps = con.prepareStatement(sql);
+
+                        ps.setString(1, usuario);
+                        ps.setString(2, contraseña);
+                        ps.setString(3, nombre);
+                        ps.setString(4, apellido);
+                        ps.setString(5, email);
+
+                        int exito = ps.executeUpdate();
+
+                        if (exito == 1) {
+                            JOptionPane.showMessageDialog(this, "Usuario guardado correctamente");
+                            borrarCampos();
+                            llenarListaUsuarios();
+                        }
                         
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Ya existe un usuario con ese nombre");
+                        jtfUsuario.setText("");
                     }
-
+                    
                 } else {
                     JOptionPane.showMessageDialog(this, "Debe ingresar la misma contraseña en los respectivos campos");
                     jpfContrasenia.setText("");
@@ -281,12 +290,9 @@ public class FormularioUsuario extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(this, "Los campos no pueden estar vacios");
             }
         } catch (SQLException ex) {
-            
-            if(ex.getMessage().equals("Duplicate entry")){
-                 JOptionPane.showMessageDialog(this, "Error FI1a - Error al acceder a la tabla Login: ");
-            }else{
-                JOptionPane.showMessageDialog(this, "Error FI1b - Error al acceder a la tabla Login: "+ex.getMessage());
-            }
+
+            JOptionPane.showMessageDialog(this, "Error FI1 - Error al acceder a la tabla Login: " + ex.getMessage());
+
         }
     }//GEN-LAST:event_jbGuardarActionPerformed
 
@@ -300,7 +306,7 @@ public class FormularioUsuario extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         try {
             if (!jtfUsuario.getText().isEmpty()) {
-                
+
                 String sql = "SELECT * FROM usuario WHERE user=? ";
                 PreparedStatement ps = con.prepareStatement(sql);
                 ps.setString(1, jtfUsuario.getText());
@@ -333,17 +339,17 @@ public class FormularioUsuario extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         try {
             String sql = "DELETE FROM usuario WHERE user=?";
-            PreparedStatement ps=con.prepareStatement(sql);
+            PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, jtfUsuario.getText());
-            
-            int exito=ps.executeUpdate();
-            
-            if(exito==1){
+
+            int exito = ps.executeUpdate();
+
+            if (exito == 1) {
                 JOptionPane.showMessageDialog(this, "Usuario eliminado correctamente");
                 borrarCampos();
                 jbEliminar.setEnabled(false);
             }
-            
+
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(this, "Error FI3 - Error al acceder a la tabla Login: " + ex.getMessage());
         }
@@ -380,8 +386,8 @@ public class FormularioUsuario extends javax.swing.JInternalFrame {
     public boolean validarContraseñasIguales() {
         return jpfContrasenia.getText().equals(jpfRepContrasenia.getText());
     }
-    
-    public void borrarCampos(){
+
+    public void borrarCampos() {
         jtfUsuario.setText("");
         jpfContrasenia.setText("");
         jpfRepContrasenia.setText("");
@@ -389,7 +395,7 @@ public class FormularioUsuario extends javax.swing.JInternalFrame {
         jtfApellido.setText("");
         jtfEmail.setText("");
     }
-    
+
     public void inhabilitarCampos() {
         jtfUsuario.setEditable(false);
         jpfContrasenia.setEditable(false);
@@ -398,7 +404,7 @@ public class FormularioUsuario extends javax.swing.JInternalFrame {
         jtfApellido.setEditable(false);
         jtfEmail.setEditable(false);
     }
-    
+
     public void habilitarCampos() {
         jtfUsuario.setEditable(true);
         jpfContrasenia.setEditable(true);
@@ -407,4 +413,37 @@ public class FormularioUsuario extends javax.swing.JInternalFrame {
         jtfApellido.setEditable(true);
         jtfEmail.setEditable(true);
     }
+
+    private void llenarListaUsuarios() {
+        try {
+            String sql = "SELECT user FROM usuario";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+
+            listaUsuarios.clear(); 
+
+            while (rs.next()) {
+                String usuario = rs.getString("user");
+                listaUsuarios.add(usuario);
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "Error al cargar la lista de usuarios: " + ex.getMessage());
+        }
+    }
+
+    public boolean validarUsuario(String usuarioABuscar) {
+        boolean respuesta = true;
+
+        if (!listaUsuarios.isEmpty()) {
+            for (String aux : listaUsuarios) {
+                if (aux.equals(usuarioABuscar)) {
+                    respuesta = false;
+                    break;
+                }
+            }
+        }
+
+        return respuesta;
+    }
+
 }

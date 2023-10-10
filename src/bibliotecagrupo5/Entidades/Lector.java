@@ -12,6 +12,7 @@ public class Lector implements Comparable<Lector>{
     private int nroSocio;
     private String nombre;
     private String apellido;
+    private int DNI;
     private String domicilio;
     private String mail;
     private boolean estado;
@@ -19,21 +20,31 @@ public class Lector implements Comparable<Lector>{
     public Lector() {
     }
 
-    public Lector(String nombre, String apellido, String domicilio, String mail, boolean estado) {
+    public Lector(String nombre, String apellido,int DNI, String domicilio, String mail, boolean estado) {
         this.nombre = nombre;
         this.apellido = apellido;
+        this.DNI=DNI;
         this.domicilio = domicilio;
         this.mail = mail;
         this.estado = estado;
     }
 
-    public Lector(int nroSocio, String nombre, String apellido, String domicilio, String mail, boolean estado) {
+    public Lector(int nroSocio, String nombre, String apellido,int DNI, String domicilio, String mail, boolean estado) {
         this.nroSocio = nroSocio;
         this.nombre = nombre;
         this.apellido = apellido;
+        this.DNI=DNI;
         this.domicilio = domicilio;
         this.mail = mail;
         this.estado = estado;
+    }
+
+    public int getDNI() {
+        return DNI;
+    }
+
+    public void setDNI(int DNI) {
+        this.DNI = DNI;
     }
 
     public int getNroSocio() {
@@ -84,11 +95,13 @@ public class Lector implements Comparable<Lector>{
         this.estado = estado;
     }
 
-   
     @Override
     public String toString() {
-        return "Lector{" + "nroSocio=" + nroSocio + ", nombre=" + nombre + ", apellido=" + apellido + ", domicilio=" + domicilio + ", mail=" + mail + ", estado=" + estado + '}';
-    }   
+        return "Lector{" + "nroSocio=" + nroSocio + ", nombre=" + nombre + ", apellido=" + apellido + ", DNI=" + DNI + ", domicilio=" + domicilio + ", mail=" + mail + ", estado=" + estado + '}';
+    }
+
+   
+      
 
     @Override
     public int compareTo(Lector l) {
