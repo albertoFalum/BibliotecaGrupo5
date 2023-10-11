@@ -62,6 +62,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenu1.add(jMenuItem1);
 
         jMenuItem2.setText("Formulario Ejemplares");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem2);
 
         jMenuBar1.add(jMenu1);
@@ -100,6 +105,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jdpEscritorio.add(gdl);
         jdpEscritorio.moveToFront(gdl);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        jdpEscritorio.removeAll();
+        jdpEscritorio.repaint();
+        GestionDeEjemplares gde = new GestionDeEjemplares();
+        gde.setVisible(true);
+        jdpEscritorio.add(gde);
+        jdpEscritorio.moveToFront(gde);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**
      * @param args the command line arguments
