@@ -482,10 +482,8 @@ public class GestionDeLibros extends javax.swing.JInternalFrame {
                 int idLibro = (Integer) jTLibros.getValueAt(filaSeleccionada, 0);
                 
                 TreeSet<Ejemplar> listaEjemplares = ejemplarData.listarEjemplaresNoDisponibles(idLibro, Condicion.DISPONIBLE);
-                Ejemplar ejemplarDisponible=ejemplarData.BuscarEjemplarIdLibroYCondicion(idLibro, Condicion.DISPONIBLE);
-                System.out.println(ejemplarDisponible);
-                
-                if (!listaEjemplares.isEmpty() &&  ejemplarDisponible==null) {
+    
+                if (listaEjemplares.isEmpty()) {
                     int respuesta = JOptionPane.showConfirmDialog(this, "¿Desea eliminar el libro con id " + idLibro + " ?",
                             "Eliminacion", JOptionPane.YES_NO_OPTION,
                             JOptionPane.INFORMATION_MESSAGE);
