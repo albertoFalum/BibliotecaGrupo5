@@ -165,6 +165,7 @@ public class EjemplarData {
                 Ejemplar ejemplar = new Ejemplar();
                 ejemplar.setCodigo(rs.getInt("codigo"));
                 ejemplar.setLibro(librodata.buscarLibro(idL));
+                ejemplar.setCantidad(rs.getInt("cantidad"));
                 ejemplar.setCondicion(Condicion.valueOf(rs.getString("condicion")));
                 ejemplar.setEstado(rs.getBoolean("estado"));
 
