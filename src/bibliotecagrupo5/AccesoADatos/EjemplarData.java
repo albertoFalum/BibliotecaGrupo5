@@ -104,8 +104,10 @@ public class EjemplarData {
                 Ejemplar ejemplar = new Ejemplar();
                 ejemplar.setCodigo(rs.getInt("codigo"));
                 ejemplar.setLibro(librodata.buscarLibro(rs.getInt("idLibro")));
-                ejemplar.setCondicion(Condicion.valueOf(rs.getString("condicion")));
+                ejemplar.setCantidad(rs.getInt("cantidad"));
                 ejemplar.setEstado(rs.getBoolean("estado"));
+                ejemplar.setCondicion(Condicion.valueOf(rs.getString("condicion")));                
+                
 
                 ejemplares.add(ejemplar);
 
@@ -132,6 +134,7 @@ public class EjemplarData {
                 ejemplar = new Ejemplar();
                 ejemplar.setCodigo(codigoABuscar);
                 ejemplar.setLibro(librodata.buscarLibro(rs.getInt("idLibro")));
+                ejemplar.setCantidad(rs.getInt("cantidad"));
                 ejemplar.setCondicion(Condicion.valueOf(rs.getString("condicion")));
                 ejemplar.setEstado(true);
 
@@ -190,6 +193,7 @@ public class EjemplarData {
                 Ejemplar ejemplar = new Ejemplar();
                 ejemplar.setCodigo(rs.getInt("codigo"));
                 ejemplar.setLibro(librodata.buscarLibro(rs.getInt("idLibro")));
+                ejemplar.setCantidad(rs.getInt("cantidad"));
                 ejemplar.setCondicion(Condicion.valueOf(rs.getString("condicion")));
                 ejemplar.setEstado(rs.getBoolean("estado"));
 
@@ -220,6 +224,7 @@ public class EjemplarData {
                 ejemplar=new Ejemplar();
                 ejemplar.setCodigo(rs.getInt("codigo"));
                 ejemplar.setLibro(librodata.buscarLibro(idL));
+                ejemplar.setCantidad(rs.getInt("cantidad"));
                 ejemplar.setCondicion(Condicion.valueOf(rs.getString("condicion")));
                 ejemplar.setEstado(rs.getBoolean("estado"));
                 
@@ -249,6 +254,7 @@ public class EjemplarData {
                 ejemplar = new Ejemplar();
                 ejemplar.setCodigo(rs.getInt("codigo"));
                 ejemplar.setLibro(librodata.buscarLibro(idLibro));
+                ejemplar.setCantidad(rs.getInt("cantidad"));
                 ejemplar.setCondicion(condicionABuscar);
                 ejemplar.setEstado(rs.getBoolean("estado"));
  
@@ -264,6 +270,34 @@ public class EjemplarData {
             JOptionPane.showMessageDialog(null, "ERROR ED9 - Error al acceder a la tabla Ejemplar: "+ex.getMessage());
         }
         return ejemplar;
+    }
+     public TreeSet <Ejemplar> listarEjemplaresNoDisponibles(int idLibro, String condicionABuscar){
+        String sql = "SELECT * FROM ejemplar WHERE NOT condicion=? AND cantidad>0 AND estado = 1";
+        
+        TreeSet<Ejemplar> ejemplares = new TreeSet<>();
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, condicionABuscar);
+            
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+
+                Ejemplar ejemplar = new Ejemplar();
+                ejemplar.setCodigo(rs.getInt("codigo"));
+                ejemplar.setLibro(librodata.buscarLibro(rs.getInt("idLibro")));
+                ejemplar.setCantidad(rs.getInt("cantidad"));
+                ejemplar.setCondicion(Condicion.valueOf(rs.getString("condicion")));
+                ejemplar.setEstado(rs.getBoolean("estado"));
+
+                ejemplares.add(ejemplar);
+
+            }
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "ERROR ED9 - Error al acceder a la tabla Ejemplar: "+ex.getMessage());
+        }
+        return ejemplares;
     }
 }
 

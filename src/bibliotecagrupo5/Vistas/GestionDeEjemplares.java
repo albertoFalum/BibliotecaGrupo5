@@ -7,9 +7,12 @@ package bibliotecagrupo5.Vistas;
 
 import bibliotecagrupo5.AccesoADatos.LibroData;
 import bibliotecagrupo5.Entidades.Condicion;
+import bibliotecagrupo5.Entidades.Ejemplar;
 import bibliotecagrupo5.Entidades.Libro;
 import bibliotecagrupo5.Entidades.Tipo;
 import java.util.TreeSet;
+import javax.swing.DefaultCellEditor;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.table.DefaultTableModel;
@@ -26,6 +29,7 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
         }
     };
     private LibroData librodata=null;
+    
     /**
      * Creates new form GestionDeEjemplares
      */
@@ -36,6 +40,8 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
         cargarComboCondicionTotal();
         cargarComboCondicion();
         armarCabecera();
+        
+        crearComboBox();
         ajustarTamañoColumnas();
         SpinnerNumberModel modeloSpinner=new SpinnerNumberModel();
         modeloSpinner.setMinimum(0);
@@ -74,8 +80,6 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
         jcbCondicion1 = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
         jsCantidad2 = new javax.swing.JSpinner();
-        jLabel10 = new javax.swing.JLabel();
-        jcbCondicionNueva = new javax.swing.JComboBox<>();
         jbModificar = new javax.swing.JButton();
         jbEliminar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -193,8 +197,6 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
 
         jLabel9.setText("Cantidad");
 
-        jLabel10.setText("Nueva Condicion:");
-
         jbModificar.setText("Modificar");
 
         jbEliminar.setText("Eliminar");
@@ -224,39 +226,32 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(105, 105, 105)
-                        .addComponent(jLabel2)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 462, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(21, 21, 21)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel10)
+                                .addComponent(jLabel9)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jcbCondicionNueva, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jLabel9)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jsCantidad2, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jLabel8)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jcbCondicion1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jbModificar)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jbEliminar))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jLabel5)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
-                                        .addComponent(jcbEjemplarLibro2, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
+                                .addComponent(jsCantidad2, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jcbCondicion1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jbModificar)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
+                                .addComponent(jcbEjemplarLibro2, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jbEliminar)
+                        .addGap(12, 12, 12)))
                 .addContainerGap())
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(160, 160, 160)
+                .addComponent(jLabel2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -282,11 +277,7 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbModificar)
                     .addComponent(jbEliminar))
-                .addGap(42, 42, 42)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(jcbCondicionNueva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addContainerGap(120, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -297,8 +288,8 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -330,7 +321,6 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -349,7 +339,6 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
     private javax.swing.JButton jbNuevo;
     private javax.swing.JComboBox<String> jcbCondicion;
     private javax.swing.JComboBox<String> jcbCondicion1;
-    private javax.swing.JComboBox<String> jcbCondicionNueva;
     private javax.swing.JComboBox<String> jcbEjemplarLibro;
     private javax.swing.JComboBox<String> jcbEjemplarLibro2;
     private javax.swing.JSpinner jsCantidad1;
@@ -373,10 +362,7 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
         jcbCondicion.addItem(Condicion.PRESTADO.toString());
         jcbCondicion.addItem(Condicion.REPARACION.toString());
         jcbCondicion.addItem(Condicion.RETRASO .toString());
-        jcbCondicionNueva.addItem(Condicion.DISPONIBLE.toString());
-        jcbCondicionNueva.addItem(Condicion.PRESTADO.toString());
-        jcbCondicionNueva.addItem(Condicion.REPARACION.toString());
-        jcbCondicionNueva.addItem(Condicion.RETRASO .toString());
+       
     }
     public void cargarComboCondicion(){
         jcbCondicion1.addItem(Condicion.DISPONIBLE.toString());
@@ -384,17 +370,34 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
         
     }
     public void armarCabecera(){
+         modelo.addColumn("Codigo");
         modelo.addColumn("Titulo");
         modelo.addColumn("Autor");
         modelo.addColumn("Condicion");
+         modelo.addColumn("Cantidad");
         jtTabla.setModel(modelo);
     }
     private void ajustarTamañoColumnas(){
-        TableColumn columnaTitulo=jtTabla.getColumnModel().getColumn(0);
+          TableColumn columnaCodigo=jtTabla.getColumnModel().getColumn(0);
+        columnaCodigo.setPreferredWidth(20);
+        TableColumn columnaTitulo=jtTabla.getColumnModel().getColumn(1);
         columnaTitulo.setPreferredWidth(50);
-         TableColumn columnaAutor=jtTabla.getColumnModel().getColumn(1);
+         TableColumn columnaAutor=jtTabla.getColumnModel().getColumn(2);
         columnaAutor.setPreferredWidth(40);
-         TableColumn columnaCondicion=jtTabla.getColumnModel().getColumn(2);
-        columnaCondicion.setPreferredWidth(40);
+         TableColumn columnaCondicion=jtTabla.getColumnModel().getColumn(3);
+        columnaCondicion.setPreferredWidth(50);
+          TableColumn columnaCantidad=jtTabla.getColumnModel().getColumn(4);
+        columnaCantidad.setPreferredWidth(10);
+    }
+    private void crearComboBox() {
+        JComboBox<Tipo> comboBox = new JComboBox<>(Tipo.values());
+        DefaultCellEditor customEditor = new DefaultCellEditor(comboBox);
+        
+        jtTabla.getColumnModel().getColumn(3).setCellEditor(customEditor);
+    }
+    private void cargarTabla(TreeSet<Ejemplar> ListarEjemplar){
+        for(Ejemplar aux:ListarEjemplar){
+            modelo.addRow(new Object[]{aux.getCodigo(),aux.getLibro().getTitulo(),aux.getLibro().getAutor(),aux.getCondicion(),aux.getCantidad()});
+        }
     }
 }

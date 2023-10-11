@@ -7,7 +7,7 @@ import java.time.LocalDate;
  *
  * @author BETO
  */
-public class Prestamo {
+public class Prestamo implements Comparable<Prestamo> {
     private int idPrestamo;
     private LocalDate fechaInicio;
     private LocalDate fechaFin;
@@ -86,6 +86,14 @@ public class Prestamo {
     @Override
     public String toString() {
         return "Prestamo{" + "idPrestamo=" + idPrestamo + ", fechaInicio=" + fechaInicio + ", fechaFin=" + fechaFin + ", ejemplar=" + ejemplar + ", lector=" + lector + ", estado=" + estado + '}';
+    }
+
+    @Override
+    public int compareTo(Prestamo o) {
+       
+       return o.fechaInicio.compareTo(this.fechaInicio);
+                
+        
     }
     
     
