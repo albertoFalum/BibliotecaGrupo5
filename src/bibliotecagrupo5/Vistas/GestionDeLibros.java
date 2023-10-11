@@ -2,6 +2,7 @@ package bibliotecagrupo5.Vistas;
 
 import bibliotecagrupo5.AccesoADatos.EjemplarData;
 import bibliotecagrupo5.AccesoADatos.LibroData;
+import bibliotecagrupo5.Entidades.Ejemplar;
 import bibliotecagrupo5.Entidades.Libro;
 import javax.swing.JSpinner;
 import bibliotecagrupo5.Entidades.Tipo;
@@ -29,7 +30,7 @@ public class GestionDeLibros extends javax.swing.JInternalFrame {
     };
 
     private LibroData libroData = new LibroData();
-    private EjemplarData ejemplarData= new EjemplarData();
+    private EjemplarData ejemplarData = new EjemplarData();
     private Libro libro = null;
 
     /**
@@ -215,7 +216,7 @@ public class GestionDeLibros extends javax.swing.JInternalFrame {
 
         jTLibros.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null, null, null, null, null, null}
             },
             new String [] {
                 "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6", "Title 7"
@@ -469,33 +470,38 @@ public class GestionDeLibros extends javax.swing.JInternalFrame {
 
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
         // TODO add your handling code here:
-        int filaSeleccionada=jTLibros.getSelectedRow();
-        
+        int filaSeleccionada = jTLibros.getSelectedRow();
+
         try {
-            if(filaSeleccionada != -1){
-                int idLibro=(Integer) jTLibros.getValueAt(filaSeleccionada, 0);
+            if (filaSeleccionada != -1) {
+                int idLibro = (Integer) jTLibros.getValueAt(filaSeleccionada, 0);
+                TreeSet<Ejemplar> listaEjemplares=ejemplarData.listarEjemplaresNoDisponibles(idLibro, "DISPONIBLE");
                 
-                if(ejemplarData.listarEjemplaresPorLibro(idLibro).isEmpty()){
-                    int respuesta = JOptionPane.showConfirmDialog(this, "¿Desea eliminar el libro con id "+idLibro+" ?",
-                            "Modificacion", JOptionPane.YES_NO_OPTION,
+                if (listaEjemplares.isEmpty()) {
+                    int respuesta = JOptionPane.showConfirmDialog(this, "¿Desea eliminar el libro con id " + idLibro + " ?",
+                            "Eliminacion", JOptionPane.YES_NO_OPTION,
                             JOptionPane.INFORMATION_MESSAGE);
 
                     if (respuesta == 0) {
                         libroData.eliminarLibro(idLibro);
-                    } 
-                   
-                }else {
-                    JOptionPane.showMessageDialog(this, "No puede eliminar el libro con id "+idLibro+" - Existen ejemplares");
+                    }
+
+                } else {
+                    JOptionPane.showMessageDialog(this, "No puede eliminar el libro con id " + idLibro + " "
+                            + "- Existen ejemplares con la condicion Prestado, Retraso o Reparacion");
                 }
-            }else{
+                
+                jTLibros.clearSelection();
+                
+            } else {
                 JOptionPane.showMessageDialog(this, "Debe selecionar una fila");
             }
-            
+
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(this, "Debe ingresar un año válido: " + ex.getMessage());
         }
     }//GEN-LAST:event_jbEliminarActionPerformed
- 
+
     private void jbClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbClearActionPerformed
         // TODO add your handling code here:
         jtfPorISBN.setText("");

@@ -204,33 +204,33 @@ public class EjemplarData {
         return ejemplares;
     }
     
-    public TreeSet <Ejemplar> listarEjemplaresPorLibroYCondicion(int idL, String condicionABuscar){
+    public Ejemplar BuscarEjemplarPorLibroYCondicion(int idL, String condicionABuscar){
            String sql = "SELECT * FROM ejemplar WHERE idLibro = ? AND condicion=? AND estado = 1";
-        
-        TreeSet<Ejemplar> ejemplares = new TreeSet<>();
+           Ejemplar ejemplar = null;
+       
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, idL);
             ps.setString(2, condicionABuscar);
             
             ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-
-                Ejemplar ejemplar = new Ejemplar();
+            
+            
+            if (rs.next()) {
+                ejemplar=new Ejemplar();
                 ejemplar.setCodigo(rs.getInt("codigo"));
                 ejemplar.setLibro(librodata.buscarLibro(idL));
                 ejemplar.setCondicion(Condicion.valueOf(rs.getString("condicion")));
                 ejemplar.setEstado(rs.getBoolean("estado"));
-
-                ejemplares.add(ejemplar);
-
+                
             }
             ps.close();
+            
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "ERROR ED8 - Error al acceder a la tabla Ejemplar: "+ex.getMessage());
         }
-        return ejemplares;
+        return ejemplar;
     }
 }
 
