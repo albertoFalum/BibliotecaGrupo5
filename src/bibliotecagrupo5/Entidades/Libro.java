@@ -106,8 +106,8 @@ public class Libro implements Comparable<Libro>{
 
     @Override
     public String toString() {
-        return "Libro{" + "idLibro=" + idLibro + ", isbn=" + isbn + ", titulo=" + titulo + ", autor=" + autor + ", anio=" + anio + ", tipo=" + tipo + ", editorial=" + editorial + ", estado=" + estado + '}';
-    }
+        return titulo;
+                }
 
     @Override
     public int compareTo(Libro t) {
