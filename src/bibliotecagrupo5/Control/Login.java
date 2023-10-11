@@ -2,6 +2,7 @@ package bibliotecagrupo5.Control;
 
 import bibliotecagrupo5.AccesoADatos.Conexion;
 import bibliotecagrupo5.Vistas.MenuPrincipal;
+import java.awt.Dimension;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -37,21 +38,25 @@ public class Login extends javax.swing.JFrame {
     private void initComponents() {
 
         jdpEscritorioLogin = new javax.swing.JDesktopPane();
+        jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jtfUsuario = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jtfUsuario = new javax.swing.JTextField();
         jpfContrasenia = new javax.swing.JPasswordField();
         jbIniciarSesion = new javax.swing.JButton();
-        jbCancelar = new javax.swing.JButton();
         jbNuevoUsuario = new javax.swing.JButton();
+        jbCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
-        jdpEscritorioLogin.setBackground(new java.awt.Color(204, 204, 255));
+        jdpEscritorioLogin.setBackground(new java.awt.Color(255, 204, 255));
+
+        jPanel1.setBackground(new java.awt.Color(102, 204, 255));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel1.setText("Biblioteca ANTONIO ESTEBAN AGÜERO");
+        jLabel1.setText("BIBLIOTECA ANTONIO ESTEBAN AGÜERO");
 
         jLabel5.setText("Usuario:");
 
@@ -64,13 +69,6 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        jbCancelar.setText("Cancelar");
-        jbCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbCancelarActionPerformed(evt);
-            }
-        });
-
         jbNuevoUsuario.setText("Nuevo Usuario");
         jbNuevoUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -78,72 +76,89 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        jdpEscritorioLogin.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jdpEscritorioLogin.setLayer(jLabel5, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jdpEscritorioLogin.setLayer(jLabel6, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jdpEscritorioLogin.setLayer(jtfUsuario, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jdpEscritorioLogin.setLayer(jpfContrasenia, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jdpEscritorioLogin.setLayer(jbIniciarSesion, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jdpEscritorioLogin.setLayer(jbCancelar, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jdpEscritorioLogin.setLayer(jbNuevoUsuario, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jbCancelar.setText("Cancelar");
+        jbCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbCancelarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(36, 36, 36)
+                                .addComponent(jLabel6))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel5)))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jpfContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtfUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(jbIniciarSesion)
+                        .addGap(18, 18, 18)
+                        .addComponent(jbNuevoUsuario)
+                        .addGap(18, 18, 18)
+                        .addComponent(jbCancelar)))
+                .addContainerGap(52, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(80, 80, 80))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(jtfUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jpfContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
+                .addGap(35, 35, 35)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jbIniciarSesion)
+                    .addComponent(jbNuevoUsuario)
+                    .addComponent(jbCancelar))
+                .addContainerGap(28, Short.MAX_VALUE))
+        );
+
+        jdpEscritorioLogin.setLayer(jPanel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jdpEscritorioLoginLayout = new javax.swing.GroupLayout(jdpEscritorioLogin);
         jdpEscritorioLogin.setLayout(jdpEscritorioLoginLayout);
         jdpEscritorioLoginLayout.setHorizontalGroup(
             jdpEscritorioLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jdpEscritorioLoginLayout.createSequentialGroup()
-                .addGroup(jdpEscritorioLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jdpEscritorioLoginLayout.createSequentialGroup()
-                        .addGap(172, 172, 172)
-                        .addComponent(jLabel1))
-                    .addGroup(jdpEscritorioLoginLayout.createSequentialGroup()
-                        .addGap(65, 65, 65)
-                        .addGroup(jdpEscritorioLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel5)
-                            .addComponent(jbIniciarSesion))
-                        .addGroup(jdpEscritorioLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jdpEscritorioLoginLayout.createSequentialGroup()
-                                .addGap(40, 40, 40)
-                                .addGroup(jdpEscritorioLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jtfUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jpfContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jdpEscritorioLoginLayout.createSequentialGroup()
-                                .addGap(73, 73, 73)
-                                .addComponent(jbNuevoUsuario)
-                                .addGap(62, 62, 62)
-                                .addComponent(jbCancelar)))))
-                .addContainerGap(85, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jdpEscritorioLoginLayout.createSequentialGroup()
+                .addContainerGap(125, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(123, 123, 123))
         );
         jdpEscritorioLoginLayout.setVerticalGroup(
             jdpEscritorioLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jdpEscritorioLoginLayout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(jLabel1)
-                .addGap(39, 39, 39)
-                .addGroup(jdpEscritorioLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jtfUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(56, 56, 56)
-                .addGroup(jdpEscritorioLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jpfContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
-                .addGap(77, 77, 77)
-                .addGroup(jdpEscritorioLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbIniciarSesion)
-                    .addComponent(jbNuevoUsuario)
-                    .addComponent(jbCancelar))
-                .addContainerGap(124, Short.MAX_VALUE))
+                .addGap(112, 112, 112)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(156, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jdpEscritorioLogin)
-                .addGap(18, 18, 18))
+            .addComponent(jdpEscritorioLogin)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -151,6 +166,7 @@ public class Login extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbIniciarSesionActionPerformed
@@ -191,11 +207,17 @@ public class Login extends javax.swing.JFrame {
 
     private void jbNuevoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoUsuarioActionPerformed
         // TODO add your handling code here:
-        jdpEscritorioLogin.removeAll();
+        //jdpEscritorioLogin.removeAll();
         jdpEscritorioLogin.repaint();
         JInternalFrame formularioUsuario = new FormularioUsuario();
         formularioUsuario.setVisible(true);
         jdpEscritorioLogin.add(formularioUsuario);
+        
+        Dimension desktopSize = jdpEscritorioLogin.getSize();
+        Dimension FrameSize = formularioUsuario.getSize();
+        formularioUsuario.setLocation((desktopSize.width - FrameSize.width)/2, (desktopSize.height- FrameSize.height)/2);
+        formularioUsuario.show();
+        
         jdpEscritorioLogin.moveToFront(formularioUsuario);
         
     }//GEN-LAST:event_jbNuevoUsuarioActionPerformed
@@ -239,6 +261,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JButton jbCancelar;
     private javax.swing.JButton jbIniciarSesion;
     private javax.swing.JButton jbNuevoUsuario;
