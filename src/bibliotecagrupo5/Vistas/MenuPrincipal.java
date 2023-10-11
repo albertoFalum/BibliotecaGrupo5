@@ -4,6 +4,8 @@
  */
 package bibliotecagrupo5.Vistas;
 
+import java.awt.Dimension;
+
 /**
  *
  * @author BETO
@@ -75,14 +77,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jdpEscritorio)
+            .addComponent(jdpEscritorio, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jdpEscritorio)
+            .addComponent(jdpEscritorio, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
@@ -98,6 +101,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
         GestionDeLibros gdl = new GestionDeLibros();
         gdl.setVisible(true);
         jdpEscritorio.add(gdl);
+        
+        Dimension desktopSize = jdpEscritorio.getSize();
+        Dimension FrameSize = gdl.getSize();
+        gdl.setLocation((desktopSize.width - FrameSize.width)/2, (desktopSize.height- FrameSize.height)/2);
+        gdl.show();
+        
+        
         jdpEscritorio.moveToFront(gdl);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 

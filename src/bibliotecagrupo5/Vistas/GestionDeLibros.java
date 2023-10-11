@@ -1,5 +1,6 @@
 package bibliotecagrupo5.Vistas;
 
+import bibliotecagrupo5.AccesoADatos.EjemplarData;
 import bibliotecagrupo5.AccesoADatos.LibroData;
 import bibliotecagrupo5.Entidades.Libro;
 import javax.swing.JSpinner;
@@ -28,6 +29,7 @@ public class GestionDeLibros extends javax.swing.JInternalFrame {
     };
 
     private LibroData libroData = new LibroData();
+    private EjemplarData ejemplarData= new EjemplarData();
     private Libro libro = null;
 
     /**
@@ -88,7 +90,6 @@ public class GestionDeLibros extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setIconifiable(true);
-        setMaximizable(true);
         setTitle("Gestion de Libros");
 
         jPanel3.setBackground(new java.awt.Color(102, 204, 255));
@@ -430,36 +431,33 @@ public class GestionDeLibros extends javax.swing.JInternalFrame {
 
         try {
             if (filaSeleccionada != -1) {
-                
-                if (!comprobarFilasVacias(filaSeleccionada)) {
-                    
-                    int idLibro = (Integer) jTLibros.getValueAt(filaSeleccionada, 0);
-                    int isbn = (Integer) jTLibros.getValueAt(filaSeleccionada, 1);
-                    String titulo = jTLibros.getValueAt(filaSeleccionada, 2).toString();
-                    String autor = jTLibros.getValueAt(filaSeleccionada, 3).toString();
-                    int anio = Integer.parseInt(jTLibros.getValueAt(filaSeleccionada, 4).toString());
-                    Tipo tipo = Tipo.valueOf(jTLibros.getValueAt(filaSeleccionada, 5).toString());
-                    String editorial = jTLibros.getValueAt(filaSeleccionada, 6).toString();
 
-                    if (anio > 0 && anio <= 9999) {
-                        int respuesta = JOptionPane.showConfirmDialog(this, "¿Desea modificar el libro?",
-                                "Modificacion", JOptionPane.YES_NO_OPTION,
-                                JOptionPane.INFORMATION_MESSAGE);
+                int idLibro = (Integer) jTLibros.getValueAt(filaSeleccionada, 0);
+                int isbn = (Integer) jTLibros.getValueAt(filaSeleccionada, 1);
+                String titulo = jTLibros.getValueAt(filaSeleccionada, 2).toString();
+                String autor = jTLibros.getValueAt(filaSeleccionada, 3).toString();
+                int anio = Integer.parseInt(jTLibros.getValueAt(filaSeleccionada, 4).toString());
+                Tipo tipo = Tipo.valueOf(jTLibros.getValueAt(filaSeleccionada, 5).toString());
+                String editorial = jTLibros.getValueAt(filaSeleccionada, 6).toString();
 
-                        if (respuesta == 0) {
-                            libro = new Libro(idLibro, isbn, titulo, autor, anio, tipo, editorial, true);
-                            libroData.modificarLibro(libro);
-                        }
+                if (anio > 0 && anio <= 9999) {
+                    int respuesta = JOptionPane.showConfirmDialog(this, "¿Desea modificar el libro?",
+                            "Modificacion", JOptionPane.YES_NO_OPTION,
+                            JOptionPane.INFORMATION_MESSAGE);
 
-                        jTLibros.clearSelection();
-
+                    if (respuesta == 0 && !comprobarFilasVacias(filaSeleccionada)) {
+                        libro = new Libro(idLibro, isbn, titulo, autor, anio, tipo, editorial, true);
+                        libroData.modificarLibro(libro);
                     } else {
-                        JOptionPane.showMessageDialog(this, "Debe ingresar un año válido");
+                        JOptionPane.showMessageDialog(this, "Algunos campos estan vacios, debe ingresar datos en ellos");
                     }
-                    
-                }else{
-                    JOptionPane.showMessageDialog(this, "Algunos campos estan vacios, debe ingresar datos en ellos");
+
+                    jTLibros.clearSelection();
+
+                } else {
+                    JOptionPane.showMessageDialog(this, "Debe ingresar un año válido");
                 }
+
             } else {
                 JOptionPane.showMessageDialog(this, "Debe selecionar una fila");
             }
@@ -471,8 +469,33 @@ public class GestionDeLibros extends javax.swing.JInternalFrame {
 
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jbEliminarActionPerformed
+        int filaSeleccionada=jTLibros.getSelectedRow();
+        
+        try {
+            if(filaSeleccionada != -1){
+                int idLibro=(Integer) jTLibros.getValueAt(filaSeleccionada, 0);
+                
+                if(ejemplarData.listarEjemplaresPorLibro(idLibro).isEmpty()){
+                    int respuesta = JOptionPane.showConfirmDialog(this, "¿Desea eliminar el libro con id "+idLibro+" ?",
+                            "Modificacion", JOptionPane.YES_NO_OPTION,
+                            JOptionPane.INFORMATION_MESSAGE);
 
+                    if (respuesta == 0) {
+                        libroData.eliminarLibro(idLibro);
+                    } 
+                   
+                }else {
+                    JOptionPane.showMessageDialog(this, "No puede eliminar el libro con id "+idLibro+" - Existen ejemplares");
+                }
+            }else{
+                JOptionPane.showMessageDialog(this, "Debe selecionar una fila");
+            }
+            
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Debe ingresar un año válido: " + ex.getMessage());
+        }
+    }//GEN-LAST:event_jbEliminarActionPerformed
+ 
     private void jbClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbClearActionPerformed
         // TODO add your handling code here:
         jtfPorISBN.setText("");
@@ -604,6 +627,6 @@ public class GestionDeLibros extends javax.swing.JInternalFrame {
         String autor = jTLibros.getValueAt(filaSeleccionada, 3).toString();
         String editorial = jTLibros.getValueAt(filaSeleccionada, 6).toString();
 
-        return titulo.equals(null);
+        return titulo.equals("") && autor.equals("") && editorial.equals("");
     }
 }
