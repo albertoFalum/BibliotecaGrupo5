@@ -232,6 +232,39 @@ public class EjemplarData {
         }
         return ejemplares;
     }
+     public Ejemplar buscarEjemplarIdLibroYCondicion(int idLibro,Condicion condicionABuscar){
+         Ejemplar ejemplar = null;
+         String sql = "SELECT * FROM ejemplar WHERE  idLibro=? AND condicion=? AND estado = 1";
+        
+       
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idLibro);
+            String condi=condicionABuscar.toString();
+            ps.setString(2, condi);
+            
+            ResultSet rs = ps.executeQuery();
+            
+            if(rs.next()){
+                ejemplar = new Ejemplar();
+                ejemplar.setCodigo(rs.getInt("codigo"));
+                ejemplar.setLibro(librodata.buscarLibro(idLibro));
+                ejemplar.setCondicion(condicionABuscar);
+                ejemplar.setEstado(rs.getBoolean("estado"));
+ 
+            }else{
+                JOptionPane.showMessageDialog(null, "Ejemplar encontrado");
+                ps.close();
+            }
+               
+                
+           
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "ERROR ED9 - Error al acceder a la tabla Ejemplar: "+ex.getMessage());
+        }
+        return ejemplar;
+    }
 }
 
 
