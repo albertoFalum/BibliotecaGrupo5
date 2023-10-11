@@ -5,6 +5,7 @@
 package bibliotecagrupo5.Vistas;
 
 
+import bibliotecagrupo5.AccesoADatos.EjemplarData;
 import bibliotecagrupo5.AccesoADatos.LibroData;
 import bibliotecagrupo5.Entidades.Condicion;
 import bibliotecagrupo5.Entidades.Ejemplar;
@@ -28,13 +29,17 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
             return false;
         }
     };
-    private LibroData librodata=null;
+    private LibroData librodata=new LibroData();
+    private Libro libroAux=null;
+    private Ejemplar ejemplar=null;
+    private EjemplarData ejemplardata=new EjemplarData();
+    
     
     /**
      * Creates new form GestionDeEjemplares
      */
     public GestionDeEjemplares() {
-        librodata=new LibroData();
+        
         initComponents();
         cargarComboLibros();
         cargarComboCondicionTotal();
@@ -66,7 +71,7 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
+        jrbEstado = new javax.swing.JRadioButton();
         jLabel7 = new javax.swing.JLabel();
         jcbCondicion = new javax.swing.JComboBox<>();
         jbNuevo = new javax.swing.JButton();
@@ -103,8 +108,8 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
 
         jLabel6.setText("Estado:");
 
-        jRadioButton1.setSelected(true);
-        jRadioButton1.setEnabled(false);
+        jrbEstado.setSelected(true);
+        jrbEstado.setEnabled(false);
 
         jLabel7.setText("Condicion:");
 
@@ -147,7 +152,7 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(jPanel1Layout.createSequentialGroup()
                                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jRadioButton1)
+                                                    .addComponent(jrbEstado)
                                                     .addComponent(jLabel1))
                                                 .addGap(0, 0, Short.MAX_VALUE))
                                             .addComponent(jcbCondicion, 0, 157, Short.MAX_VALUE)))
@@ -176,7 +181,7 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
                     .addComponent(jsCantidad1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(19, 19, 19)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jRadioButton1)
+                    .addComponent(jrbEstado)
                     .addComponent(jLabel6))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -192,6 +197,12 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
         jLabel2.setText("Modificacion de Ejemplares");
 
         jLabel5.setText("Libro:");
+
+        jcbEjemplarLibro2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbEjemplarLibro2ActionPerformed(evt);
+            }
+        });
 
         jLabel8.setText("Condicion:");
 
@@ -313,9 +324,28 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbNuevoActionPerformed
 
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
+       
+        
        Libro libroSeleccionado=(Libro)jcbEjemplarLibro.getSelectedItem();
+       
        int cantLibros=jsCantidad1.getComponentCount();
+       boolean estado=jrbEstado.isSelected();
+       Condicion condicion=(Condicion)jcbCondicion.getSelectedItem();
+       ejemplar=new Ejemplar(libroSeleccionado, cantLibros, estado, condicion);
+        System.out.println(ejemplar);
+       ejemplardata.guardarEjemplar(ejemplar);
+      
+       
+               
     }//GEN-LAST:event_jbGuardarActionPerformed
+
+    private void jcbEjemplarLibro2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbEjemplarLibro2ActionPerformed
+        borrarTabla();
+        Libro libroSeleccionado=(Libro)jcbEjemplarLibro2.getSelectedItem();
+        Condicion condicion=(Condicion)jcbCondicion1.getSelectedItem();
+        TreeSet<Ejemplar> ejemplares=ejemplardata.(libroSeleccionado.getIdLibro());
+        cargarTabla(ejemplares);
+    }//GEN-LAST:event_jcbEjemplarLibro2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -331,16 +361,16 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbEliminar;
     private javax.swing.JButton jbGuardar;
     private javax.swing.JButton jbModificar;
     private javax.swing.JButton jbNuevo;
-    private javax.swing.JComboBox<String> jcbCondicion;
-    private javax.swing.JComboBox<String> jcbCondicion1;
-    private javax.swing.JComboBox<String> jcbEjemplarLibro;
-    private javax.swing.JComboBox<String> jcbEjemplarLibro2;
+    private javax.swing.JComboBox<Condicion> jcbCondicion;
+    private javax.swing.JComboBox<Condicion> jcbCondicion1;
+    private javax.swing.JComboBox<Libro> jcbEjemplarLibro;
+    private javax.swing.JComboBox<Libro> jcbEjemplarLibro2;
+    private javax.swing.JRadioButton jrbEstado;
     private javax.swing.JSpinner jsCantidad1;
     private javax.swing.JSpinner jsCantidad2;
     private javax.swing.JTable jtTabla;
@@ -350,23 +380,26 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
             
            TreeSet<Libro> listarLibros=librodata.listarLibros();
             for (Libro aux : listarLibros) {
-                jcbEjemplarLibro.addItem(aux.getTitulo());
-                jcbEjemplarLibro2.addItem(aux.getTitulo());
+                jcbEjemplarLibro.addItem(aux);
+                jcbEjemplarLibro2.addItem(aux);
             }
        }catch(NullPointerException ex){
             JOptionPane.showMessageDialog(this, "Error No se cargo ningun Libro"+ex.getMessage());
        }
     }
+    private void borrarTabla() {
+        modelo.setRowCount(0);
+    }
     public void cargarComboCondicionTotal(){
-        jcbCondicion.addItem(Condicion.DISPONIBLE.toString());
-        jcbCondicion.addItem(Condicion.PRESTADO.toString());
-        jcbCondicion.addItem(Condicion.REPARACION.toString());
-        jcbCondicion.addItem(Condicion.RETRASO .toString());
+        jcbCondicion1.addItem(Condicion.DISPONIBLE);
+        jcbCondicion1.addItem(Condicion.PRESTADO);
+        jcbCondicion1.addItem(Condicion.REPARACION);
+        jcbCondicion1.addItem(Condicion.RETRASO);
        
     }
     public void cargarComboCondicion(){
-        jcbCondicion1.addItem(Condicion.DISPONIBLE.toString());
-        jcbCondicion1.addItem(Condicion.REPARACION.toString());
+        jcbCondicion.addItem(Condicion.DISPONIBLE);
+        jcbCondicion.addItem(Condicion.REPARACION);
         
     }
     public void armarCabecera(){
@@ -374,7 +407,7 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
         modelo.addColumn("Titulo");
         modelo.addColumn("Autor");
         modelo.addColumn("Condicion");
-         modelo.addColumn("Cantidad");
+        
         jtTabla.setModel(modelo);
     }
     private void ajustarTamañoColumnas(){
@@ -386,8 +419,7 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
         columnaAutor.setPreferredWidth(40);
          TableColumn columnaCondicion=jtTabla.getColumnModel().getColumn(3);
         columnaCondicion.setPreferredWidth(50);
-          TableColumn columnaCantidad=jtTabla.getColumnModel().getColumn(4);
-        columnaCantidad.setPreferredWidth(10);
+        
     }
     private void crearComboBox() {
         JComboBox<Tipo> comboBox = new JComboBox<>(Tipo.values());
@@ -397,7 +429,7 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
     }
     private void cargarTabla(TreeSet<Ejemplar> ListarEjemplar){
         for(Ejemplar aux:ListarEjemplar){
-            modelo.addRow(new Object[]{aux.getCodigo(),aux.getLibro().getTitulo(),aux.getLibro().getAutor(),aux.getCondicion(),aux.getCantidad()});
+            modelo.addRow(new Object[]{aux.getCodigo(),aux.getLibro().getTitulo(),aux.getLibro().getAutor(),aux.getCondicion()});
         }
     }
 }
