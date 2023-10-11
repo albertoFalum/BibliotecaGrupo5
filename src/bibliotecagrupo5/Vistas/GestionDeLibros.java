@@ -2,6 +2,7 @@ package bibliotecagrupo5.Vistas;
 
 import bibliotecagrupo5.AccesoADatos.EjemplarData;
 import bibliotecagrupo5.AccesoADatos.LibroData;
+import bibliotecagrupo5.Entidades.Condicion;
 import bibliotecagrupo5.Entidades.Ejemplar;
 import bibliotecagrupo5.Entidades.Libro;
 import javax.swing.JSpinner;
@@ -403,7 +404,7 @@ public class GestionDeLibros extends javax.swing.JInternalFrame {
                 Libro libro2 = libroData.buscarLibroPorIsbn(isbn);
 
                 if (libro2 != null) {
-                    cargarTablaPorISBN(libro2);
+                    cargarTabla(libro2);
                 } else {
                     jtfPorISBN.setText("");
                 }
@@ -442,21 +443,25 @@ public class GestionDeLibros extends javax.swing.JInternalFrame {
                 String editorial = jTLibros.getValueAt(filaSeleccionada, 6).toString();
 
                 if (anio > 0 && anio <= 9999) {
-                    int respuesta = JOptionPane.showConfirmDialog(this, "¿Desea modificar el libro?",
-                            "Modificacion", JOptionPane.YES_NO_OPTION,
-                            JOptionPane.INFORMATION_MESSAGE);
 
-                    if (respuesta == 0 && !comprobarFilasVacias(filaSeleccionada)) {
-                        libro = new Libro(idLibro, isbn, titulo, autor, anio, tipo, editorial, true);
-                        libroData.modificarLibro(libro);
+                    if (!comprobarFilasVacias(filaSeleccionada)) {
+
+                        int respuesta = JOptionPane.showConfirmDialog(this, "¿Desea modificar el libro?",
+                                "Modificacion", JOptionPane.YES_NO_OPTION,
+                                JOptionPane.INFORMATION_MESSAGE);
+
+                        if (respuesta == 0) {
+                            libro = new Libro(idLibro, isbn, titulo, autor, anio, tipo, editorial, true);
+                            libroData.modificarLibro(libro);
+                        }
+
                     } else {
                         JOptionPane.showMessageDialog(this, "Algunos campos estan vacios, debe ingresar datos en ellos");
                     }
-
                     jTLibros.clearSelection();
-
                 } else {
-                    JOptionPane.showMessageDialog(this, "Debe ingresar un año válido");
+                    JOptionPane.showMessageDialog(this, "Debe ingresar un año válido ");
+
                 }
 
             } else {
@@ -475,9 +480,12 @@ public class GestionDeLibros extends javax.swing.JInternalFrame {
         try {
             if (filaSeleccionada != -1) {
                 int idLibro = (Integer) jTLibros.getValueAt(filaSeleccionada, 0);
-                TreeSet<Ejemplar> listaEjemplares=ejemplarData.listarEjemplaresNoDisponibles(idLibro, "DISPONIBLE");
                 
-                if (listaEjemplares.isEmpty()) {
+                TreeSet<Ejemplar> listaEjemplares = ejemplarData.listarEjemplaresNoDisponibles(idLibro, Condicion.DISPONIBLE);
+                Ejemplar ejemplarDisponible=ejemplarData.BuscarEjemplarIdLibroYCondicion(idLibro, Condicion.DISPONIBLE);
+                System.out.println(ejemplarDisponible);
+                
+                if (!listaEjemplares.isEmpty() &&  ejemplarDisponible==null) {
                     int respuesta = JOptionPane.showConfirmDialog(this, "¿Desea eliminar el libro con id " + idLibro + " ?",
                             "Eliminacion", JOptionPane.YES_NO_OPTION,
                             JOptionPane.INFORMATION_MESSAGE);
@@ -490,9 +498,9 @@ public class GestionDeLibros extends javax.swing.JInternalFrame {
                     JOptionPane.showMessageDialog(this, "No puede eliminar el libro con id " + idLibro + " "
                             + "- Existen ejemplares con la condicion Prestado, Retraso o Reparacion");
                 }
-                
+
                 jTLibros.clearSelection();
-                
+
             } else {
                 JOptionPane.showMessageDialog(this, "Debe selecionar una fila");
             }
@@ -592,7 +600,7 @@ public class GestionDeLibros extends javax.swing.JInternalFrame {
                 && jtfAutor.getText().isEmpty() && jtfEditorial.getText().isEmpty();
     }
 
-    private void cargarTablaPorISBN(Libro libro) {
+    private void cargarTabla(Libro libro) {
         modelo.addRow(new Object[]{libro.getIdLibro(), libro.getIsbn(), libro.getTitulo(),
             libro.getAutor(), libro.getAnio(), libro.getTipo(), libro.getEditorial()});
     }
@@ -613,8 +621,7 @@ public class GestionDeLibros extends javax.swing.JInternalFrame {
         for (Libro libro : listaLibros) {
 
             if (libro.getTitulo().startsWith(jtfPorTitulo.getText()) && !jtfPorTitulo.getText().isEmpty()) {
-                modelo.addRow(new Object[]{libro.getIdLibro(), libro.getIsbn(), libro.getTitulo(),
-                    libro.getAutor(), libro.getAnio(), libro.getTipo(), libro.getEditorial()});
+                cargarTabla(libro);
             }
 
         }
@@ -628,11 +635,11 @@ public class GestionDeLibros extends javax.swing.JInternalFrame {
     }
 
     private boolean comprobarFilasVacias(int filaSeleccionada) {
-
         String titulo = jTLibros.getValueAt(filaSeleccionada, 2).toString();
         String autor = jTLibros.getValueAt(filaSeleccionada, 3).toString();
         String editorial = jTLibros.getValueAt(filaSeleccionada, 6).toString();
 
-        return titulo.equals("") && autor.equals("") && editorial.equals("");
+        return titulo.equals("") || autor.equals("") || editorial.equals("");
     }
+
 }
