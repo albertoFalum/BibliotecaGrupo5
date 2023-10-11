@@ -378,12 +378,12 @@ public class FormularioUsuario extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jtfUsuario;
     // End of variables declaration//GEN-END:variables
 
-    public boolean comprobarCamposVacios() {
+    private boolean comprobarCamposVacios() {
         return jtfUsuario.getText().isEmpty() && jpfContrasenia.getText().isEmpty() && jpfRepContrasenia.getText().isEmpty()
                 && jtfNombre.getText().isEmpty() && jtfApellido.getText().isEmpty() && jtfEmail.getText().isEmpty();
     }
 
-    public boolean validarContraseñasIguales() {
+    private boolean validarContraseñasIguales() {
         return jpfContrasenia.getText().equals(jpfRepContrasenia.getText());
     }
 
@@ -396,7 +396,7 @@ public class FormularioUsuario extends javax.swing.JInternalFrame {
         jtfEmail.setText("");
     }
 
-    public void inhabilitarCampos() {
+    private void inhabilitarCampos() {
         jtfUsuario.setEditable(false);
         jpfContrasenia.setEditable(false);
         jpfRepContrasenia.setEditable(false);
@@ -405,7 +405,7 @@ public class FormularioUsuario extends javax.swing.JInternalFrame {
         jtfEmail.setEditable(false);
     }
 
-    public void habilitarCampos() {
+    private void habilitarCampos() {
         jtfUsuario.setEditable(true);
         jpfContrasenia.setEditable(true);
         jpfRepContrasenia.setEditable(true);
@@ -431,7 +431,7 @@ public class FormularioUsuario extends javax.swing.JInternalFrame {
         }
     }
 
-    public boolean validarUsuario(String usuarioABuscar) {
+    private boolean validarUsuario(String usuarioABuscar) {
         boolean respuesta = true;
 
         if (!listaUsuarios.isEmpty()) {
