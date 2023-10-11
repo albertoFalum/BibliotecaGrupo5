@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 import java.util.Date;
 import bibliotecagrupo5.AccesoADatos.LectorData;
 import bibliotecagrupo5.Entidades.Lector;
+import java.util.ArrayList;
 import java.util.TreeSet;
 import javax.swing.table.DefaultTableModel;
 
@@ -71,7 +72,7 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
         jrbEliminar = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         jtfNroSocio = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        jrbBuscar = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(900, 550));
 
@@ -210,6 +211,10 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jtaLector.getTableHeader().setResizingAllowed(false);
+        jtaLector.getTableHeader().setReorderingAllowed(false);
+        jtaLector.setUpdateSelectionOnSort(false);
+        jtaLector.setVerifyInputWhenFocusTarget(false);
         jScrollPane1.setViewportView(jtaLector);
 
         jrbModificar.setText("Modificar");
@@ -225,10 +230,10 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
 
         jLabel9.setText("Buscar por Nro Socio:");
 
-        jButton1.setText("Buscar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jrbBuscar.setText("Buscar");
+        jrbBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jrbBuscarActionPerformed(evt);
             }
         });
 
@@ -263,7 +268,7 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jtfNroSocio, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(43, 43, 43)
-                        .addComponent(jButton1)))
+                        .addComponent(jrbBuscar)))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -281,8 +286,8 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8)
                             .addComponent(jtexApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                    .addComponent(jrbBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -317,13 +322,13 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
 
     private void jtexApellidoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtexApellidoKeyReleased
         // TODO add your handling code here:
-
+        borrarTabla();
         TreeSet<Lector> listarLector = lecData.listarLector();
-
+        
         for (Lector lec : listarLector) {
-            
-            if (lec.getApellido().startsWith(jtexApellido.getText())) {
-            borrarFilas();
+        
+            if (lec.getApellido().startsWith(jtexApellido.getText())&&!jtexApellido.getText().isEmpty()) {
+                
                 modelo.addRow(new Object[]{
                     lec.getNroSocio(),
                     lec.getNombre(),
@@ -333,10 +338,10 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
                     lec.getMail()
 
                 });
-                // borrarFilas();
+                
                 jrbEliminar.setEnabled(true);
                 jrbModificar.setEnabled(true);
-                //borrarTabla();
+               
             }
 
         }
@@ -393,13 +398,26 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
         borrarCampos();
     }//GEN-LAST:event_jrbNuevoActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jrbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbBuscarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        ArrayList<Lector> lista = new ArrayList<>();
+        if (!jtfNroSocio.getText().isEmpty()) {
+            for (Lector lec: lista) {
 
+                    modelo.addRow(new Object[]{
+                        lec.getNroSocio(),
+                        lec.getNombre(),
+                        lec.getApellido(),
+                        lec.getDNI(),
+                        lec.getDomicilio(),
+                        lec.getMail()
 
+                    });
+
+                }
+    }//GEN-LAST:event_jrbBuscarActionPerformed
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -412,6 +430,7 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton jrbBuscar;
     private javax.swing.JButton jrbEliminar;
     private javax.swing.JRadioButton jrbEstado;
     private javax.swing.JButton jrbGuardar;
@@ -463,7 +482,7 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
 
         int filas = jtaLector.getRowCount();
         for (int f = filas; f >= 0; f--) {
-            
+
             modelo.removeRow(f);
         }
     }
