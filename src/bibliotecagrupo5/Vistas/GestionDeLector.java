@@ -230,6 +230,12 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
 
         jLabel9.setText("Buscar por Nro Socio:");
 
+        jtfNroSocio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfNroSocioActionPerformed(evt);
+            }
+        });
+
         jrbBuscar.setText("Buscar");
         jrbBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -277,16 +283,15 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
                 .addGap(19, 19, 19)
                 .addComponent(jLabel7)
                 .addGap(85, 85, 85)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel9)
-                            .addComponent(jtfNroSocio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(19, 19, 19)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel8)
-                            .addComponent(jtexApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jrbBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel9)
+                        .addComponent(jtfNroSocio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jrbBuscar))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(jtexApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -324,24 +329,16 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         borrarTabla();
         TreeSet<Lector> listarLector = lecData.listarLector();
-        
-        for (Lector lec : listarLector) {
-        
-            if (lec.getApellido().startsWith(jtexApellido.getText())&&!jtexApellido.getText().isEmpty()) {
-                
-                modelo.addRow(new Object[]{
-                    lec.getNroSocio(),
-                    lec.getNombre(),
-                    lec.getApellido(),
-                    lec.getDNI(),
-                    lec.getDomicilio(),
-                    lec.getMail()
 
-                });
-                
+        for (Lector lec : listarLector) {
+
+            if (lec.getApellido().startsWith(jtexApellido.getText()) && !jtexApellido.getText().isEmpty()) {
+
+               cargarTabla(lec);
+
                 jrbEliminar.setEnabled(true);
                 jrbModificar.setEnabled(true);
-               
+
             }
 
         }
@@ -400,23 +397,29 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
 
     private void jrbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbBuscarActionPerformed
         // TODO add your handling code here:
-        ArrayList<Lector> lista = new ArrayList<>();
-        if (!jtfNroSocio.getText().isEmpty()) {
-            for (Lector lec: lista) {
 
-                    modelo.addRow(new Object[]{
-                        lec.getNroSocio(),
-                        lec.getNombre(),
-                        lec.getApellido(),
-                        lec.getDNI(),
-                        lec.getDomicilio(),
-                        lec.getMail()
-
-                    });
-
+        try {
+            if (!jtfNroSocio.getText().isEmpty()) {
+                int nroSocio = Integer.parseInt(jtfNroSocio.getText());
+                Lector lector = lecData.buscarLectorPorNroSocio(nroSocio);
+                if (lector != null) {
+                    cargarTabla(lector);
+                    
+                   jrbEliminar.setEnabled(true);
+                   
+                   
+                   
                 }
+            }
+        }catch (NumberFormatException ex) {
+        
     }//GEN-LAST:event_jrbBuscarActionPerformed
     }
+    private void jtfNroSocioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfNroSocioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfNroSocioActionPerformed
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -485,5 +488,19 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
 
             modelo.removeRow(f);
         }
+    }
+
+    private void cargarTabla(Lector lec) {
+        modelo.addRow(new Object[]{
+            
+            lec.getNroSocio(),
+            lec.getNombre(),
+            lec.getApellido(),
+            lec.getDNI(),
+            lec.getDomicilio(),
+            lec.getMail()
+
+        });
+
     }
 }
