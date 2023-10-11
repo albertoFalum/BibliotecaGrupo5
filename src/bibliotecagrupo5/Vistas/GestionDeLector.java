@@ -334,7 +334,7 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
 
             if (lec.getApellido().startsWith(jtexApellido.getText()) && !jtexApellido.getText().isEmpty()) {
 
-               cargarTabla(lec);
+                cargarTabla(lec);
 
                 jrbEliminar.setEnabled(true);
                 jrbModificar.setEnabled(true);
@@ -397,22 +397,22 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
 
     private void jrbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbBuscarActionPerformed
         // TODO add your handling code here:
-
+        borrarTabla();
+        jtfNroSocio.setText("");
         try {
             if (!jtfNroSocio.getText().isEmpty()) {
+
                 int nroSocio = Integer.parseInt(jtfNroSocio.getText());
                 Lector lector = lecData.buscarLectorPorNroSocio(nroSocio);
+
                 if (lector != null) {
                     cargarTabla(lector);
-                    
-                   jrbEliminar.setEnabled(true);
-                   
-                   
-                   
+                } else {
+                    jtfNroSocio.setText("");
                 }
             }
-        }catch (NumberFormatException ex) {
-        
+        } catch (NumberFormatException ex) {
+
     }//GEN-LAST:event_jrbBuscarActionPerformed
     }
     private void jtfNroSocioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfNroSocioActionPerformed
@@ -492,7 +492,6 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
 
     private void cargarTabla(Lector lec) {
         modelo.addRow(new Object[]{
-            
             lec.getNroSocio(),
             lec.getNombre(),
             lec.getApellido(),
