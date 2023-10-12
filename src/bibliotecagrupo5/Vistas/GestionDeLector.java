@@ -471,28 +471,32 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
     private void jrbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbEliminarActionPerformed
         // TODO add your handling code here:
         int filaSeleccionada = jtaLector.getSelectedRow();
-        int resp=0;
+        int resp = 0;
 
         if (filaSeleccionada != -1) {
             int nroSocio = (Integer) jtaLector.getValueAt(filaSeleccionada, 0);
-            
+
             TreeSet<Lector> listarLector = lecData.listarLector();
-            
-            for(Lector aux:listarLector){
-            System.out.println(aux);
+
+            for (Lector aux : listarLector) {
+                System.out.println(aux);
             }
-            
-            if(listarLector.isEmpty()){
-               int respuesta = JOptionPane.showConfirmDialog(this, "Desea eliminar lector?",
-                       "Eliminar", JOptionPane.YES_OPTION, JOptionPane.INFORMATION_MESSAGE);
-               if(respuesta ==0){
-                 lecData.desactivarLector(nroSocio);
-               
-               }
-            
+            if (!comprobarFilasVacias(filaSeleccionada)) {
+
+                int respuesta = JOptionPane.showConfirmDialog(this, "Desea eliminar lector?",
+                        "Eliminar", JOptionPane.YES_OPTION, JOptionPane.INFORMATION_MESSAGE);
+                if (respuesta == 0) {
+                    lecData.desactivarLector(nroSocio);
+
+                }
+                borrarTabla();
+                borrarJtf();
+
             }
+
+
     }//GEN-LAST:event_jrbEliminarActionPerformed
-        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
