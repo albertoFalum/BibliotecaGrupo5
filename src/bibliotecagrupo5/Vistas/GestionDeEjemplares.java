@@ -4,7 +4,6 @@
  */
 package bibliotecagrupo5.Vistas;
 
-
 import bibliotecagrupo5.AccesoADatos.EjemplarData;
 import bibliotecagrupo5.AccesoADatos.LibroData;
 import bibliotecagrupo5.Entidades.Condicion;
@@ -24,22 +23,22 @@ import javax.swing.table.TableColumn;
  * @author Leandro
  */
 public class GestionDeEjemplares extends javax.swing.JInternalFrame {
-    private DefaultTableModel modelo = new DefaultTableModel(){
-         public boolean isCellEditable(int f, int c) {
-            return c==3;
+
+    private DefaultTableModel modelo = new DefaultTableModel() {
+        public boolean isCellEditable(int f, int c) {
+            return c == 3;
         }
     };
-    private LibroData librodata=new LibroData();
-    private Libro libroAux=null;
-    private Ejemplar ejemplar=null;
-    private EjemplarData ejemplardata=new EjemplarData();
-    
-    
+    private LibroData librodata = new LibroData();
+    private Libro libroAux = null;
+    private Ejemplar ejemplar = null;
+    private EjemplarData ejemplardata = new EjemplarData();
+
     /**
      * Creates new form GestionDeEjemplares
      */
     public GestionDeEjemplares() {
-        
+
         initComponents();
         cargarComboLibros();
         cargarComboCondicionTotal();
@@ -47,7 +46,7 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
         armarCabecera();
         ajustarTamañoColumnas();
         crearComboBox();
-        SpinnerNumberModel modeloSpinner=new SpinnerNumberModel();
+        SpinnerNumberModel modeloSpinner = new SpinnerNumberModel();
         modeloSpinner.setMinimum(1);
         modeloSpinner.setValue(1);
         jsCantidad1.setModel(modeloSpinner);
@@ -348,55 +347,52 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jcbEjemplarLibroActionPerformed
 
     private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
-     jcbEjemplarLibro.setSelectedIndex(0);
-     jsCantidad1.setValue(0);
-     jcbCondicion.setSelectedIndex(0);
+        jcbEjemplarLibro.setSelectedIndex(0);
+        jsCantidad1.setValue(0);
+        jcbCondicion.setSelectedIndex(0);
     }//GEN-LAST:event_jbNuevoActionPerformed
 
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
-       
-        
-       Libro libroSeleccionado=(Libro)jcbEjemplarLibro.getSelectedItem();
-       
-       int cantLibros=jsCantidad1.getComponentCount();
-       boolean estado=jrbEstado.isSelected();
-       Condicion condicion=(Condicion)jcbCondicion.getSelectedItem();
-       ejemplar=new Ejemplar(libroSeleccionado, cantLibros, estado, condicion);
+
+        Libro libroSeleccionado = (Libro) jcbEjemplarLibro.getSelectedItem();
+
+        int cantLibros = jsCantidad1.getComponentCount();
+        boolean estado = jrbEstado.isSelected();
+        Condicion condicion = (Condicion) jcbCondicion.getSelectedItem();
+        ejemplar = new Ejemplar(libroSeleccionado, cantLibros, estado, condicion);
         System.out.println(ejemplar);
-       ejemplardata.guardarEjemplar(ejemplar);
-      
-       
-               
+        ejemplardata.guardarEjemplar(ejemplar);
+
+
     }//GEN-LAST:event_jbGuardarActionPerformed
 
     private void jcbEjemplarLibro2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbEjemplarLibro2ActionPerformed
         borrarTabla();
-        Libro libroSeleccionado=(Libro)jcbEjemplarLibro2.getSelectedItem();
-        
-        TreeSet<Ejemplar> ejemplares=ejemplardata.listarEjemplaresPorLibro(libroSeleccionado.getIdLibro());
+        Libro libroSeleccionado = (Libro) jcbEjemplarLibro2.getSelectedItem();
+
+        TreeSet<Ejemplar> ejemplares = ejemplardata.listarEjemplaresPorLibro(libroSeleccionado.getIdLibro());
         cargarTabla(ejemplares);
         jsCantidad2.setValue(0);
         jcbCondicion1.setVisible(true);
     }//GEN-LAST:event_jcbEjemplarLibro2ActionPerformed
 
     private void jcbCondicion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbCondicion1ActionPerformed
-       borrarTabla();
-        Libro libroSeleccionado=(Libro)jcbEjemplarLibro2.getSelectedItem();
-        Condicion condicion=(Condicion)jcbCondicion1.getSelectedItem();
-       
-       
-        Ejemplar ejemplaresC=ejemplardata.BuscarEjemplarIdLibroYCondicion(libroSeleccionado.getIdLibro(), condicion);
-        if(ejemplaresC!=null){
-        cargarTabla(ejemplaresC);
-        jsCantidad2.setValue(ejemplaresC.getCantidad());
-        }else{
+        borrarTabla();
+        Libro libroSeleccionado = (Libro) jcbEjemplarLibro2.getSelectedItem();
+        Condicion condicion = (Condicion) jcbCondicion1.getSelectedItem();
+
+        Ejemplar ejemplaresC = ejemplardata.BuscarEjemplarIdLibroYCondicion(libroSeleccionado.getIdLibro(), condicion);
+        if (ejemplaresC != null) {
+            cargarTabla(ejemplaresC);
+            jsCantidad2.setValue(ejemplaresC.getCantidad());
+        } else {
             JOptionPane.showMessageDialog(this, "No se encontro Ningun ejemplar con ese estado");
-            
+
         }
     }//GEN-LAST:event_jcbCondicion1ActionPerformed
 
     private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
-       int respuesta = JOptionPane.showConfirmDialog(this, "¿Desea Salir?",
+        int respuesta = JOptionPane.showConfirmDialog(this, "¿Desea Salir?",
                 "Salir", JOptionPane.YES_NO_OPTION,
                 JOptionPane.INFORMATION_MESSAGE);
         if (respuesta == 0) {
@@ -405,21 +401,32 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbSalirActionPerformed
 
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
-       int filaSeleccionada=jtTabla.getSelectedRow();
-       Libro libroSeleccionado=(Libro)jcbEjemplarLibro2.getSelectedItem();
-      
-           if(filaSeleccionada!=-1){
-               int codigo=(int)jtTabla.getValueAt(filaSeleccionada, 0);
-               ejemplardata.eliminarEjemplar(codigo);
-               borrarTabla();
-               
-           }else{
-               JOptionPane.showMessageDialog(this, "Debe seleccionar una fila");
-           }
+        int filaSeleccionada = jtTabla.getSelectedRow();
+        Libro libroSeleccionado = (Libro) jcbEjemplarLibro2.getSelectedItem();
+
+        if (filaSeleccionada != -1) {
+            int codigo = (int) jtTabla.getValueAt(filaSeleccionada, 0);
+            TreeSet<Ejemplar> listaEjemplares = ejemplardata.listarEjemplaresNoDisponibles(libroSeleccionado.getIdLibro(), Condicion.DISPONIBLE);
+            if (listaEjemplares.isEmpty()) {
+                int respuesta = JOptionPane.showConfirmDialog(this, "¿Desea eliminar el libro con id " + libroSeleccionado.getIdLibro() + " ?",
+                        "Eliminacion", JOptionPane.YES_NO_OPTION,
+                        JOptionPane.INFORMATION_MESSAGE);
+
+                if (respuesta == 0) {
+                    ejemplardata.eliminarEjemplar(libroSeleccionado.getIdLibro());
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "No puede eliminar el libro con id " + libroSeleccionado.getIdLibro() + " "
+                        + "- Existen ejemplares con la condicion Prestado, Retraso o Reparacion");
+            }
+            jtTabla.clearSelection();
+        } else {
+            JOptionPane.showMessageDialog(this, "Debe seleccionar una fila");
+        }
     }//GEN-LAST:event_jbEliminarActionPerformed
 
     private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jbModificarActionPerformed
 
 
@@ -451,68 +458,76 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
     private javax.swing.JSpinner jsCantidad2;
     private javax.swing.JTable jtTabla;
     // End of variables declaration//GEN-END:variables
-    public void cargarComboLibros(){
-       try{
-            
-           TreeSet<Libro> listarLibros=librodata.listarLibros();
+    public void cargarComboLibros() {
+        try {
+
+            TreeSet<Libro> listarLibros = librodata.listarLibros();
             for (Libro aux : listarLibros) {
                 jcbEjemplarLibro.addItem(aux);
                 jcbEjemplarLibro2.addItem(aux);
             }
-       }catch(NullPointerException ex){
-            JOptionPane.showMessageDialog(this, "Error No se cargo ningun Libro"+ex.getMessage());
-       }
+        } catch (NullPointerException ex) {
+            JOptionPane.showMessageDialog(this, "Error No se cargo ningun Libro" + ex.getMessage());
+        }
     }
+
     private void borrarTabla() {
         modelo.setRowCount(0);
     }
-    public void cargarComboCondicionTotal(){
-        
+
+    public void cargarComboCondicionTotal() {
+
         jcbCondicion1.addItem(Condicion.DISPONIBLE);
         jcbCondicion1.addItem(Condicion.PRESTADO);
         jcbCondicion1.addItem(Condicion.REPARACION);
         jcbCondicion1.addItem(Condicion.RETRASO);
-       
+
     }
-    public void cargarComboCondicion(){
+
+    public void cargarComboCondicion() {
         jcbCondicion.addItem(Condicion.DISPONIBLE);
         jcbCondicion.addItem(Condicion.REPARACION);
-        
+
     }
-    public void armarCabecera(){
-         modelo.addColumn("Codigo");
+
+    public void armarCabecera() {
+        modelo.addColumn("Codigo");
         modelo.addColumn("Titulo");
         modelo.addColumn("Autor");
         modelo.addColumn("Condicion");
-        
+
         jtTabla.setModel(modelo);
     }
-    private void ajustarTamañoColumnas(){
-         
-        TableColumn columnaCodigo=jtTabla.getColumnModel().getColumn(0);
+
+    private void ajustarTamañoColumnas() {
+
+        TableColumn columnaCodigo = jtTabla.getColumnModel().getColumn(0);
         columnaCodigo.setPreferredWidth(20);
-        TableColumn columnaTitulo=jtTabla.getColumnModel().getColumn(1);
+        TableColumn columnaTitulo = jtTabla.getColumnModel().getColumn(1);
         columnaTitulo.setPreferredWidth(50);
-         TableColumn columnaAutor=jtTabla.getColumnModel().getColumn(2);
+        TableColumn columnaAutor = jtTabla.getColumnModel().getColumn(2);
         columnaAutor.setPreferredWidth(40);
-         TableColumn columnaCondicion=jtTabla.getColumnModel().getColumn(3);
+        TableColumn columnaCondicion = jtTabla.getColumnModel().getColumn(3);
         columnaCondicion.setPreferredWidth(50);
-        
+
     }
+
     private void crearComboBox() {
         JComboBox<Condicion> comboBox = new JComboBox<>(Condicion.values());
         DefaultCellEditor customEditor = new DefaultCellEditor(comboBox);
-        
+
         jtTabla.getColumnModel().getColumn(3).setCellEditor(customEditor);
     }
-    private void cargarTabla(TreeSet<Ejemplar> ListarEjemplar){
-        for(Ejemplar aux:ListarEjemplar){
-            modelo.addRow(new Object[]{aux.getCodigo(),aux.getLibro().getTitulo(),aux.getLibro().getAutor(),aux.getCondicion()});
+
+    private void cargarTabla(TreeSet<Ejemplar> ListarEjemplar) {
+        for (Ejemplar aux : ListarEjemplar) {
+            modelo.addRow(new Object[]{aux.getCodigo(), aux.getLibro().getTitulo(), aux.getLibro().getAutor(), aux.getCondicion()});
         }
     }
-    private void cargarTabla(Ejemplar ejemplar){
-        
-            modelo.addRow(new Object[]{ejemplar.getCodigo(),ejemplar.getLibro().getTitulo(),ejemplar.getLibro().getAutor(),ejemplar.getCondicion()});
-        
+
+    private void cargarTabla(Ejemplar ejemplar) {
+
+        modelo.addRow(new Object[]{ejemplar.getCodigo(), ejemplar.getLibro().getTitulo(), ejemplar.getLibro().getAutor(), ejemplar.getCondicion()});
+
     }
 }

@@ -483,10 +483,10 @@ public class GestionDeLibros extends javax.swing.JInternalFrame {
                 
                 TreeSet<Ejemplar> listaEjemplares = ejemplarData.listarEjemplaresNoDisponibles(idLibro, Condicion.DISPONIBLE);
                 
-                for(Ejemplar aux:listaEjemplares){
-                    System.out.println(aux);
+//                for(Ejemplar aux:listaEjemplares){
+//                    System.out.println(aux);
                 
-                }
+//                }
                 
                 //SI NO ENCUENTRA LIBROS NO DISPONIBLES (PRESTADOS, REPARACION, RETRASO) RECIEN PERMITE ELIMINAR
                 if (listaEjemplares.isEmpty()) {
