@@ -349,6 +349,9 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
                 jrbEliminar.setEnabled(true);
                 jrbModificar.setEnabled(true);
 
+            }else{
+            //JOptionPane.showMessageDialog(this, "debe ingresar solo letras");
+            
             }
 
         }
