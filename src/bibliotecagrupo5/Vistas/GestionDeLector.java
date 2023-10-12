@@ -232,6 +232,11 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
         });
 
         jrbEliminar.setText("Eliminar");
+        jrbEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbEliminarActionPerformed(evt);
+            }
+        });
 
         jLabel9.setText("Buscar por Nro Socio:");
 
@@ -433,6 +438,7 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
 
     private void jrbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbModificarActionPerformed
         // TODO add your handling code here
+
         int filaSeleccionada = jtaLector.getSelectedRow();
 
         if (filaSeleccionada != -1) {
@@ -448,20 +454,45 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
 
                 int respuesta = JOptionPane.showConfirmDialog(this, "Desea modificar el lector",
                         "Modificacion", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
-                if(respuesta == 0){
+                if (respuesta == 0) {
                     lector = new Lector(nroSocio, nombre, apellido, dni, domicilio, mail, true);
                     lecData.modificarLector(lector);
                 }
                 borrarTabla();
+                borrarJtf();
+
             }
 
-        } 
+        }
 
-        
 
     }//GEN-LAST:event_jrbModificarActionPerformed
 
+    private void jrbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbEliminarActionPerformed
+        // TODO add your handling code here:
+        int filaSeleccionada = jtaLector.getSelectedRow();
+        int resp=0;
 
+        if (filaSeleccionada != -1) {
+            int nroSocio = (Integer) jtaLector.getValueAt(filaSeleccionada, 0);
+            
+            TreeSet<Lector> listarLector = lecData.listarLector();
+            
+            for(Lector aux:listarLector){
+            System.out.println(aux);
+            }
+            
+            if(listarLector.isEmpty()){
+               int respuesta = JOptionPane.showConfirmDialog(this, "Desea eliminar lector?",
+                       "Eliminar", JOptionPane.YES_OPTION, JOptionPane.INFORMATION_MESSAGE);
+               if(respuesta ==0){
+                 lecData.desactivarLector(nroSocio);
+               
+               }
+            
+            }
+    }//GEN-LAST:event_jrbEliminarActionPerformed
+        }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -556,4 +587,10 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
 
     }
 
+    private void borrarJtf() {
+
+        jtfNroSocio.setEditable(true);
+        jtfNroSocio.setText("");
+        jtexApellido.setText("");
+    }
 }
