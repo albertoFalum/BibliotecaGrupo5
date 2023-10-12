@@ -218,6 +218,11 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(jtaLector);
 
         jrbModificar.setText("Modificar");
+        jrbModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbModificarActionPerformed(evt);
+            }
+        });
 
         jrbSalir.setText("salir");
         jrbSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -406,18 +411,50 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
                 Lector lector = lecData.buscarLectorPorNroSocio(nroSocio);
 
                 if (lector != null) {
+                    jrbEliminar.setEnabled(true);
+                    jrbModificar.setEnabled(true);
                     cargarTabla(lector);
                 } else {
                     jtfNroSocio.setText("");
                 }
+            }else{
+                borrarTabla();
+                JOptionPane.showMessageDialog(this, "El campo Buscar por NroSocio no debe estar vacio");
+                
             }
         } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Debe ingresar un numero entero");
 
     }//GEN-LAST:event_jrbBuscarActionPerformed
     }
     private void jtfNroSocioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfNroSocioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtfNroSocioActionPerformed
+
+    private void jrbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbModificarActionPerformed
+        // TODO add your handling code here
+        int filaSeleccionada = jtaLector.getSelectedRow();
+        
+        if(filaSeleccionada != -1){
+        
+            int norSocio = (Integer) jtaLector.getValueAt(filaSeleccionada, 0);
+            String nombre =  jtaLector.getValueAt(filaSeleccionada, 1).toString();
+            String apellido = (String)jtaLector.getValueAt(filaSeleccionada, 2);
+            int dni = (Integer) jtaLector.getValueAt(filaSeleccionada, 3);
+            String domicilio = (String) jtaLector.getValueAt(filaSeleccionada, 4);
+            String mail = jtaLector.getValueAt(filaSeleccionada, 5).toString();
+            
+            if(!comprobarFilasVacias(filaSeleccionada));
+            
+            
+            
+            
+        
+        
+        
+        }
+        
+    }//GEN-LAST:event_jrbModificarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -502,4 +539,5 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
         });
 
     }
+    
 }

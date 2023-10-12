@@ -174,11 +174,11 @@ public class LectorData {
         }
         return lectores;
     }
-    
-    public Lector buscarLectorPorNroSocio(int nroABuscar){
-    
+
+    public Lector buscarLectorPorNroSocio(int nroABuscar) {
+
         Lector lector = null;
-        String sql = "SELECT * FROM lector WHERE codigo=? AND estado = 1";
+        String sql = "SELECT * FROM lector WHERE nroSocio = ? AND estado = 1";
 
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -187,15 +187,14 @@ public class LectorData {
             ResultSet rs = ps.executeQuery();
 
             if (rs.next()) {
-                lector=new Lector();
-                lector.setNroSocio(nroABuscar);
+                lector = new Lector();
+                lector.setNroSocio(rs.getInt("nroSocio"));
                 lector.setNombre(rs.getString("nombre"));
                 lector.setApellido(rs.getString("apellido"));
                 lector.setDNI(rs.getInt("dni"));
                 lector.setDomicilio(rs.getString("domicilio"));
                 lector.setMail(rs.getString("mail"));
                 lector.setEstado(rs.getBoolean("estado"));
-                
 
             } else {
                 JOptionPane.showMessageDialog(null, "No existe el Lector");
@@ -209,8 +208,7 @@ public class LectorData {
 
         }
         return lector;
-    
+
     }
-    
-    
+
 }
