@@ -348,7 +348,7 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
 
     private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
         jcbEjemplarLibro.setSelectedIndex(0);
-        jsCantidad1.setValue(0);
+        jsCantidad1.setValue(1);
         jcbCondicion.setSelectedIndex(0);
     }//GEN-LAST:event_jbNuevoActionPerformed
 
@@ -356,12 +356,20 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
 
         Libro libroSeleccionado = (Libro) jcbEjemplarLibro.getSelectedItem();
 
-        int cantLibros = jsCantidad1.getComponentCount();
+        int cantLibros = (Integer)jsCantidad1.getValue();
         boolean estado = jrbEstado.isSelected();
         Condicion condicion = (Condicion) jcbCondicion.getSelectedItem();
-        ejemplar = new Ejemplar(libroSeleccionado, cantLibros, estado, condicion);
-        System.out.println(ejemplar);
-        ejemplardata.guardarEjemplar(ejemplar);
+        Ejemplar ejemplarNuevo=ejemplardata.BuscarEjemplarIdLibroYCondicion(libroSeleccionado.getIdLibro(), condicion);
+        if(ejemplarNuevo==null){
+            Ejemplar ejemplar=new Ejemplar(libroSeleccionado, cantLibros, estado, condicion);
+             ejemplardata.guardarEjemplar(ejemplar);
+        }else{
+            int cantNueva=ejemplarNuevo.getCantidad()+cantLibros;
+            ejemplarNuevo.setCantidad(cantNueva);
+            ejemplardata.modificarEjemplar(ejemplarNuevo);
+        }
+        
+        
 
 
     }//GEN-LAST:event_jbGuardarActionPerformed
@@ -372,7 +380,7 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
 
         TreeSet<Ejemplar> ejemplares = ejemplardata.listarEjemplaresPorLibro(libroSeleccionado.getIdLibro());
         cargarTabla(ejemplares);
-        jsCantidad2.setValue(0);
+        jsCantidad2.setValue(1);
         jcbCondicion1.setVisible(true);
     }//GEN-LAST:event_jcbEjemplarLibro2ActionPerformed
 
@@ -426,7 +434,16 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbEliminarActionPerformed
 
     private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed
-
+        int filaSeleccionada=(Integer)jtTabla.getSelectedRow();
+        Libro libroSeleccionado=(Libro)jcbEjemplarLibro2.getSelectedItem();
+        if(filaSeleccionada!=-1){
+            Condicion nuevaCondicion=(Condicion)jtTabla.getValueAt(filaSeleccionada, 3);
+            int codigo=(Integer)jtTabla.getValueAt(filaSeleccionada, 0);
+            Ejemplar nuevoEjemplar=ejemplardata.buscarEjemplar(codigo);
+            Ejemplar ejemplar=new Ejemplar(codigo, libroSeleccionado, nuevoEjemplar.getCantidad()-1, nuevoEjemplar.isEstado(), nuevaCondicion);
+            ejemplardata.modificarEjemplar(ejemplar);
+        }
+        
     }//GEN-LAST:event_jbModificarActionPerformed
 
 
@@ -486,7 +503,7 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
 
     public void cargarComboCondicion() {
         jcbCondicion.addItem(Condicion.DISPONIBLE);
-        jcbCondicion.addItem(Condicion.REPARACION);
+        
 
     }
 
@@ -495,6 +512,7 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
         modelo.addColumn("Titulo");
         modelo.addColumn("Autor");
         modelo.addColumn("Condicion");
+        modelo.addColumn("Cantidad");
 
         jtTabla.setModel(modelo);
     }
@@ -509,6 +527,8 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
         columnaAutor.setPreferredWidth(40);
         TableColumn columnaCondicion = jtTabla.getColumnModel().getColumn(3);
         columnaCondicion.setPreferredWidth(50);
+        TableColumn columnaCantidad = jtTabla.getColumnModel().getColumn(4);
+        columnaCantidad.setPreferredWidth(10);
 
     }
 
@@ -521,7 +541,7 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
 
     private void cargarTabla(TreeSet<Ejemplar> ListarEjemplar) {
         for (Ejemplar aux : ListarEjemplar) {
-            modelo.addRow(new Object[]{aux.getCodigo(), aux.getLibro().getTitulo(), aux.getLibro().getAutor(), aux.getCondicion()});
+            modelo.addRow(new Object[]{aux.getCodigo(), aux.getLibro().getTitulo(), aux.getLibro().getAutor(), aux.getCondicion(),aux.getCantidad()});
         }
     }
 
