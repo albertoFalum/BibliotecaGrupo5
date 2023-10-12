@@ -417,10 +417,10 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
                 } else {
                     jtfNroSocio.setText("");
                 }
-            }else{
+            } else {
                 borrarTabla();
                 JOptionPane.showMessageDialog(this, "El campo Buscar por NroSocio no debe estar vacio");
-                
+
             }
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(this, "Debe ingresar un numero entero");
@@ -434,26 +434,31 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
     private void jrbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbModificarActionPerformed
         // TODO add your handling code here
         int filaSeleccionada = jtaLector.getSelectedRow();
-        
-        if(filaSeleccionada != -1){
-        
-            int norSocio = (Integer) jtaLector.getValueAt(filaSeleccionada, 0);
-            String nombre =  jtaLector.getValueAt(filaSeleccionada, 1).toString();
-            String apellido = (String)jtaLector.getValueAt(filaSeleccionada, 2);
+
+        if (filaSeleccionada != -1) {
+
+            int nroSocio = (Integer) jtaLector.getValueAt(filaSeleccionada, 0);
+            String nombre = jtaLector.getValueAt(filaSeleccionada, 1).toString();
+            String apellido = (String) jtaLector.getValueAt(filaSeleccionada, 2);
             int dni = (Integer) jtaLector.getValueAt(filaSeleccionada, 3);
             String domicilio = (String) jtaLector.getValueAt(filaSeleccionada, 4);
             String mail = jtaLector.getValueAt(filaSeleccionada, 5).toString();
-            
-            if(!comprobarFilasVacias(filaSeleccionada));
-            
-            
-            
-            
+
+            if (!comprobarFilasVacias(filaSeleccionada)) {
+
+                int respuesta = JOptionPane.showConfirmDialog(this, "Desea modificar el lector",
+                        "Modificacion", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
+                if(respuesta == 0){
+                    lector = new Lector(nroSocio, nombre, apellido, dni, domicilio, mail, true);
+                    lecData.modificarLector(lector);
+                }
+                borrarTabla();
+            }
+
+        } 
+
         
-        
-        
-        }
-        
+
     }//GEN-LAST:event_jrbModificarActionPerformed
 
 
@@ -539,5 +544,16 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
         });
 
     }
-    
+
+    private boolean comprobarFilasVacias(int filaSeleccionada) {
+
+        String nombre = jtaLector.getValueAt(filaSeleccionada, 1).toString();
+        String apellido = (String) jtaLector.getValueAt(filaSeleccionada, 2);
+        String domicilio = (String) jtaLector.getValueAt(filaSeleccionada, 4);
+        String mail = jtaLector.getValueAt(filaSeleccionada, 5).toString();
+
+        return nombre.equals("") || apellido.equals("") || domicilio.equals("") || mail.equals("");
+
+    }
+
 }
