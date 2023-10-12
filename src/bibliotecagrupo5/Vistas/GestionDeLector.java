@@ -349,9 +349,9 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
                 jrbEliminar.setEnabled(true);
                 jrbModificar.setEnabled(true);
 
-            }else{
-            //JOptionPane.showMessageDialog(this, "debe ingresar solo letras");
-            
+            } else {
+                //JOptionPane.showMessageDialog(this, "debe ingresar solo letras");
+
             }
 
         }
@@ -453,20 +453,34 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
             String domicilio = (String) jtaLector.getValueAt(filaSeleccionada, 4);
             String mail = jtaLector.getValueAt(filaSeleccionada, 5).toString();
 
-            if (!comprobarFilasVacias(filaSeleccionada)) {
+            if (dni > 0 && dni < 100000) {
 
-                int respuesta = JOptionPane.showConfirmDialog(this, "Desea modificar el lector",
-                        "Modificacion", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
-                if (respuesta == 0) {
-                    lector = new Lector(nroSocio, nombre, apellido, dni, domicilio, mail, true);
-                    lecData.modificarLector(lector);
+                if (!comprobarFilasVacias(filaSeleccionada)) {
+
+                    int respuesta = JOptionPane.showConfirmDialog(this, "Desea modificar el lector",
+                            "Modificacion", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
+                    if (respuesta == 0) {
+                        
+                        lectorAux.setNroSocio(nroSocio);
+                        lectorAux.setNombre(nombre);
+                        lectorAux.setApellido(apellido);
+                        lectorAux.setDNI(dni);
+                        lectorAux.setDomicilio(domicilio);
+                        lectorAux.setMail(mail);
+                        lecData.modificarLector(lector);
+                    }
+                    borrarTabla();
+                    borrarJtf();
+
+                } else {
+                    JOptionPane.showMessageDialog(this, "Algunos campos estan vacios, debe ingresar datos en ellos");
                 }
-                borrarTabla();
-                borrarJtf();
-
+            } else {
+                JOptionPane.showMessageDialog(this, "Debe ingresar un año válido ");
             }
-
-        }
+        } else {
+                JOptionPane.showMessageDialog(this, "Debe selecionar una fila");
+            }
 
 
     }//GEN-LAST:event_jrbModificarActionPerformed
@@ -587,10 +601,11 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
 
         String nombre = jtaLector.getValueAt(filaSeleccionada, 1).toString();
         String apellido = (String) jtaLector.getValueAt(filaSeleccionada, 2);
+        int dni = (Integer) jtaLector.getValueAt(filaSeleccionada, 3);
         String domicilio = (String) jtaLector.getValueAt(filaSeleccionada, 4);
         String mail = jtaLector.getValueAt(filaSeleccionada, 5).toString();
 
-        return nombre.equals("") || apellido.equals("") || domicilio.equals("") || mail.equals("");
+        return nombre.equals("") || apellido.equals("")||domicilio.equals("") || mail.equals("");
 
     }
 
