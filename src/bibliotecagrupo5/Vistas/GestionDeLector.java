@@ -398,7 +398,7 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
     private void jrbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbBuscarActionPerformed
         // TODO add your handling code here:
         borrarTabla();
-        jtfNroSocio.setText("");
+        jtexApellido.setText("");
         try {
             if (!jtfNroSocio.getText().isEmpty()) {
 
