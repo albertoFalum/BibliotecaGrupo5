@@ -451,7 +451,14 @@ public class GestionDeLibros extends javax.swing.JInternalFrame {
                                 JOptionPane.INFORMATION_MESSAGE);
 
                         if (respuesta == 0) {
-                            libro = new Libro(idLibro, isbn, titulo, autor, anio, tipo, editorial, true);
+                            libro = libroData.buscarLibro(idLibro);
+                            
+                            libro.setTitulo(titulo);
+                            libro.setAutor(autor);
+                            libro.setAnio(anio);
+                            libro.setTipo(tipo);
+                            libro.setEditorial(editorial);
+                            
                             libroData.modificarLibro(libro);
                         }
 
