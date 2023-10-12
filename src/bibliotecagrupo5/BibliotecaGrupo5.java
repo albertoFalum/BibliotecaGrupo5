@@ -73,7 +73,7 @@ public class BibliotecaGrupo5 {
 //             System.out.println(aux);
 //         }
 //         
-         TreeSet<Ejemplar> ll=ejemplardata.listarEjemplaresNoDisponibles(7, Condicion.DISPONIBLE);
+         TreeSet<Ejemplar> ll=ejemplardata.listarEjemplaresNoDisponibles(6, Condicion.DISPONIBLE);
          
          for(Ejemplar aux:ll){
              System.out.println(aux);

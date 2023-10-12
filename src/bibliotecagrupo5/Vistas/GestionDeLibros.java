@@ -482,7 +482,13 @@ public class GestionDeLibros extends javax.swing.JInternalFrame {
                 int idLibro = (Integer) jTLibros.getValueAt(filaSeleccionada, 0);
                 
                 TreeSet<Ejemplar> listaEjemplares = ejemplarData.listarEjemplaresNoDisponibles(idLibro, Condicion.DISPONIBLE);
-    
+                
+                for(Ejemplar aux:listaEjemplares){
+                    System.out.println(aux);
+                
+                }
+                
+                //SI NO ENCUENTRA LIBROS NO DISPONIBLES (PRESTADOS, REPARACION, RETRASO) RECIEN PERMITE ELIMINAR
                 if (listaEjemplares.isEmpty()) {
                     int respuesta = JOptionPane.showConfirmDialog(this, "¿Desea eliminar el libro con id " + idLibro + " ?",
                             "Eliminacion", JOptionPane.YES_NO_OPTION,
