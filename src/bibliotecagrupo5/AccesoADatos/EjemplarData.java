@@ -230,7 +230,7 @@ public class EjemplarData {
                 ejemplar.setEstado(rs.getBoolean("estado"));
 
             } else {
-                JOptionPane.showMessageDialog(null, "Ejemplar encontrado");
+                JOptionPane.showMessageDialog(null, "Ejemplar no encontrado");
                 ps.close();
             }
 
