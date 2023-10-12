@@ -340,11 +340,11 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbGuardarActionPerformed
 
     private void jcbEjemplarLibro2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbEjemplarLibro2ActionPerformed
-//        borrarTabla();
-//        Libro libroSeleccionado=(Libro)jcbEjemplarLibro2.getSelectedItem();
-//        Condicion condicion=(Condicion)jcbCondicion1.getSelectedItem();
-//        TreeSet<Ejemplar> ejemplares=ejemplardata.(libroSeleccionado.getIdLibro());
-//        cargarTabla(ejemplares);
+        borrarTabla();
+        Libro libroSeleccionado=(Libro)jcbEjemplarLibro2.getSelectedItem();
+        Condicion condicion=(Condicion)jcbCondicion1.getSelectedItem();
+        TreeSet<Ejemplar> ejemplares=ejemplardata.(libroSeleccionado.getIdLibro());
+        cargarTabla(ejemplares);
     }//GEN-LAST:event_jcbEjemplarLibro2ActionPerformed
 
 
