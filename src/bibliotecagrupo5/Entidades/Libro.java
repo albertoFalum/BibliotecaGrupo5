@@ -8,7 +8,7 @@ package bibliotecagrupo5.Entidades;
  */
 public class Libro implements Comparable<Libro>{
     private int idLibro;
-    private int isbn;
+    private long isbn;
     private String titulo;
     private String autor;
     private int anio;
@@ -19,7 +19,7 @@ public class Libro implements Comparable<Libro>{
     public Libro() {
     }
 
-    public Libro(int isbn, String titulo, String autor, int anio, Tipo tipo, String editorial, boolean estado) {
+    public Libro(long isbn, String titulo, String autor, int anio, Tipo tipo, String editorial, boolean estado) {
         this.isbn = isbn;
         this.titulo = titulo;
         this.autor = autor;
@@ -29,7 +29,7 @@ public class Libro implements Comparable<Libro>{
         this.estado = estado; 
     }
 
-    public Libro(int idLibro, int isbn, String titulo, String autor, int anio, Tipo tipo, String editorial, boolean estado) {
+    public Libro(int idLibro, long isbn, String titulo, String autor, int anio, Tipo tipo, String editorial, boolean estado) {
         this.idLibro = idLibro;
         this.isbn = isbn;
         this.titulo = titulo;
@@ -48,11 +48,11 @@ public class Libro implements Comparable<Libro>{
         this.idLibro = idLibro;
     }
 
-    public int getIsbn() {
+    public long getIsbn() {
         return isbn;
     }
 
-    public void setIsbn(int isbn) {
+    public void setIsbn(long isbn) {
         this.isbn = isbn;
     }
 
