@@ -345,13 +345,10 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel9">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Cantidad"/>
+            <Property name="text" type="java.lang.String" value="Cantidad a modificar:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JSpinner" name="jsCantidad2">
-          <Properties>
-            <Property name="enabled" type="boolean" value="false"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="jbModificar">
           <Properties>
