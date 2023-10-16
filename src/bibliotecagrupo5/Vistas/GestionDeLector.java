@@ -18,8 +18,14 @@ import javax.swing.table.DefaultTableModel;
  */
 public class GestionDeLector extends javax.swing.JInternalFrame {
 
-    private DefaultTableModel modelo = new DefaultTableModel();
-
+    private DefaultTableModel modelo = new DefaultTableModel() {
+        public boolean isCellEditable(int f, int c) {
+            if (c == 0) {
+                return false;
+            }
+            return true;
+        }
+    };
     LectorData lecData = new LectorData();
     Lector lector = null;
     Lector lectorAux = null;
@@ -460,7 +466,7 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
                     int respuesta = JOptionPane.showConfirmDialog(this, "Desea modificar el lector",
                             "Modificacion", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
                     if (respuesta == 0) {
-                        
+
                         lectorAux.setNroSocio(nroSocio);
                         lectorAux.setNombre(nombre);
                         lectorAux.setApellido(apellido);
@@ -479,8 +485,8 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(this, "Debe ingresar un año válido ");
             }
         } else {
-                JOptionPane.showMessageDialog(this, "Debe selecionar una fila");
-            }
+            JOptionPane.showMessageDialog(this, "Debe selecionar una fila");
+        }
 
 
     }//GEN-LAST:event_jrbModificarActionPerformed
@@ -605,7 +611,7 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
         String domicilio = (String) jtaLector.getValueAt(filaSeleccionada, 4);
         String mail = jtaLector.getValueAt(filaSeleccionada, 5).toString();
 
-        return nombre.equals("") || apellido.equals("")||domicilio.equals("") || mail.equals("");
+        return nombre.equals("") || apellido.equals("") || domicilio.equals("") || mail.equals("");
 
     }
 
