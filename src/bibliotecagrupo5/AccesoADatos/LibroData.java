@@ -150,7 +150,7 @@ public class LibroData {
                 libro.setEstado(true);
 
             } else {
-                JOptionPane.showMessageDialog(null, "No existe el Libro");
+                //JOptionPane.showMessageDialog(null, "No existe el Libro");
 
                 ps.close();
             }
@@ -183,7 +183,7 @@ public class LibroData {
                 libro.setEditorial(rs.getString("editorial"));
                 libro.setEstado(true);
             } else {
-                JOptionPane.showMessageDialog(null, "No existe el Libro");
+                //JOptionPane.showMessageDialog(null, "No existe el Libro");
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "ERROR LD6 - Error al acceder a la tabla Libro " + ex.getMessage());
@@ -211,7 +211,7 @@ public class LibroData {
                 libro.setEstado(true);
 
             } else {
-                JOptionPane.showMessageDialog(null, "No existe el libro");
+                //JOptionPane.showMessageDialog(null, "No existe el libro");
             }
             ps.close();
         } catch (SQLException ex) {
