@@ -41,7 +41,8 @@ public class BibliotecaGrupo5 {
             EjemplarData ejemplardata=new EjemplarData();
 //            Ejemplar ejemplar=new Ejemplar(1,libro, 2, true, Condicion.DISPONIBLE);
 //            ejemplardata.guardarEjemplar(ejemplar);
-            
+            Ejemplar ejemplar=ejemplardata.buscarEjemplar(14);
+            System.out.println(ejemplar);
 //        librodata.eliminarLibro(1);
         
 //       Libro libro4= librodata.buscarLibroPorIsbn(422);

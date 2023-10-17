@@ -362,7 +362,7 @@ public class GestionDeLibros extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         try {
             if (!comprobarCamposVacios()) {
-                int isbn = Integer.parseInt(jtfISBN.getText());
+                long isbn = Long.parseLong(jtfISBN.getText());
                 if (isbn > 0) {
                     String titulo = jtfTitulo.getText();
                     String autor = jtfAutor.getText();
@@ -400,7 +400,7 @@ public class GestionDeLibros extends javax.swing.JInternalFrame {
         try {
             if (!jtfPorISBN.getText().isEmpty()) {
 
-                int isbn = Integer.parseInt(jtfPorISBN.getText());
+                long isbn = Long.parseLong(jtfPorISBN.getText());
                 Libro libro2 = libroData.buscarLibroPorIsbn(isbn);
 
                 if (libro2 != null) {
@@ -435,7 +435,7 @@ public class GestionDeLibros extends javax.swing.JInternalFrame {
             if (filaSeleccionada != -1) {
 
                 int idLibro = (Integer) jTLibros.getValueAt(filaSeleccionada, 0);
-                int isbn = (Integer) jTLibros.getValueAt(filaSeleccionada, 1);
+                long isbn = (Long) jTLibros.getValueAt(filaSeleccionada, 1);
                 String titulo = jTLibros.getValueAt(filaSeleccionada, 2).toString();
                 String autor = jTLibros.getValueAt(filaSeleccionada, 3).toString();
                 int anio = Integer.parseInt(jTLibros.getValueAt(filaSeleccionada, 4).toString());
@@ -451,7 +451,14 @@ public class GestionDeLibros extends javax.swing.JInternalFrame {
                                 JOptionPane.INFORMATION_MESSAGE);
 
                         if (respuesta == 0) {
-                            libro = new Libro(idLibro, isbn, titulo, autor, anio, tipo, editorial, true);
+                            libro = libroData.buscarLibro(idLibro);
+                            
+                            libro.setTitulo(titulo);
+                            libro.setAutor(autor);
+                            libro.setAnio(anio);
+                            libro.setTipo(tipo);
+                            libro.setEditorial(editorial);
+                            
                             libroData.modificarLibro(libro);
                         }
 

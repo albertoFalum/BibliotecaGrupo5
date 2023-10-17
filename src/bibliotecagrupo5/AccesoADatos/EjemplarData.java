@@ -40,7 +40,9 @@ public class EjemplarData {
             if (rs.next()) {
 
                 ejemplar.setCodigo(rs.getInt(1));
-                JOptionPane.showMessageDialog(null, "Ejemplares Guardados");
+// 
+
+JOptionPane.showMessageDialog(null, "Ejemplares Guardados");
 
             }
             ps.close();
@@ -52,7 +54,7 @@ public class EjemplarData {
     }
 
     public void modificarEjemplar(Ejemplar ejemplar) {
-        String sql = "UPDATE ejemplar SET cantidad = ?, condición = ? WHERE codigo = ?";
+        String sql = "UPDATE ejemplar SET cantidad = ?, condicion = ? WHERE codigo = ?";
 
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -121,7 +123,7 @@ public class EjemplarData {
 
     public Ejemplar buscarEjemplar(int codigoABuscar) {
         Ejemplar ejemplar = null;
-        String sql = "SELECT idLibro, condicion FROM ejemplar WHERE codigo=? AND estado = 1";
+        String sql = "SELECT idLibro,cantidad,condicion FROM ejemplar WHERE codigo=? AND estado = 1";
 
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -134,11 +136,12 @@ public class EjemplarData {
                 ejemplar.setCodigo(codigoABuscar);
                 ejemplar.setLibro(librodata.buscarLibro(rs.getInt("idLibro")));
                 ejemplar.setCantidad(rs.getInt("cantidad"));
-                ejemplar.setCondicion(Condicion.valueOf(rs.getString("condicion")));
                 ejemplar.setEstado(true);
+                ejemplar.setCondicion(Condicion.valueOf(rs.getString("condicion")));
+                
 
             } else {
-                JOptionPane.showMessageDialog(null, "No existe el Ejemplar");
+//                JOptionPane.showMessageDialog(null, "No existe el Ejemplar");
 
                 ps.close();
             }
@@ -211,7 +214,7 @@ public class EjemplarData {
 
     public Ejemplar BuscarEjemplarIdLibroYCondicion(int idLibro, Condicion condicionABuscar) {
         Ejemplar ejemplar = null;
-        String sql = "SELECT * FROM ejemplar WHERE  idLibro=? AND condicion=? AND cantidad>0 AND estado = 1";
+        String sql = "SELECT * FROM ejemplar WHERE  idLibro=? AND condicion=? AND cantidad>=0 AND estado = 1";
 
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -230,7 +233,7 @@ public class EjemplarData {
                 ejemplar.setEstado(rs.getBoolean("estado"));
 
             } else {
-                JOptionPane.showMessageDialog(null, "Ejemplar encontrado");
+//                JOptionPane.showMessageDialog(null, "Ejemplar no encontrado");
                 ps.close();
             }
 

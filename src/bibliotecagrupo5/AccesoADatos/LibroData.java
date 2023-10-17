@@ -30,7 +30,7 @@ public class LibroData {
 
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1, libro.getIsbn());
+            ps.setLong(1, libro.getIsbn());
             ps.setString(2, libro.getTitulo());
             ps.setString(3, libro.getAutor());
             ps.setInt(4, libro.getAnio());
@@ -59,7 +59,7 @@ public class LibroData {
 
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, libro.getIsbn());
+            ps.setLong(1, libro.getIsbn());
             ps.setString(2, libro.getTitulo());
             ps.setString(3, libro.getAutor());
             ps.setInt(4, libro.getAnio());
@@ -109,7 +109,7 @@ public class LibroData {
 
                 Libro libro = new Libro();
                 libro.setIdLibro(rs.getInt("idLibro"));
-                libro.setIsbn(rs.getInt("isbn"));
+                libro.setIsbn(rs.getLong("isbn"));
                 libro.setTitulo(rs.getString("titulo"));
                 libro.setAutor(rs.getString("autor"));
                 libro.setAnio(rs.getInt("anio"));
@@ -141,7 +141,7 @@ public class LibroData {
             if (rs.next()) {
                 libro = new Libro();
                 libro.setIdLibro(id);
-                libro.setIsbn(rs.getInt("isbn"));
+                libro.setIsbn(rs.getLong("isbn"));
                 libro.setTitulo(rs.getString("titulo"));
                 libro.setAutor(rs.getString("autor"));
                 libro.setAnio(rs.getInt("anio"));
@@ -150,7 +150,7 @@ public class LibroData {
                 libro.setEstado(true);
 
             } else {
-                JOptionPane.showMessageDialog(null, "No existe el Libro");
+                //JOptionPane.showMessageDialog(null, "No existe el Libro");
 
                 ps.close();
             }
@@ -175,7 +175,7 @@ public class LibroData {
             if (rs.next()) {
                 libro = new Libro();
                 libro.setIdLibro(rs.getInt("idLibro"));
-                libro.setIsbn(rs.getInt("isbn"));
+                libro.setIsbn(rs.getLong("isbn"));
                 libro.setTitulo(rs.getString("titulo"));
                 libro.setAutor(rs.getString("autor"));
                 libro.setAnio(rs.getInt("anio"));
@@ -183,7 +183,7 @@ public class LibroData {
                 libro.setEditorial(rs.getString("editorial"));
                 libro.setEstado(true);
             } else {
-                JOptionPane.showMessageDialog(null, "No existe el Libro");
+                //JOptionPane.showMessageDialog(null, "No existe el Libro");
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "ERROR LD6 - Error al acceder a la tabla Libro " + ex.getMessage());
@@ -191,18 +191,18 @@ public class LibroData {
         return libro;
     }
 
-    public Libro buscarLibroPorIsbn(int isbn) {
+    public Libro buscarLibroPorIsbn(long isbn) {
         String sql = "SELECT idLibro, isbn, titulo, autor, anio, tipo, editorial FROM libro WHERE isbn = ? AND estado = 1 ";
         Libro libro = null;
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, isbn);
+            ps.setLong(1, isbn);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
 
                 libro = new Libro();
                 libro.setIdLibro(rs.getInt("idLibro"));
-                libro.setIsbn(rs.getInt("isbn"));
+                libro.setIsbn(rs.getLong("isbn"));
                 libro.setTitulo(rs.getString("titulo"));
                 libro.setAutor(rs.getString("autor"));
                 libro.setAnio(rs.getInt("anio"));
@@ -211,7 +211,7 @@ public class LibroData {
                 libro.setEstado(true);
 
             } else {
-                JOptionPane.showMessageDialog(null, "No existe el libro");
+                //JOptionPane.showMessageDialog(null, "No existe el libro");
             }
             ps.close();
         } catch (SQLException ex) {
@@ -233,7 +233,7 @@ public class LibroData {
 
                 Libro libro = new Libro();
                 libro.setIdLibro(rs.getInt("idLibro"));
-                libro.setIsbn(rs.getInt("isbn"));
+                libro.setIsbn(rs.getLong("isbn"));
                 libro.setTitulo(rs.getString("titulo"));
                 libro.setAutor(rs.getString("autor"));
                 libro.setAnio(rs.getInt("anio"));
@@ -266,7 +266,7 @@ public class LibroData {
 
                 Libro libro = new Libro();
                 libro.setIdLibro(rs.getInt("idLibro"));
-                libro.setIsbn(rs.getInt("isbn"));
+                libro.setIsbn(rs.getLong("isbn"));
                 libro.setTitulo(rs.getString("titulo"));
                 libro.setAutor(rs.getString("autor"));
                 libro.setAnio(rs.getInt("anio"));
