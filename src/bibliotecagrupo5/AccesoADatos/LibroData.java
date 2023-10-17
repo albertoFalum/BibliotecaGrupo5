@@ -215,19 +215,19 @@ public class LibroData {
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error LD7 - Error al acceder a la tabla Libro: "+ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error LD7 - Error al acceder a la tabla Libro: " + ex.getMessage());
         }
         return libro;
     }
-    
-    public TreeSet<Libro> listarLibrosPorAutor(String autorABuscar){
+
+    public TreeSet<Libro> listarLibrosPorAutor(String autorABuscar) {
         String sql = "SELECT * FROM libro WHERE UPPER(autor)= UPPER (?) AND estado = 1";
 
         TreeSet<Libro> libros = new TreeSet<>();
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, autorABuscar);
-            
+
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
 
@@ -250,17 +250,17 @@ public class LibroData {
             JOptionPane.showMessageDialog(null, "ERROR LD8 - Error al acceder a la tabla Libro: " + ex.getMessage());
         }
         return libros;
-    
+
     }
-    
-     public TreeSet<Libro> listarLibrosPorTipo(String categoria){
+
+    public TreeSet<Libro> listarLibrosPorTipo(String categoria) {
         String sql = "SELECT * FROM libro WHERE tipo=? AND estado = 1";
 
         TreeSet<Libro> libros = new TreeSet<>();
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, categoria);
-            
+
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
 
@@ -283,5 +283,38 @@ public class LibroData {
             JOptionPane.showMessageDialog(null, "ERROR LD9 - Error al acceder a la tabla Libro: " + ex.getMessage());
         }
         return libros;
-     }
+    }
+
+    public TreeSet<Libro> listarLibrosPorEditorial(String editorialAbuscar) {
+        String sql = "SELECT * FROM libro WHERE UPPER(editorial)= UPPER (?) AND estado = 1";
+
+        TreeSet<Libro> libros = new TreeSet<>();
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, editorialAbuscar);
+
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+
+                Libro libro = new Libro();
+                libro.setIdLibro(rs.getInt("idLibro"));
+                libro.setIsbn(rs.getLong("isbn"));
+                libro.setTitulo(rs.getString("titulo"));
+                libro.setAutor(rs.getString("autor"));
+                libro.setAnio(rs.getInt("anio"));
+                libro.setTipo(Tipo.valueOf(rs.getString("tipo")));
+                libro.setEditorial(rs.getString("editorial"));
+                libro.setEstado(rs.getBoolean("estado"));
+
+                libros.add(libro);
+
+            }
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "ERROR LD9 - Error al acceder a la tabla Libro: " + ex.getMessage());
+        }
+        return libros;
+
+    }
 }

@@ -91,7 +91,7 @@ public class Prestamo implements Comparable<Prestamo> {
     @Override
     public int compareTo(Prestamo o) {
        
-       return o.fechaInicio.compareTo(this.fechaInicio);
+       return Integer.compare(this.idPrestamo, o.idPrestamo);
                 
         
     }

@@ -72,19 +72,12 @@ public class Ejemplar implements Comparable<Ejemplar>{
 
     @Override
     public String toString() {
-        return "Ejemplar{" + "codigo=" + codigo + ", Libro=" + Libro + ", cantidad=" + cantidad + ", estado=" + estado + ", condicion=" + condicion + '}';
+        return codigo+" - "+Libro.getTitulo()+" - "+Libro.getAutor()+ " - Cantidad Disponible: "+cantidad;
     }
 
     @Override
     public int compareTo(Ejemplar e) {
-        String condicion1=this.condicion.toString();
-        String condicion2=e.condicion.toString();
-        
-        return condicion1.compareTo(condicion2);
+         return Integer.compare(this.codigo, e.codigo);
     }
-    
-    
-
-  
-    
+       
 }
