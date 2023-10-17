@@ -26,23 +26,23 @@ public class BibliotecaGrupo5 {
     public static void main(String[] args) {
         // TODO code application logic here
         
-       LibroData librodata=new LibroData();
-//        Libro libro= new Libro(422, "Santa Evita", "Tomas Eloy Martines", 1975, Tipo.LITERATURA, "Sudamericana", true);
-//        librodata.guardarLibro(libro);
-
-
-        Libro libro= new Libro(1,422, "Santa Evita", "Tomas Eloy Martinez", 1975, Tipo.LITERATURA, "Sudamericana", true);
-//        librodata.modificarLibro(libro);
-//        Libro libro2=librodata.buscarLibro(1);
-//        System.out.println(libro2);
-        
-//        Libro libro3=librodata.buscarLibroPorTitulo("santa evita");
-//        System.out.println(libro3);
+//       LibroData librodata=new LibroData();
+////        Libro libro= new Libro(422, "Santa Evita", "Tomas Eloy Martines", 1975, Tipo.LITERATURA, "Sudamericana", true);
+////        librodata.guardarLibro(libro);
+//
+//
+//        Libro libro= new Libro(1,422, "Santa Evita", "Tomas Eloy Martinez", 1975, Tipo.LITERATURA, "Sudamericana", true);
+////        librodata.modificarLibro(libro);
+////        Libro libro2=librodata.buscarLibro(1);
+////        System.out.println(libro2);
+//        
+////        Libro libro3=librodata.buscarLibroPorTitulo("santa evita");
+////        System.out.println(libro3);
             EjemplarData ejemplardata=new EjemplarData();
-//            Ejemplar ejemplar=new Ejemplar(1,libro, 2, true, Condicion.DISPONIBLE);
-//            ejemplardata.guardarEjemplar(ejemplar);
-            Ejemplar ejemplar=ejemplardata.buscarEjemplar(14);
-            System.out.println(ejemplar);
+////            Ejemplar ejemplar=new Ejemplar(1,libro, 2, true, Condicion.DISPONIBLE);
+////            ejemplardata.guardarEjemplar(ejemplar);
+//            Ejemplar ejemplar=ejemplardata.buscarEjemplar(14);
+//            System.out.println(ejemplar);
 //        librodata.eliminarLibro(1);
         
 //       Libro libro4= librodata.buscarLibroPorIsbn(422);
@@ -61,7 +61,7 @@ public class BibliotecaGrupo5 {
 //            System.out.println(aux);
         
 //        }
-          PrestamoData prestamodata=new PrestamoData();
+//          PrestamoData prestamodata=new PrestamoData();
 //          Prestamo prestamo=new Prestamo(3,LocalDate.of(1998, Month.MARCH, 24), LocalDate.of(1999, Month.MAY, 14), ejemplar, lector, true);
 //          prestamodata.guardarPrestamo(prestamo);
 //           prestamo.setFechaFin(LocalDate.of(1998, Month.MARCH, 5));
@@ -74,11 +74,17 @@ public class BibliotecaGrupo5 {
 //             System.out.println(aux);
 //         }
 //         
-         TreeSet<Ejemplar> ll=ejemplardata.listarEjemplaresNoDisponibles(6, Condicion.DISPONIBLE);
-         
-         for(Ejemplar aux:ll){
-             System.out.println(aux);
-         }
+//         TreeSet<Ejemplar> ll=ejemplardata.listarEjemplares();
+//         
+//         for(Ejemplar aux:ll){
+//             System.out.println(aux);
+//         }
+          PrestamoData pd=new PrestamoData();
+          TreeSet<Prestamo> lista=pd.listarPrestamosPorEjemplar(16);
+          
+          for(Prestamo aux:lista){
+              System.out.println(aux);
+          }
     
     }
    

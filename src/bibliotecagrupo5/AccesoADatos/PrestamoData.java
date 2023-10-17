@@ -33,9 +33,8 @@ public class PrestamoData {
     }
 
     public void guardarPrestamo(Prestamo prestamo) {
-        String sql = "INSERT INTO prestamo(fechaInicio, fechaFin, codigo, nroSocio, estado)"
-                + "VALUES( ?, ?, ?, ?, ?)";
-
+        String sql = "INSERT INTO prestamo(fechaInicio, fechaFin, codigo, nroSocio, estado) VALUES( ?, ?, ?, ?, ?)";
+        
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
@@ -51,8 +50,7 @@ public class PrestamoData {
             if (rs.next()) {
 
                 prestamo.setIdPrestamo(rs.getInt(1));
-                JOptionPane.showMessageDialog(null, "Prestamo Guardado");
-
+                System.out.println("Prestamo Guardado");
             }
             ps.close();
 
@@ -76,7 +74,7 @@ public class PrestamoData {
             int exito = ps.executeUpdate();
 
             if (exito == 1) {
-                JOptionPane.showMessageDialog(null, "Modificado Exitosamente.");
+                System.out.println("Modificado Exitosamente");
             } else {
                 JOptionPane.showMessageDialog(null, "El Prestamo no existe");
             }
@@ -241,7 +239,7 @@ public class PrestamoData {
                 prestamo.setIdPrestamo(rs.getInt("idPrestamo"));
                 prestamo.setFechaInicio(rs.getDate("fechaInicio").toLocalDate());
                 prestamo.setFechaFin(rs.getDate("fechaFin").toLocalDate());
-                prestamo.setEjemplar(ejemplarData.buscarEjemplar(rs.getInt("idEjemplar")));
+                prestamo.setEjemplar(ejemplarData.buscarEjemplar(rs.getInt("codigo")));
                 prestamo.setLector(lectorData.buscarLectorPorNroSocio(rs.getInt("nroSocio")));
                 prestamo.setEstado(rs.getBoolean("estado"));
                 Prestamos.add(prestamo);
@@ -251,6 +249,64 @@ public class PrestamoData {
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "ERROR PD8 - Error al acceder a la tabla Prestamo: " + ex.getMessage());
+        }
+        return Prestamos;
+    }
+    
+    public TreeSet<Prestamo> listarPrestamosPorLector(int nroSocioABuscar) {
+        String sql = "SELECT * FROM prestamo WHERE nroSocio=? AND estado = 1";
+
+        TreeSet<Prestamo> Prestamos = new TreeSet<>();
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, nroSocioABuscar);
+
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+
+                Prestamo prestamo = new Prestamo();
+                prestamo.setIdPrestamo(rs.getInt("idPrestamo"));
+                prestamo.setFechaInicio(rs.getDate("fechaInicio").toLocalDate());
+                prestamo.setFechaFin(rs.getDate("fechaFin").toLocalDate());
+                prestamo.setEjemplar(ejemplarData.buscarEjemplar(rs.getInt("codigo")));
+                prestamo.setLector(lectorData.buscarLectorPorNroSocio(nroSocioABuscar));
+                prestamo.setEstado(rs.getBoolean("estado"));
+                Prestamos.add(prestamo);
+
+            }
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "ERROR PD9 - Error al acceder a la tabla Prestamo: " + ex.getMessage());
+        }
+        return Prestamos;
+    }
+    
+    public TreeSet<Prestamo> listarPrestamosPorEjemplar(int codigoEjemplar ) {
+        String sql = "SELECT * FROM prestamo WHERE codigo=? AND estado = 1";
+
+        TreeSet<Prestamo> Prestamos = new TreeSet<>();
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, codigoEjemplar);
+
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+
+                Prestamo prestamo = new Prestamo();
+                prestamo.setIdPrestamo(rs.getInt("idPrestamo"));
+                prestamo.setFechaInicio(rs.getDate("fechaInicio").toLocalDate());
+                prestamo.setFechaFin(rs.getDate("fechaFin").toLocalDate());
+                prestamo.setEjemplar(ejemplarData.buscarEjemplar(codigoEjemplar));
+                prestamo.setLector(lectorData.buscarLectorPorNroSocio(rs.getInt("nroSocio")));
+                prestamo.setEstado(rs.getBoolean("estado"));
+                Prestamos.add(prestamo);
+
+            }
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "ERROR PD10 - Error al acceder a la tabla Prestamo: " + ex.getMessage());
         }
         return Prestamos;
     }

@@ -42,7 +42,7 @@ public class EjemplarData {
                 ejemplar.setCodigo(rs.getInt(1));
 // 
 
-JOptionPane.showMessageDialog(null, "Ejemplares Guardados");
+                JOptionPane.showMessageDialog(null, "Ejemplares Guardados");
 
             }
             ps.close();
@@ -109,9 +109,9 @@ JOptionPane.showMessageDialog(null, "Ejemplares Guardados");
                 ejemplar.setCantidad(rs.getInt("cantidad"));
                 ejemplar.setEstado(rs.getBoolean("estado"));
                 ejemplar.setCondicion(Condicion.valueOf(rs.getString("condicion")));
-
+                
                 ejemplares.add(ejemplar);
-
+                
             }
             ps.close();
 
@@ -138,7 +138,6 @@ JOptionPane.showMessageDialog(null, "Ejemplares Guardados");
                 ejemplar.setCantidad(rs.getInt("cantidad"));
                 ejemplar.setEstado(true);
                 ejemplar.setCondicion(Condicion.valueOf(rs.getString("condicion")));
-                
 
             } else {
 //                JOptionPane.showMessageDialog(null, "No existe el Ejemplar");
@@ -188,7 +187,7 @@ JOptionPane.showMessageDialog(null, "Ejemplares Guardados");
         TreeSet<Ejemplar> ejemplares = new TreeSet<>();
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-            String condi=condicionABuscar.toString();
+            String condi = condicionABuscar.toString();
             ps.setString(1, condi);
 
             ResultSet rs = ps.executeQuery();
@@ -200,11 +199,11 @@ JOptionPane.showMessageDialog(null, "Ejemplares Guardados");
                 ejemplar.setCantidad(rs.getInt("cantidad"));
                 ejemplar.setCondicion(Condicion.valueOf(rs.getString("condicion")));
                 ejemplar.setEstado(rs.getBoolean("estado"));
-
+                
                 ejemplares.add(ejemplar);
 
             }
-            ps.close();
+           ps.close();
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "ERROR ED7 - Error al acceder a la tabla Ejemplar: " + ex.getMessage());
@@ -249,8 +248,8 @@ JOptionPane.showMessageDialog(null, "Ejemplares Guardados");
         TreeSet<Ejemplar> ejemplares = new TreeSet<>();
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-            String condi=condicionABuscar.toString();
-            
+            String condi = condicionABuscar.toString();
+
             ps.setInt(1, idLibro);
             ps.setString(2, condi);
 
