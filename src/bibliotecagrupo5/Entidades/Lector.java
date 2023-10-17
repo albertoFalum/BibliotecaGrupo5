@@ -97,7 +97,7 @@ public class Lector implements Comparable<Lector>{
 
     @Override
     public String toString() {
-        return "Lector{" + "nroSocio=" + nroSocio + ", nombre=" + nombre + ", apellido=" + apellido + ", DNI=" + DNI + ", domicilio=" + domicilio + ", mail=" + mail + ", estado=" + estado + '}';
+        return nroSocio + " - " + apellido + ", " + nombre;
     }
 
    

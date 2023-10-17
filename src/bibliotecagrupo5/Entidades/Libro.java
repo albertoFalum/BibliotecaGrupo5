@@ -1,5 +1,7 @@
 package bibliotecagrupo5.Entidades;
 
+import java.util.Comparator;
+
 
 
 /**
@@ -113,6 +115,13 @@ public class Libro implements Comparable<Libro>{
     public int compareTo(Libro t) {
         return titulo.compareToIgnoreCase(t.getTitulo());
     }
+    
+    public static Comparator<Libro> ComparadorPorAnio = new Comparator<Libro>() {
+        @Override
+        public int compare(Libro libro1, Libro libro2) {
+            return Integer.compare(libro1.anio, libro2.anio);
+        }
+    };
 
     
 }
