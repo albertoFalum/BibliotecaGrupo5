@@ -282,33 +282,6 @@ public class PrestamoData {
         return Prestamos;
     }
     
-    public TreeSet<Prestamo> listarPrestamosPorEjemplar(int codigoEjemplar ) {
-        String sql = "SELECT * FROM prestamo WHERE codigo=? AND estado = 1";
-
-        TreeSet<Prestamo> Prestamos = new TreeSet<>();
-        try {
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, codigoEjemplar);
-
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-
-                Prestamo prestamo = new Prestamo();
-                prestamo.setIdPrestamo(rs.getInt("idPrestamo"));
-                prestamo.setFechaInicio(rs.getDate("fechaInicio").toLocalDate());
-                prestamo.setFechaFin(rs.getDate("fechaFin").toLocalDate());
-                prestamo.setEjemplar(ejemplarData.buscarEjemplar(codigoEjemplar));
-                prestamo.setLector(lectorData.buscarLectorPorNroSocio(rs.getInt("nroSocio")));
-                prestamo.setEstado(rs.getBoolean("estado"));
-                Prestamos.add(prestamo);
-
-            }
-            ps.close();
-
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "ERROR PD10 - Error al acceder a la tabla Prestamo: " + ex.getMessage());
-        }
-        return Prestamos;
-    }
+ 
 
 }
