@@ -32,6 +32,7 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
             return true;
         }
     };
+
     LectorData lecData = new LectorData();
     Lector lector = null;
     Lector lectorAux = null;
@@ -518,12 +519,12 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
         if (filaSeleccionada != -1) {
             int nroSocio = (Integer) jtaLector.getValueAt(filaSeleccionada, 0);
 
-            TreeSet<Lector> listarLector = lecData.listarLector();
-            TreeSet<Ejemplar> listarPrestamo = presData.obtenerEjemplaresPrestadosPorLector(nroSocio);
+            //TreeSet<Lector> listarLector = lecData.listarLector();
+            TreeSet<Ejemplar> listaPrestamos = presData.obtenerEjemplaresPrestadosPorLector(nroSocio);
 
-            for (Ejemplar aux : listarPrestamo) {
-                System.out.println(aux);
-            }
+            // for (Ejemplar aux : listarPrestamo) {
+            //  System.out.println(aux);
+            // }
             /*if (!comprobarFilasVacias(filaSeleccionada)) {
                 int respuesta = JOptionPane.showConfirmDialog(this, "Desea eliminar lector?",
                         "Eliminar", JOptionPane.YES_OPTION, JOptionPane.INFORMATION_MESSAGE);
@@ -531,7 +532,9 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
                     lecData.desactivarLector(nroSocio);
 
                 }*/
-            if (listarPrestamo.isEmpty()) {
+            if (!listaPrestamos.isEmpty()) {
+                
+               
                 int respuesta = JOptionPane.showConfirmDialog(this, "Desea eliminar lector",
                         "Eliminar", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
 
@@ -548,14 +551,17 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
                 jrbEliminar.setEnabled(false);
                 jrbModificar.setEnabled(false);
 
-            }else{
-                JOptionPane.showMessageDialog(this, "No puede eliminar el lector con nroSocio "+ nroSocio + " Tiene libros prestados");
-            
-            }
+            } else {
+                JOptionPane.showMessageDialog(this, "No puede eliminar el lector con nroSocio " + nroSocio + " Tiene libros prestados");
 
-        }else {
-                JOptionPane.showMessageDialog(this, "Debe selecionar una fila");
             }
+            borrarTabla();
+            borrarJtf();
+        } else {
+            JOptionPane.showMessageDialog(this, "Debe selecionar una fila");
+        }
+
+
     }//GEN-LAST:event_jrbEliminarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
