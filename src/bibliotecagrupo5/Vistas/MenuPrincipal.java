@@ -42,7 +42,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuItem6 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(900, 500));
 
         javax.swing.GroupLayout jdpEscritorioLayout = new javax.swing.GroupLayout(jdpEscritorio);
         jdpEscritorio.setLayout(jdpEscritorioLayout);
@@ -115,6 +114,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenu3.add(jMenuItem4);
 
         jMenuItem6.setText("de Lector");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem6);
 
         jMenuBar1.add(jMenu3);
@@ -210,6 +214,16 @@ public class MenuPrincipal extends javax.swing.JFrame {
         mpd.setLocation((desktopSize.width - FrameSize.width)/2, (desktopSize.height- FrameSize.height)/2);
         mpd.show();
     }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        // TODO add your handling code here:
+        jdpEscritorio.removeAll();
+        jdpEscritorio.repaint();
+        ConsultasLector  cLec=new ConsultasLector();
+        cLec.setVisible(true);
+        jdpEscritorio.add(cLec);
+        
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
 
 
     /**
