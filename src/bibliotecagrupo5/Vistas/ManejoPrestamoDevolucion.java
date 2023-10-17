@@ -257,7 +257,7 @@ public class ManejoPrestamoDevolucion extends javax.swing.JInternalFrame {
 
                     JOptionPane.showMessageDialog(this, "Prestamo Guardado");
 
-                    
+                    cargarComboEjemplar();
 
                 } else {
                     JOptionPane.showMessageDialog(this, "No exiten ejemplares para prestar");
@@ -283,6 +283,7 @@ public class ManejoPrestamoDevolucion extends javax.swing.JInternalFrame {
                 Ejemplar ejemplarPrestado = ejemplarData.buscarEjemplar(codigo);
 
                 prestamoData.eliminarPrestamo(idPrestamo);
+                cargarComboEjemplar();
 
                 ejemplarPrestado.setCantidad(ejemplarPrestado.getCantidad() - 1);
                 ejemplarData.modificarEjemplar(ejemplarPrestado);
@@ -292,6 +293,7 @@ public class ManejoPrestamoDevolucion extends javax.swing.JInternalFrame {
                 ejemplarData.modificarEjemplar(ejemplarDisponible);
 
                 borrarTabla();
+                cargarTablaLista(prestamoData.listarPrestamos());
 
             } else {
                 JOptionPane.showMessageDialog(this, "Debe seleccionar una fila");
@@ -303,6 +305,12 @@ public class ManejoPrestamoDevolucion extends javax.swing.JInternalFrame {
 
     private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
         // TODO add your handling code here:
+        int respuesta = JOptionPane.showConfirmDialog(this, "¿Desea Salir?",
+                "Salir", JOptionPane.YES_NO_OPTION,
+                JOptionPane.INFORMATION_MESSAGE);
+        if (respuesta == 0) {
+            dispose();
+        }
     }//GEN-LAST:event_jbSalirActionPerformed
 
     private void jcbLectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbLectorActionPerformed
@@ -322,15 +330,16 @@ public class ManejoPrestamoDevolucion extends javax.swing.JInternalFrame {
 
     private void jcbEjemplarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbEjemplarActionPerformed
         // TODO add your handling code here:
-//        borrarTabla();
-//        try {
-//            Ejemplar ejemplar = (Ejemplar) jcbEjemplar.getSelectedItem();
-//
-//            TreeSet<Prestamo> listaPrestamosEjemplar = prestamoData.
-//                    cargarTablaLista(listaPrestamosEjemplar);
-//        } catch (NullPointerException ex) {
-//            borrarTabla();
-//        }
+        borrarTabla();
+        try {
+            Ejemplar ejemplar = (Ejemplar) jcbEjemplar.getSelectedItem();
+            int idLibro = ejemplar.getLibro().getIdLibro();
+
+            TreeSet<Prestamo> listaPrestamosEjemplar = prestamoData.listarPrestamosPorEjemplar(idLibro);
+            cargarTablaLista(listaPrestamosEjemplar);
+        } catch (NullPointerException ex) {
+            borrarTabla();
+        }
 
     }//GEN-LAST:event_jcbEjemplarActionPerformed
 
@@ -427,6 +436,8 @@ public class ManejoPrestamoDevolucion extends javax.swing.JInternalFrame {
     }
 
     private void cargarComboEjemplar() {
+
+        jcbEjemplar.removeAllItems();
         try {
             listaEjemplar = ejemplarData.listarEjemplaresPorCondicion(Condicion.DISPONIBLE);
 

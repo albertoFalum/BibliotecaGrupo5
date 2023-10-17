@@ -193,14 +193,8 @@
         <Component class="javax.swing.JTextField" name="jtfNombre">
         </Component>
         <Component class="javax.swing.JTextField" name="jtfApellido">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtfApellidoActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="jtfDomicilio">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtfDomicilioActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="jtfMail">
         </Component>
@@ -389,9 +383,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jtfNroSocio">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtfNroSocioActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jrbBuscar">
           <Properties>
