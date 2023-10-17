@@ -122,18 +122,6 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
 
         jrbEstado.setText("Estado");
 
-        jtfApellido.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfApellidoActionPerformed(evt);
-            }
-        });
-
-        jtfDomicilio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfDomicilioActionPerformed(evt);
-            }
-        });
-
         jLabel2.setText("Dni:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -258,12 +246,6 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
 
         jLabel9.setText("Buscar por Nro Socio:");
 
-        jtfNroSocio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfNroSocioActionPerformed(evt);
-            }
-        });
-
         jrbBuscar.setText("Buscar");
         jrbBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -385,14 +367,6 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jrbSalirActionPerformed
 
-    private void jtfDomicilioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfDomicilioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtfDomicilioActionPerformed
-
-    private void jtfApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfApellidoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtfApellidoActionPerformed
-
     private void jrbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbGuardarActionPerformed
         // TODO add your handling code here:
 
@@ -454,10 +428,6 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_jrbBuscarActionPerformed
     }
-    private void jtfNroSocioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfNroSocioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtfNroSocioActionPerformed
-
     private void jrbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbModificarActionPerformed
         // TODO add your handling code here
         int filaSeleccionada = jtaLector.getSelectedRow();
