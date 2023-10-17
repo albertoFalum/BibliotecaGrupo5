@@ -4,13 +4,19 @@
  */
 package bibliotecagrupo5.Vistas;
 
+import bibliotecagrupo5.AccesoADatos.EjemplarData;
 import javax.swing.JOptionPane;
 import java.util.Date;
 import bibliotecagrupo5.AccesoADatos.LectorData;
+import bibliotecagrupo5.AccesoADatos.PrestamoData;
+import bibliotecagrupo5.Entidades.Condicion;
+import bibliotecagrupo5.Entidades.Ejemplar;
 import bibliotecagrupo5.Entidades.Lector;
+import bibliotecagrupo5.Entidades.Prestamo;
 import java.util.ArrayList;
 import java.util.TreeSet;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 
 /**
  *
@@ -18,11 +24,20 @@ import javax.swing.table.DefaultTableModel;
  */
 public class GestionDeLector extends javax.swing.JInternalFrame {
 
-    private DefaultTableModel modelo = new DefaultTableModel();
+    private DefaultTableModel modelo = new DefaultTableModel() {
+        public boolean isCellEditable(int f, int c) {
+            if (c == 0) {
+                return false;
+            }
+            return true;
+        }
+    };
 
     LectorData lecData = new LectorData();
     Lector lector = null;
     Lector lectorAux = null;
+    PrestamoData presData = new PrestamoData();
+    EjemplarData ejemData = new EjemplarData();
 
     /**
      * Creates new form FormularioLector
@@ -30,6 +45,7 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
     public GestionDeLector() {
         initComponents();
         armarCabecera();
+        ajustarTamañoColumnas();
         jrbEstado.setEnabled(false);
         jrbEstado.setSelected(true);
         jrbEliminar.setEnabled(false);
@@ -74,6 +90,8 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
         jtfNroSocio = new javax.swing.JTextField();
         jrbBuscar = new javax.swing.JButton();
 
+        setClosable(true);
+        setIconifiable(true);
         setPreferredSize(new java.awt.Dimension(900, 550));
 
         jPanel1.setBackground(new java.awt.Color(153, 255, 255));
@@ -348,10 +366,10 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
 
                 jrbEliminar.setEnabled(true);
                 jrbModificar.setEnabled(true);
+                jtfNroSocio.setText("");
+            } else {
+                //JOptionPane.showMessageDialog(this, "debe ingresar solo letras");
 
-            }else{
-            //JOptionPane.showMessageDialog(this, "debe ingresar solo letras");
-            
             }
 
         }
@@ -389,14 +407,15 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
                 boolean estado = jrbEstado.isSelected();
 
                 if (lectorAux == null) {
-
                     lector = new Lector(nombre, apellido, dni, domicilio, mail, estado);
                     lecData.guardarLector(lector);
 
                 } else {
                     JOptionPane.showMessageDialog(this, "Los campos de datos  no deben estar vacíos");
                 }
-
+                borrarJtfLector();
+            } else {
+                JOptionPane.showMessageDialog(this, "Los campos de datos  no deben estar vacíos");
             }
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(this, "Debe ingresar un Dni válido");
@@ -441,33 +460,54 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
 
     private void jrbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbModificarActionPerformed
         // TODO add your handling code here
-
         int filaSeleccionada = jtaLector.getSelectedRow();
 
-        if (filaSeleccionada != -1) {
+        try {
+            if (filaSeleccionada != -1) {
 
-            int nroSocio = (Integer) jtaLector.getValueAt(filaSeleccionada, 0);
-            String nombre = jtaLector.getValueAt(filaSeleccionada, 1).toString();
-            String apellido = (String) jtaLector.getValueAt(filaSeleccionada, 2);
-            int dni = (Integer) jtaLector.getValueAt(filaSeleccionada, 3);
-            String domicilio = (String) jtaLector.getValueAt(filaSeleccionada, 4);
-            String mail = jtaLector.getValueAt(filaSeleccionada, 5).toString();
+                int nroSocio = (Integer) jtaLector.getValueAt(filaSeleccionada, 0);
+                String nombre = jtaLector.getValueAt(filaSeleccionada, 1).toString();
+                String apellido = (String) jtaLector.getValueAt(filaSeleccionada, 2);
+                int dni = (Integer) jtaLector.getValueAt(filaSeleccionada, 3);
+                String domicilio = (String) jtaLector.getValueAt(filaSeleccionada, 4);
+                String mail = jtaLector.getValueAt(filaSeleccionada, 5).toString();
 
-            if (!comprobarFilasVacias(filaSeleccionada)) {
+                lectorAux = lecData.buscarLectorPorNroSocio(nroSocio);
 
-                int respuesta = JOptionPane.showConfirmDialog(this, "Desea modificar el lector",
-                        "Modificacion", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
-                if (respuesta == 0) {
-                    lector = new Lector(nroSocio, nombre, apellido, dni, domicilio, mail, true);
-                    lecData.modificarLector(lector);
+                if (dni > 0 && dni < 100000000) {
+
+                    if (!comprobarFilasVacias(filaSeleccionada)) {
+
+                        int respuesta = JOptionPane.showConfirmDialog(this, "Desea modificar el lector",
+                                "Modificacion", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
+                        if (respuesta == 0) {
+
+                            lectorAux.setNroSocio(nroSocio);
+                            lectorAux.setNombre(nombre);
+                            lectorAux.setApellido(apellido);
+                            lectorAux.setDNI(dni);
+                            lectorAux.setDomicilio(domicilio);
+                            lectorAux.setMail(mail);
+                            lecData.modificarLector(lectorAux);
+                        }
+                        borrarTabla();
+                        borrarJtfBusqueda();
+                        jrbEliminar.setEnabled(false);
+                        jrbModificar.setEnabled(false);
+
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Algunos campos estan vacios, debe ingresar datos en ellos");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(this, "error2 debe ingresar un dni valido ");
                 }
-                borrarTabla();
-                borrarJtf();
-
+            } else {
+                JOptionPane.showMessageDialog(this, "Debe selecionar una fila");
             }
 
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, " error1 Debe ingresar un Dni válido");
         }
-
 
     }//GEN-LAST:event_jrbModificarActionPerformed
 
@@ -479,27 +519,49 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
         if (filaSeleccionada != -1) {
             int nroSocio = (Integer) jtaLector.getValueAt(filaSeleccionada, 0);
 
-            TreeSet<Lector> listarLector = lecData.listarLector();
+            //TreeSet<Lector> listarLector = lecData.listarLector();
+            TreeSet<Ejemplar> listaPrestamos = presData.obtenerEjemplaresPrestadosPorLector(nroSocio);
 
-            for (Lector aux : listarLector) {
-                System.out.println(aux);
-            }
-            if (!comprobarFilasVacias(filaSeleccionada)) {
-
+            // for (Ejemplar aux : listarPrestamo) {
+            //  System.out.println(aux);
+            // }
+            /*if (!comprobarFilasVacias(filaSeleccionada)) {
                 int respuesta = JOptionPane.showConfirmDialog(this, "Desea eliminar lector?",
                         "Eliminar", JOptionPane.YES_OPTION, JOptionPane.INFORMATION_MESSAGE);
                 if (respuesta == 0) {
                     lecData.desactivarLector(nroSocio);
 
+                }*/
+            if (listaPrestamos.isEmpty()) {
+
+                int respuesta = JOptionPane.showConfirmDialog(this, "Desea eliminar lector",
+                        "Eliminar", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
+
+                if (respuesta == 0) {
+                    lecData.desactivarLector(nroSocio);
+
+                } else {
+                    JOptionPane.showMessageDialog(this, "ha elegido no eliminar lector " + nroSocio + " si decea vuelva a intentarlo");
+
                 }
                 borrarTabla();
-                borrarJtf();
+                borrarJtfBusqueda();
+                jrbEliminar.setEnabled(false);
+                jrbModificar.setEnabled(false);
+
+            } else {
+                JOptionPane.showMessageDialog(this, "No puede eliminar lector con nroSocio" + nroSocio + " Tiene libros prestados");
 
             }
+            //borrarTabla();
+            borrarJtfBusqueda();
+        } else {
+            JOptionPane.showMessageDialog(this, "Debe selecionar una fila");
+        }
 
 
     }//GEN-LAST:event_jrbEliminarActionPerformed
-    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -539,6 +601,27 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
         modelo.addColumn("Domicilio");
         modelo.addColumn("Mail");
         jtaLector.setModel(modelo);
+
+    }
+
+    private void ajustarTamañoColumnas() {
+        TableColumn columnaNroSocio = jtaLector.getColumnModel().getColumn(0);
+        columnaNroSocio.setPreferredWidth(80);
+
+        TableColumn columnaNombre = jtaLector.getColumnModel().getColumn(1);
+        columnaNombre.setPreferredWidth(100);
+
+        TableColumn columnaApellido = jtaLector.getColumnModel().getColumn(2);
+        columnaApellido.setPreferredWidth(80);
+
+        TableColumn columnaDni = jtaLector.getColumnModel().getColumn(3);
+        columnaDni.setPreferredWidth(80);
+
+        TableColumn columnaDomicilio = jtaLector.getColumnModel().getColumn(4);
+        columnaDomicilio.setPreferredWidth(150);
+
+        TableColumn columnaMail = jtaLector.getColumnModel().getColumn(5);
+        columnaMail.setPreferredWidth(150);
 
     }
 
@@ -587,6 +670,7 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
 
         String nombre = jtaLector.getValueAt(filaSeleccionada, 1).toString();
         String apellido = (String) jtaLector.getValueAt(filaSeleccionada, 2);
+        int dni = (Integer) jtaLector.getValueAt(filaSeleccionada, 3);
         String domicilio = (String) jtaLector.getValueAt(filaSeleccionada, 4);
         String mail = jtaLector.getValueAt(filaSeleccionada, 5).toString();
 
@@ -594,10 +678,20 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
 
     }
 
-    private void borrarJtf() {
+    private void borrarJtfBusqueda() {
 
         jtfNroSocio.setEditable(true);
         jtfNroSocio.setText("");
         jtexApellido.setText("");
+    }
+
+    private void borrarJtfLector() {
+
+        jtfNombre.setText("");
+        jtfApellido.setText("");
+        jtfDni.setText("");
+        jtfDomicilio.setText("");
+        jtfMail.setText("");
+
     }
 }

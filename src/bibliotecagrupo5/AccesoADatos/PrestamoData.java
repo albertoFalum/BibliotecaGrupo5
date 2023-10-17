@@ -201,9 +201,9 @@ public class PrestamoData {
         TreeSet<Ejemplar> listaEjemplaresPrestadosPorLector = new TreeSet<>();
 
         try {
-            String sql = "SELECT prestamo.codigo, idLibro, cantidad, estado, condicion FROM prestamo, "
+            String sql = "SELECT prestamo.codigo, idLibro, cantidad, prestamo.estado, condicion FROM prestamo, "
                     + "ejemplar WHERE prestamo.codigo=ejemplar.codigo AND prestamo.nroSocio=?";
-
+ 
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, nroSocio);
 
