@@ -366,7 +366,7 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
 
                 jrbEliminar.setEnabled(true);
                 jrbModificar.setEnabled(true);
-
+                jtfNroSocio.setText("");
             } else {
                 //JOptionPane.showMessageDialog(this, "debe ingresar solo letras");
 
@@ -413,7 +413,7 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
                 } else {
                     JOptionPane.showMessageDialog(this, "Los campos de datos  no deben estar vacíos");
                 }
-                //borrarJtfLector();
+                borrarJtfLector();
             } else {
                 JOptionPane.showMessageDialog(this, "Los campos de datos  no deben estar vacíos");
             }
@@ -491,7 +491,7 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
                             lecData.modificarLector(lectorAux);
                         }
                         borrarTabla();
-                        borrarJtf();
+                        borrarJtfBusqueda();
                         jrbEliminar.setEnabled(false);
                         jrbModificar.setEnabled(false);
 
@@ -520,7 +520,6 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
             int nroSocio = (Integer) jtaLector.getValueAt(filaSeleccionada, 0);
 
             //TreeSet<Lector> listarLector = lecData.listarLector();
-            TreeSet<Prestamo>listaPrestamo = presData.listarPrestamos();
             TreeSet<Ejemplar> listaPrestamos = presData.obtenerEjemplaresPrestadosPorLector(nroSocio);
 
             // for (Ejemplar aux : listarPrestamo) {
@@ -533,9 +532,8 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
                     lecData.desactivarLector(nroSocio);
 
                 }*/
-            if (!listaPrestamos.isEmpty()) {
-                
-               
+            if (listaPrestamos.isEmpty()) {
+
                 int respuesta = JOptionPane.showConfirmDialog(this, "Desea eliminar lector",
                         "Eliminar", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
 
@@ -543,21 +541,20 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
                     lecData.desactivarLector(nroSocio);
 
                 } else {
-                    JOptionPane.showMessageDialog(this, "No puede eliminar lector con nroSocio" + nroSocio + ""
-                            + " Tiene libros prestados o con retraso ");
+                    JOptionPane.showMessageDialog(this, "ha elegido no eliminar lector " + nroSocio + " si decea vuelva a intentarlo");
 
                 }
                 borrarTabla();
-                borrarJtf();
+                borrarJtfBusqueda();
                 jrbEliminar.setEnabled(false);
                 jrbModificar.setEnabled(false);
 
             } else {
-                JOptionPane.showMessageDialog(this, "No puede eliminar el lector con nroSocio " + nroSocio + " Tiene libros prestados");
+                JOptionPane.showMessageDialog(this, "No puede eliminar lector con nroSocio" + nroSocio + " Tiene libros prestados");
 
             }
-            borrarTabla();
-            borrarJtf();
+            //borrarTabla();
+            borrarJtfBusqueda();
         } else {
             JOptionPane.showMessageDialog(this, "Debe selecionar una fila");
         }
@@ -681,7 +678,7 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
 
     }
 
-    private void borrarJtf() {
+    private void borrarJtfBusqueda() {
 
         jtfNroSocio.setEditable(true);
         jtfNroSocio.setText("");
