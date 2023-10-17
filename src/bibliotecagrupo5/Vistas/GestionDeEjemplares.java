@@ -246,6 +246,11 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
                 "Titulo", "Autor", "Tipo"
             }
         ));
+        jtTabla.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtTablaMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jtTabla);
         if (jtTabla.getColumnModel().getColumnCount() > 0) {
             jtTabla.getColumnModel().getColumn(0).setResizable(false);
@@ -426,6 +431,7 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
         jcbCondicion1.setVisible(true);
         jsCantidad2.setVisible(true);
         jtTabla.setEnabled(iconable);
+
     }//GEN-LAST:event_jcbEjemplarLibro2ActionPerformed
 
     private void jcbCondicion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbCondicion1ActionPerformed
@@ -495,7 +501,8 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
             Libro libro = (Libro) jcbEjemplarLibro2.getSelectedItem();
             Condicion condicion = (Condicion) jcbCondicion1.getSelectedItem();
             Ejemplar ejem = ejemplardata.BuscarEjemplarIdLibroYCondicion(libro.getIdLibro(), condicion);
-            int codigo = (Integer) jtTabla.getValueAt(filaSeleccionada, 0);
+            jsCantidadModificar.setValue(ejem.getCantidad());
+
             if (filaSeleccionada != -1) {
 
                 try {
@@ -560,6 +567,13 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
         jrbReparacion.setSelected(true);
         jrbDisponible.setSelected(false);
     }//GEN-LAST:event_jrbReparacionActionPerformed
+
+    private void jtTablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtTablaMouseClicked
+        Libro libro = (Libro) jcbEjemplarLibro2.getSelectedItem();
+        Condicion condicion = (Condicion) jcbCondicion1.getSelectedItem();
+        Ejemplar ejem = ejemplardata.BuscarEjemplarIdLibroYCondicion(libro.getIdLibro(), condicion);
+        jsCantidadModificar.setValue(ejem.getCantidad());
+    }//GEN-LAST:event_jtTablaMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

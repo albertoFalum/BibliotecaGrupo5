@@ -46,7 +46,7 @@ public class LectorData {
             if (rs.next()) {
 
                 lector.setNroSocio(rs.getInt(1));
-                JOptionPane.showMessageDialog(null, "Lector Guardado");
+//                JOptionPane.showMessageDialog(null, "Lector Guardado");
 
             }
             ps.close();
@@ -72,9 +72,9 @@ public class LectorData {
             int exito = ps.executeUpdate();
 
             if (exito == 1) {
-                JOptionPane.showMessageDialog(null, "Modificado Exitosamente.");
+//                JOptionPane.showMessageDialog(null, "Modificado Exitosamente.");
             } else {
-                JOptionPane.showMessageDialog(null, "El lector no existe");
+//                JOptionPane.showMessageDialog(null, "El lector no existe");
             }
 
         } catch (SQLException ex) {
@@ -100,7 +100,7 @@ public class LectorData {
                 lector.setEstado(rs.getBoolean("estado"));
 
             } else {
-                JOptionPane.showMessageDialog(null, "No existe el lector");
+//                JOptionPane.showMessageDialog(null, "No existe el lector");
             }
             ps.close();
         } catch (SQLException ex) {
@@ -118,7 +118,7 @@ public class LectorData {
             int exito = ps.executeUpdate();
             if (exito == 1) {
 
-                JOptionPane.showMessageDialog(null, "Lector eliminado");
+//                JOptionPane.showMessageDialog(null, "Lector eliminado");
 
             }
 
@@ -136,7 +136,7 @@ public class LectorData {
             int exito = ps.executeUpdate();
             if (exito == 1) {
 
-                JOptionPane.showMessageDialog(null, "Lector agregado");
+//                JOptionPane.showMessageDialog(null, "Lector agregado");
 
             }
 
@@ -197,7 +197,7 @@ public class LectorData {
                 lector.setEstado(rs.getBoolean("estado"));
 
             } else {
-                JOptionPane.showMessageDialog(null, "No existe el Lector");
+//                JOptionPane.showMessageDialog(null, "No existe el Lector");
 
                 ps.close();
             }

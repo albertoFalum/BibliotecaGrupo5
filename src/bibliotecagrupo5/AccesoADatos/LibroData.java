@@ -43,7 +43,7 @@ public class LibroData {
             if (rs.next()) {
 
                 libro.setIdLibro(rs.getInt(1));
-                JOptionPane.showMessageDialog(null, "Libro Guardado");
+//                JOptionPane.showMessageDialog(null, "Libro Guardado");
 
             }
             ps.close();
@@ -69,9 +69,9 @@ public class LibroData {
             int exito = ps.executeUpdate();
 
             if (exito == 1) {
-                JOptionPane.showMessageDialog(null, "Modificado Exitosamente.");
+//                JOptionPane.showMessageDialog(null, "Modificado Exitosamente.");
             } else {
-                JOptionPane.showMessageDialog(null, "El libro no existe");
+//                JOptionPane.showMessageDialog(null, "El libro no existe");
             }
 
         } catch (SQLException ex) {
@@ -88,7 +88,7 @@ public class LibroData {
             int exito = ps.executeUpdate();
             if (exito == 1) {
 
-                JOptionPane.showMessageDialog(null, "Libro eliminado");
+//                JOptionPane.showMessageDialog(null, "Libro eliminado");
 
             }
 

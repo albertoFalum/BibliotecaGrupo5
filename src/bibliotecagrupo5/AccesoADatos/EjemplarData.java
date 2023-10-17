@@ -42,7 +42,7 @@ public class EjemplarData {
                 ejemplar.setCodigo(rs.getInt(1));
 // 
 
-JOptionPane.showMessageDialog(null, "Ejemplares Guardados");
+//JOptionPane.showMessageDialog(null, "Ejemplares Guardados");
 
             }
             ps.close();
@@ -64,7 +64,7 @@ JOptionPane.showMessageDialog(null, "Ejemplares Guardados");
             int exito = ps.executeUpdate();
 
             if (exito == 1) {
-                JOptionPane.showMessageDialog(null, "Modificado Exitosamente.");
+//                JOptionPane.showMessageDialog(null, "Modificado Exitosamente.");
             } else {
                 JOptionPane.showMessageDialog(null, "El Ejemplar no existe");
             }
@@ -84,7 +84,7 @@ JOptionPane.showMessageDialog(null, "Ejemplares Guardados");
             int exito = ps.executeUpdate();
             if (exito == 1) {
 
-                JOptionPane.showMessageDialog(null, "Ejemplar eliminado");
+//                JOptionPane.showMessageDialog(null, "Ejemplar eliminado");
 
             }
 
