@@ -14,6 +14,7 @@ import java.util.TreeSet;
 import javax.swing.DefaultCellEditor;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+
 import javax.swing.SpinnerNumberModel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -26,7 +27,7 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
 
     private DefaultTableModel modelo = new DefaultTableModel() {
         public boolean isCellEditable(int f, int c) {
-            return c == 3;
+            return false;
         }
     };
     private LibroData librodata = new LibroData();
@@ -45,14 +46,15 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
         cargarComboCondicion();
         armarCabecera();
         ajustarTamañoColumnas();
-        crearComboBox();
+//        crearComboBox();
         SpinnerNumberModel modeloSpinner = new SpinnerNumberModel();
         modeloSpinner.setMinimum(1);
         modeloSpinner.setValue(1);
         jsCantidad1.setModel(modeloSpinner);
-        jsCantidad2.setModel(modeloSpinner);
-        jcbCondicion1.setVisible(false);
-        jsCantidad2.setVisible(false);
+        SpinnerNumberModel modeloSpinner1 = new SpinnerNumberModel();
+        modeloSpinner1.setMinimum(1);
+        jsCantidad2.setModel(modeloSpinner1);
+
     }
 
     /**
@@ -90,6 +92,10 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jtTabla = new javax.swing.JTable();
         jbSalir = new javax.swing.JButton();
+        jrbDisponible = new javax.swing.JRadioButton();
+        jrbReparacion = new javax.swing.JRadioButton();
+        jsCantidadModificar = new javax.swing.JSpinner();
+        jLabel10 = new javax.swing.JLabel();
 
         jButton1.setText("jButton1");
 
@@ -188,11 +194,11 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(jcbCondicion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 257, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbNuevo)
                     .addComponent(jbGuardar))
-                .addGap(127, 127, 127))
+                .addGap(60, 60, 60))
         );
 
         jLabel2.setText("Modificacion de Ejemplares");
@@ -213,7 +219,7 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel9.setText("Cantidad a modificar:");
+        jLabel9.setText("Cantidad:");
 
         jbModificar.setText("Modificar");
         jbModificar.addActionListener(new java.awt.event.ActionListener() {
@@ -254,6 +260,22 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
             }
         });
 
+        jrbDisponible.setText("Disponible");
+        jrbDisponible.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbDisponibleActionPerformed(evt);
+            }
+        });
+
+        jrbReparacion.setText("Reparacion");
+        jrbReparacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbReparacionActionPerformed(evt);
+            }
+        });
+
+        jLabel10.setText("Cantidad a modificar:");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -265,26 +287,41 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 462, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(21, 21, 21)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel9)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jsCantidad2, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel8)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jcbCondicion1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel9)
+                                    .addComponent(jbModificar))
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jsCantidad2, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGap(103, 103, 103)
+                                        .addComponent(jbEliminar)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jbSalir))))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jbModificar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jbEliminar)
-                                .addGap(87, 87, 87))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jLabel8)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jrbDisponible)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jrbReparacion)
+                                        .addGap(44, 44, 44)))
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jLabel10)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jsCantidadModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jcbCondicion1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jcbEjemplarLibro2, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jbSalir)))
+                        .addGap(16, 16, 16)))
                 .addContainerGap())
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(160, 160, 160)
@@ -296,27 +333,35 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
-                .addGap(15, 15, 15)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jcbEjemplarLibro2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jsCantidad2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel8)
-                            .addComponent(jcbCondicion1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(31, 31, 31)
-                        .addComponent(jLabel9)))
-                .addGap(47, 47, 47)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel5))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jcbEjemplarLibro2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(jcbCondicion1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(jsCantidad2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jsCantidadModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10)
+                    .addComponent(jrbReparacion)
+                    .addComponent(jrbDisponible))
+                .addGap(33, 33, 33)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbModificar)
                     .addComponent(jbEliminar)
                     .addComponent(jbSalir))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(54, 54, 54))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -394,6 +439,13 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
 
             jsCantidad2.setValue(ejemplaresC.getCantidad());
             cargarTabla(ejemplaresC);
+            if (condicion.equals(Condicion.DISPONIBLE)) {
+                jrbDisponible.setSelected(true);
+                jrbReparacion.setSelected(false);
+            } else {
+                jrbReparacion.setSelected(true);
+                jrbDisponible.setSelected(false);
+            }
         } else {
             JOptionPane.showMessageDialog(this, "No se encontro Ningun ejemplar con ese estado");
 
@@ -417,15 +469,18 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
             int codigo = (int) jtTabla.getValueAt(filaSeleccionada, 0);
             TreeSet<Ejemplar> listaEjemplares = ejemplardata.listarEjemplaresNoDisponibles(libroSeleccionado.getIdLibro(), Condicion.DISPONIBLE);
             if (listaEjemplares.isEmpty()) {
-                int respuesta = JOptionPane.showConfirmDialog(this, "¿Desea eliminar el libro con id " + libroSeleccionado.getIdLibro() + " ?",
+                int respuesta = JOptionPane.showConfirmDialog(this, "¿Desea eliminar el libro con id " + codigo + " ?",
                         "Eliminacion", JOptionPane.YES_NO_OPTION,
                         JOptionPane.INFORMATION_MESSAGE);
 
                 if (respuesta == 0) {
-                    ejemplardata.eliminarEjemplar(libroSeleccionado.getIdLibro());
+                    ejemplardata.eliminarEjemplar(codigo);
+                    borrarTabla();
+                    jcbEjemplarLibro2.setSelectedItem(0);
+                    jcbCondicion1.setSelectedItem(0);
                 }
             } else {
-                JOptionPane.showMessageDialog(this, "No puede eliminar el libro con id " + libroSeleccionado.getIdLibro() + " "
+                JOptionPane.showMessageDialog(this, "No puede eliminar el libro con id " + codigo + " "
                         + "- Existen ejemplares con la condicion Prestado, Retraso o Reparacion");
             }
             jtTabla.clearSelection();
@@ -435,82 +490,82 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbEliminarActionPerformed
 
     private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed
-        int filaSeleccionada = (Integer) jtTabla.getSelectedRow();
-        Libro libro = (Libro) jcbEjemplarLibro2.getSelectedItem();
-        Condicion condicion = (Condicion) jcbCondicion1.getSelectedItem();
-        Ejemplar ejem = ejemplardata.BuscarEjemplarIdLibroYCondicion(libro.getIdLibro(), condicion);
-        if (filaSeleccionada != -1) {
+        try {
+            int filaSeleccionada = (Integer) jtTabla.getSelectedRow();
+            Libro libro = (Libro) jcbEjemplarLibro2.getSelectedItem();
+            Condicion condicion = (Condicion) jcbCondicion1.getSelectedItem();
+            Ejemplar ejem = ejemplardata.BuscarEjemplarIdLibroYCondicion(libro.getIdLibro(), condicion);
+            int codigo = (Integer) jtTabla.getValueAt(filaSeleccionada, 0);
+            if (filaSeleccionada != -1) {
 
-            try {
-                int cantidad = (Integer) jsCantidad2.getValue();
-                int cantidadAnt = ejem.getCantidad();
-                if (cantidad <= cantidadAnt) {//control de cantidad
-                    int resul =cantidadAnt - cantidad ;
-                    System.out.println("resul"+resul+"cantidadAnt"+cantidadAnt+"cantidad"+cantidad);
-                    Condicion nuevaCondicion = (Condicion) jtTabla.getValueAt(filaSeleccionada, 3);
-                    int codigo = (Integer) jtTabla.getValueAt(filaSeleccionada, 0);
-                    System.out.println(libro.getIdLibro()+" "+nuevaCondicion.name());
-                    Ejemplar ejemplar1 = ejemplardata.BuscarEjemplarIdLibroYCondicion(libro.getIdLibro(), nuevaCondicion);
-                    if (ejemplar1 == null) {
-                            System.out.println("no se encontro ejemplar con esa condicion e id libro");
-                        Ejemplar ejemplar2 = new Ejemplar(libro, cantidad, true, nuevaCondicion);
-                        ejemplardata.guardarEjemplar(ejemplar2);
-                        ejem.setCantidad(resul);
-                        ejemplardata.modificarEjemplar(ejem);
-                        
-                    } else if (condicion.ordinal()<nuevaCondicion.ordinal()) {
-//                        
-                        System.out.println("condicion menor que condicionNueva");
-                         
-                          Ejemplar primerEjemplar=ejemplardata.buscarEjemplar(codigo);
-                          int result=primerEjemplar.getCantidad()-cantidad;
-                        
-                          primerEjemplar.setCantidad(result);
-                          ejemplardata.modificarEjemplar(primerEjemplar);
-                          Ejemplar segundoEjemplar=ejemplardata.BuscarEjemplarIdLibroYCondicion(libro.getIdLibro(), nuevaCondicion);
-                          int result2=segundoEjemplar.getCantidad()+cantidad;
-                          segundoEjemplar.setCantidad(result2);
-                          ejemplardata.modificarEjemplar(segundoEjemplar);
+                try {
+                    int cantidad = (Integer) jsCantidad2.getValue();
+                    int cantidadMod = (Integer) jsCantidadModificar.getValue();
+                    int resul = cantidad - cantidadMod;
+                    if (cantidad >= cantidadMod) {//control de cantidad
 
-                    } else if(condicion.ordinal()>nuevaCondicion.ordinal()){
-//                      
-                          System.out.println("condicion mayor que condicionNueva");
-                          Ejemplar primerEjemplar=ejemplardata.buscarEjemplar(codigo);
-                          int result=primerEjemplar.getCantidad()-cantidad;
-                         
-                          primerEjemplar.setCantidad(result);
-                          ejemplardata.modificarEjemplar(primerEjemplar);
-                          Ejemplar segundoEjemplar=ejemplardata.BuscarEjemplarIdLibroYCondicion(libro.getIdLibro(), nuevaCondicion);
-                          int result2=segundoEjemplar.getCantidad()+cantidad;
-                          segundoEjemplar.setCantidad(result2);
-                          ejemplardata.modificarEjemplar(segundoEjemplar);
-                    }else {
-                            JOptionPane.showMessageDialog(this, "Ingrese otra condicion!");
-                    
-                            
-//                       
+                        if (condicion.ordinal() == 3 && jrbReparacion.isSelected()) {
+                            Condicion nuevaCondicion = Condicion.REPARACION;
+                            Ejemplar ejemplar1 = ejemplardata.BuscarEjemplarIdLibroYCondicion(libro.getIdLibro(), nuevaCondicion);
+                            if (ejemplar1 == null) {
+                                Ejemplar ejemplar2 = new Ejemplar(libro, resul, true, nuevaCondicion);
+                                ejemplardata.guardarEjemplar(ejemplar2);
+                                ejem.setCantidad(resul);
+                                ejemplardata.modificarEjemplar(ejem);
+                            } else {
+                                int result = ejemplar1.getCantidad() + cantidadMod;
+                                ejemplar1.setCantidad(result);
+                                ejemplardata.modificarEjemplar(ejemplar1);
+                                ejem.setCantidad(resul);
+                                ejemplardata.modificarEjemplar(ejem);
+                            }
+                        } else if (condicion.ordinal() == 2 && jrbDisponible.isSelected()) {
+                            Condicion nuevaCondicion = Condicion.DISPONIBLE;
+                            Ejemplar ejemplar1 = ejemplardata.BuscarEjemplarIdLibroYCondicion(libro.getIdLibro(), nuevaCondicion);
+                            int result = ejemplar1.getCantidad() + cantidadMod;
+                            ejemplar1.setCantidad(result);
+                            ejemplardata.modificarEjemplar(ejemplar1);
+                            ejem.setCantidad(resul);
+                            ejemplardata.modificarEjemplar(ejem);
+                        } else if (condicion.ordinal() == 3 && jrbDisponible.isSelected()) {
+                            JOptionPane.showMessageDialog(this, "Seleccione la opcion de Reparacion");
+                        } else {
+                            JOptionPane.showMessageDialog(this, "Seleccione la opcion de Disponible");
+                        }
+
+                    } else {
+                        JOptionPane.showMessageDialog(this, "la cantidad que desea modificar es mayor a la disponible");
+
                     }
-
-//                        
-                } else {
-                    JOptionPane.showMessageDialog(this, "la cantidad que desea modificar es mayor a la disponible");
-                    jsCantidad2.setVisible(isIcon);
+                } catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(this, "Debe ingresar un numero");
+                } catch (NullPointerException ex) {
+                    JOptionPane.showMessageDialog(this, "el ejemplar no se encontro");
                 }
-            } catch (NumberFormatException ex) {
-                JOptionPane.showMessageDialog(this, "Debe ingresar un numero");
-            } catch(NullPointerException ex){
-                JOptionPane.showMessageDialog(this, "el ejemplar no se encontro");
+            } else {
+                JOptionPane.showMessageDialog(this, "Debe seleccionar una fila");
             }
-        }else{
-            JOptionPane.showMessageDialog(this, "Debe seleccionar una fila");
+        } catch (ArrayIndexOutOfBoundsException ex) {
+            JOptionPane.showMessageDialog(this, "Seleccione una fila");
         }
 
     }//GEN-LAST:event_jbModificarActionPerformed
+
+    private void jrbDisponibleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbDisponibleActionPerformed
+        jrbReparacion.setSelected(false);
+        jrbDisponible.setSelected(true);
+    }//GEN-LAST:event_jrbDisponibleActionPerformed
+
+    private void jrbReparacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbReparacionActionPerformed
+        jrbReparacion.setSelected(true);
+        jrbDisponible.setSelected(false);
+    }//GEN-LAST:event_jrbReparacionActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -531,9 +586,12 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<Condicion> jcbCondicion1;
     private javax.swing.JComboBox<Libro> jcbEjemplarLibro;
     private javax.swing.JComboBox<Libro> jcbEjemplarLibro2;
+    private javax.swing.JRadioButton jrbDisponible;
     private javax.swing.JRadioButton jrbEstado;
+    private javax.swing.JRadioButton jrbReparacion;
     private javax.swing.JSpinner jsCantidad1;
     private javax.swing.JSpinner jsCantidad2;
+    private javax.swing.JSpinner jsCantidadModificar;
     private javax.swing.JTable jtTabla;
     // End of variables declaration//GEN-END:variables
     public void cargarComboLibros() {
@@ -591,15 +649,14 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
 
     }
 
-    private void crearComboBox() {
-        JComboBox<Condicion> comboBox = new JComboBox<>();
-        comboBox.addItem(Condicion.DISPONIBLE);
-        comboBox.addItem(Condicion.REPARACION);
-        DefaultCellEditor customEditor = new DefaultCellEditor(comboBox);
-
-        jtTabla.getColumnModel().getColumn(3).setCellEditor(customEditor);
-    }
-
+//    private void crearComboBox() {
+//        JComboBox<Condicion> comboBox = new JComboBox<>();
+//        comboBox.addItem(Condicion.DISPONIBLE);
+//        comboBox.addItem(Condicion.REPARACION);
+//        DefaultCellEditor customEditor = new DefaultCellEditor(comboBox);
+//
+//        jtTabla.getColumnModel().getColumn(3).setCellEditor(customEditor);
+//    }
     private void cargarTabla(TreeSet<Ejemplar> ListarEjemplar) {
         for (Ejemplar aux : ListarEjemplar) {
             modelo.addRow(new Object[]{aux.getCodigo(), aux.getLibro().getTitulo(), aux.getLibro().getAutor(), aux.getCondicion(), aux.getCantidad()});
@@ -608,7 +665,7 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
 
     private void cargarTabla(Ejemplar ejemplar) {
 
-        modelo.addRow(new Object[]{ejemplar.getCodigo(), ejemplar.getLibro().getTitulo(), ejemplar.getLibro().getAutor(), ejemplar.getCondicion()});
+        modelo.addRow(new Object[]{ejemplar.getCodigo(), ejemplar.getLibro().getTitulo(), ejemplar.getLibro().getAutor(), ejemplar.getCondicion(), ejemplar.getCantidad()});
 
     }
 
