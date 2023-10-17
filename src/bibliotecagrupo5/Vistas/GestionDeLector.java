@@ -520,6 +520,7 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
             int nroSocio = (Integer) jtaLector.getValueAt(filaSeleccionada, 0);
 
             //TreeSet<Lector> listarLector = lecData.listarLector();
+            TreeSet<Prestamo>listaPrestamo = presData.listarPrestamos();
             TreeSet<Ejemplar> listaPrestamos = presData.obtenerEjemplaresPrestadosPorLector(nroSocio);
 
             // for (Ejemplar aux : listarPrestamo) {
