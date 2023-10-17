@@ -4,10 +4,15 @@
  */
 package bibliotecagrupo5.Vistas;
 
+import bibliotecagrupo5.AccesoADatos.EjemplarData;
 import javax.swing.JOptionPane;
 import java.util.Date;
 import bibliotecagrupo5.AccesoADatos.LectorData;
+import bibliotecagrupo5.AccesoADatos.PrestamoData;
+import bibliotecagrupo5.Entidades.Condicion;
+import bibliotecagrupo5.Entidades.Ejemplar;
 import bibliotecagrupo5.Entidades.Lector;
+import bibliotecagrupo5.Entidades.Prestamo;
 import java.util.ArrayList;
 import java.util.TreeSet;
 import javax.swing.table.DefaultTableModel;
@@ -29,6 +34,8 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
     LectorData lecData = new LectorData();
     Lector lector = null;
     Lector lectorAux = null;
+    PrestamoData presData = new PrestamoData();
+    EjemplarData ejemData = new EjemplarData();
 
     /**
      * Creates new form FormularioLector
@@ -447,48 +454,51 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
 
     private void jrbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbModificarActionPerformed
         // TODO add your handling code here
-
         int filaSeleccionada = jtaLector.getSelectedRow();
 
-        if (filaSeleccionada != -1) {
+        try {
+            if (filaSeleccionada != -1) {
 
-            int nroSocio = (Integer) jtaLector.getValueAt(filaSeleccionada, 0);
-            String nombre = jtaLector.getValueAt(filaSeleccionada, 1).toString();
-            String apellido = (String) jtaLector.getValueAt(filaSeleccionada, 2);
-            int dni = (Integer) jtaLector.getValueAt(filaSeleccionada, 3);
-            String domicilio = (String) jtaLector.getValueAt(filaSeleccionada, 4);
-            String mail = jtaLector.getValueAt(filaSeleccionada, 5).toString();
+                int nroSocio = (Integer) jtaLector.getValueAt(filaSeleccionada, 0);
+                String nombre = jtaLector.getValueAt(filaSeleccionada, 1).toString();
+                String apellido = (String) jtaLector.getValueAt(filaSeleccionada, 2);
+                int dni = (Integer) jtaLector.getValueAt(filaSeleccionada, 3);
+                String domicilio = (String) jtaLector.getValueAt(filaSeleccionada, 4);
+                String mail = jtaLector.getValueAt(filaSeleccionada, 5).toString();
 
-            if (dni > 0 && dni < 100000) {
+                if (dni > 0 && dni < 100000) {
 
-                if (!comprobarFilasVacias(filaSeleccionada)) {
+                    if (!comprobarFilasVacias(filaSeleccionada)) {
 
-                    int respuesta = JOptionPane.showConfirmDialog(this, "Desea modificar el lector",
-                            "Modificacion", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
-                    if (respuesta == 0) {
+                        int respuesta = JOptionPane.showConfirmDialog(this, "Desea modificar el lector",
+                                "Modificacion", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
+                        if (respuesta == 0) {
 
-                        lectorAux.setNroSocio(nroSocio);
-                        lectorAux.setNombre(nombre);
-                        lectorAux.setApellido(apellido);
-                        lectorAux.setDNI(dni);
-                        lectorAux.setDomicilio(domicilio);
-                        lectorAux.setMail(mail);
-                        lecData.modificarLector(lector);
+                            lectorAux.setNroSocio(nroSocio);
+                            lectorAux.setNombre(nombre);
+                            lectorAux.setApellido(apellido);
+                            lectorAux.setDNI(dni);
+                            lectorAux.setDomicilio(domicilio);
+                            lectorAux.setMail(mail);
+                            lecData.modificarLector(lectorAux);
+                        }
+                        borrarTabla();
+                        borrarJtf();
+
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Algunos campos estan vacios, debe ingresar datos en ellos");
                     }
-                    borrarTabla();
-                    borrarJtf();
-
                 } else {
-                    JOptionPane.showMessageDialog(this, "Algunos campos estan vacios, debe ingresar datos en ellos");
+                    JOptionPane.showMessageDialog(this, "error2 debe ingresar un dni valido ");
                 }
             } else {
-                JOptionPane.showMessageDialog(this, "Debe ingresar un año válido ");
+                JOptionPane.showMessageDialog(this, "Debe selecionar una fila");
             }
-        } else {
-            JOptionPane.showMessageDialog(this, "Debe selecionar una fila");
-        }
 
-
+        }catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, " error1 Debe ingresar un Dni válido");
+        } 
+       
     }//GEN-LAST:event_jrbModificarActionPerformed
 
     private void jrbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbEliminarActionPerformed
@@ -500,16 +510,28 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
             int nroSocio = (Integer) jtaLector.getValueAt(filaSeleccionada, 0);
 
             TreeSet<Lector> listarLector = lecData.listarLector();
+            TreeSet<Ejemplar> listaPrestamo = presData.obtenerEjemplaresPrestadosPorLector(nroSocio);
 
-            for (Lector aux : listarLector) {
+            for (Ejemplar aux : listaPrestamo) {
                 System.out.println(aux);
             }
-            if (!comprobarFilasVacias(filaSeleccionada)) {
-
+            /*if (!comprobarFilasVacias(filaSeleccionada)) {
                 int respuesta = JOptionPane.showConfirmDialog(this, "Desea eliminar lector?",
                         "Eliminar", JOptionPane.YES_OPTION, JOptionPane.INFORMATION_MESSAGE);
                 if (respuesta == 0) {
                     lecData.desactivarLector(nroSocio);
+
+                }*/
+            if (listaPrestamo.isEmpty()) {
+                int respuesta = JOptionPane.showConfirmDialog(this, "Desea eliminar lector",
+                        "Eliminar", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
+
+                if (respuesta == 0) {
+                    lecData.desactivarLector(nroSocio);
+
+                } else {
+                    JOptionPane.showMessageDialog(this, "No puede eliminar lector con nroSocio" + nroSocio + ""
+                            + "- Existen ejemplares con la condicion Prestado, Retraso o Reparacion");
 
                 }
                 borrarTabla();

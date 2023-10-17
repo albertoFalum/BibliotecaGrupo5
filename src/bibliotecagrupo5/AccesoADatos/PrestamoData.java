@@ -202,7 +202,7 @@ public class PrestamoData {
 
         try {
             String sql = "SELECT prestamo.codigo, idLibro, cantidad, estado, condicion FROM prestamo, "
-                    + "ejemplar WHERE prestamo.codigo=ejemplar.codigo AND prestamo.nroSocio=?";
+                    + "ejemplar WHERE estado = 1, prestamo.codigo=ejemplar.codigo AND prestamo.nroSocio=?";
 
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, nroSocio);
