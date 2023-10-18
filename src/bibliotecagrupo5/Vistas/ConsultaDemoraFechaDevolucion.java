@@ -49,6 +49,7 @@ public class ConsultaDemoraFechaDevolucion extends javax.swing.JInternalFrame {
         jTLectores = new javax.swing.JTable();
         jbConsultar = new javax.swing.JButton();
         jbSalir = new javax.swing.JButton();
+        jbLimpiar = new javax.swing.JButton();
 
         setClosable(true);
         setTitle("Consulta Demora Fecha de Devolucion");
@@ -81,12 +82,21 @@ public class ConsultaDemoraFechaDevolucion extends javax.swing.JInternalFrame {
             }
         });
 
+        jbLimpiar.setText("Limpiar Tabla");
+        jbLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbLimpiarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(103, 103, 103)
+                .addComponent(jbLimpiar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jbConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(279, 279, 279)
                 .addComponent(jbSalir)
@@ -111,7 +121,8 @@ public class ConsultaDemoraFechaDevolucion extends javax.swing.JInternalFrame {
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbConsultar)
-                    .addComponent(jbSalir))
+                    .addComponent(jbSalir)
+                    .addComponent(jbLimpiar))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 
@@ -156,12 +167,18 @@ public class ConsultaDemoraFechaDevolucion extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jbSalirActionPerformed
 
+    private void jbLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimpiarActionPerformed
+        // TODO add your handling code here:
+        borrarTabla();
+    }//GEN-LAST:event_jbLimpiarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTLectores;
     private javax.swing.JButton jbConsultar;
+    private javax.swing.JButton jbLimpiar;
     private javax.swing.JButton jbSalir;
     // End of variables declaration//GEN-END:variables
     private void armarCabecera() {

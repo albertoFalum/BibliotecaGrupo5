@@ -150,14 +150,13 @@ public class GestionDeLibros extends javax.swing.JInternalFrame {
                             .addComponent(jtfEditorial)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(95, 95, 95)
-                        .addComponent(jLabel1)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(60, Short.MAX_VALUE)
-                .addComponent(jbGuardar)
-                .addGap(35, 35, 35)
-                .addComponent(jbNuevo)
-                .addGap(66, 66, 66))
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(49, 49, 49)
+                        .addComponent(jbNuevo)
+                        .addGap(39, 39, 39)
+                        .addComponent(jbGuardar)))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -188,7 +187,7 @@ public class GestionDeLibros extends javax.swing.JInternalFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(jtfEditorial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37)
+                .addGap(36, 36, 36)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbNuevo)
                     .addComponent(jbGuardar))
@@ -267,7 +266,7 @@ public class GestionDeLibros extends javax.swing.JInternalFrame {
             }
         });
 
-        jbClear.setText("Clear");
+        jbClear.setText("Limpiar");
         jbClear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbClearActionPerformed(evt);
@@ -383,6 +382,7 @@ public class GestionDeLibros extends javax.swing.JInternalFrame {
                     if (libroData.buscarLibroPorIsbn(isbn) == null) {
                         libro = new Libro(isbn, titulo, autor, anio, tipo, editorial, true);
                         libroData.guardarLibro(libro);
+                        JOptionPane.showMessageDialog(this, "Libro Guardado");
                     } else {
                         JOptionPane.showMessageDialog(this, "Ya existe un libro con ese N° de ISBN");
                     }
@@ -418,6 +418,7 @@ public class GestionDeLibros extends javax.swing.JInternalFrame {
                     cargarTabla(libro2);
                 } else {
                     jtfPorISBN.setText("");
+                    JOptionPane.showMessageDialog(this, "No se encontró el libro con el isbn "+isbn);
                 }
 
             } else {
@@ -472,6 +473,7 @@ public class GestionDeLibros extends javax.swing.JInternalFrame {
                             libro.setEditorial(editorial);
 
                             libroData.modificarLibro(libro);
+                            JOptionPane.showMessageDialog(this, "Libro Modificado");
                         }
 
                     } else {
@@ -510,6 +512,7 @@ public class GestionDeLibros extends javax.swing.JInternalFrame {
 
                     if (respuesta == 0) {
                         libroData.eliminarLibro(idLibro);
+                        JOptionPane.showMessageDialog(this, "Libro Eliminado");
                     }
 
                 } else {
@@ -649,7 +652,7 @@ public class GestionDeLibros extends javax.swing.JInternalFrame {
         borrarFilas();
         for (Libro libro : listaLibros) {
 
-            if (libro.getTitulo().startsWith(jtfPorTitulo.getText()) && !jtfPorTitulo.getText().isEmpty()) {
+            if (libro.getTitulo().toLowerCase().startsWith(jtfPorTitulo.getText().toLowerCase()) && !jtfPorTitulo.getText().isEmpty()) {
                 cargarTabla(libro);
             }
 

@@ -74,6 +74,7 @@ public class ManejoPrestamoDevolucion extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jbMostrarPrestamos = new javax.swing.JButton();
+        jbLimpiar = new javax.swing.JButton();
 
         setClosable(true);
         setTitle("Prestamos y Devoluciones");
@@ -143,6 +144,13 @@ public class ManejoPrestamoDevolucion extends javax.swing.JInternalFrame {
             }
         });
 
+        jbLimpiar.setText("Limpiar");
+        jbLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbLimpiarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -173,9 +181,11 @@ public class ManejoPrestamoDevolucion extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(39, 39, 39)
                         .addComponent(jbMostrarPrestamos)
-                        .addGap(124, 124, 124)
+                        .addGap(69, 69, 69)
+                        .addComponent(jbLimpiar)
+                        .addGap(102, 102, 102)
                         .addComponent(jbDevolver)
-                        .addGap(173, 173, 173)
+                        .addGap(118, 118, 118)
                         .addComponent(jbSalir))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(30, 30, 30)
@@ -207,12 +217,13 @@ public class ManejoPrestamoDevolucion extends javax.swing.JInternalFrame {
                     .addComponent(jLabel4))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbMostrarPrestamos)
-                    .addComponent(jbDevolver, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbSalir))
-                .addContainerGap(148, Short.MAX_VALUE))
+                    .addComponent(jbDevolver)
+                    .addComponent(jbSalir)
+                    .addComponent(jbLimpiar))
+                .addContainerGap(157, Short.MAX_VALUE))
         );
 
         pack();
@@ -355,6 +366,11 @@ public class ManejoPrestamoDevolucion extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_jbMostrarPrestamosActionPerformed
 
+    private void jbLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimpiarActionPerformed
+        // TODO add your handling code here:
+        borrarTabla();
+    }//GEN-LAST:event_jbLimpiarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
@@ -365,6 +381,7 @@ public class ManejoPrestamoDevolucion extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTPrestamo;
     private javax.swing.JButton jbDevolver;
+    private javax.swing.JButton jbLimpiar;
     private javax.swing.JButton jbMostrarPrestamos;
     private javax.swing.JButton jbPrestar;
     private javax.swing.JButton jbSalir;

@@ -113,7 +113,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jMenu6.setText("Consultas");
 
-        jMenuItem4.setText("de Libros");
+        jMenuItem4.setText("De Libros");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem4ActionPerformed(evt);
