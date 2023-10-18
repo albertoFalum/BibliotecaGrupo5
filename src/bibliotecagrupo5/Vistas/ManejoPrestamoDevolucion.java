@@ -89,13 +89,13 @@ public class ManejoPrestamoDevolucion extends javax.swing.JInternalFrame {
 
         jTPrestamo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6"
             }
         ));
         jTPrestamo.getTableHeader().setResizingAllowed(false);
@@ -170,16 +170,16 @@ public class ManejoPrestamoDevolucion extends javax.swing.JInternalFrame {
                         .addGap(244, 244, 244)
                         .addComponent(jLabel3))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(39, 39, 39)
                         .addComponent(jbMostrarPrestamos)
                         .addGap(124, 124, 124)
                         .addComponent(jbDevolver)
                         .addGap(173, 173, 173)
-                        .addComponent(jbSalir)))
-                .addContainerGap(149, Short.MAX_VALUE))
+                        .addComponent(jbSalir))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -257,7 +257,7 @@ public class ManejoPrestamoDevolucion extends javax.swing.JInternalFrame {
 
                     JOptionPane.showMessageDialog(this, "Prestamo Guardado");
 
-                    
+                    cargarComboEjemplar();
 
                 } else {
                     JOptionPane.showMessageDialog(this, "No exiten ejemplares para prestar");
@@ -283,6 +283,7 @@ public class ManejoPrestamoDevolucion extends javax.swing.JInternalFrame {
                 Ejemplar ejemplarPrestado = ejemplarData.buscarEjemplar(codigo);
 
                 prestamoData.eliminarPrestamo(idPrestamo);
+                
 
                 ejemplarPrestado.setCantidad(ejemplarPrestado.getCantidad() - 1);
                 ejemplarData.modificarEjemplar(ejemplarPrestado);
@@ -290,8 +291,10 @@ public class ManejoPrestamoDevolucion extends javax.swing.JInternalFrame {
                 Ejemplar ejemplarDisponible = ejemplarData.BuscarEjemplarIdLibroYCondicion(ejemplarPrestado.getLibro().getIdLibro(), Condicion.DISPONIBLE);
                 ejemplarDisponible.setCantidad(ejemplarDisponible.getCantidad() + 1);
                 ejemplarData.modificarEjemplar(ejemplarDisponible);
+                cargarComboEjemplar();
 
                 borrarTabla();
+                cargarTablaLista(prestamoData.listarPrestamos());
 
             } else {
                 JOptionPane.showMessageDialog(this, "Debe seleccionar una fila");
@@ -303,6 +306,12 @@ public class ManejoPrestamoDevolucion extends javax.swing.JInternalFrame {
 
     private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
         // TODO add your handling code here:
+        int respuesta = JOptionPane.showConfirmDialog(this, "¿Desea Salir?",
+                "Salir", JOptionPane.YES_NO_OPTION,
+                JOptionPane.INFORMATION_MESSAGE);
+        if (respuesta == 0) {
+            dispose();
+        }
     }//GEN-LAST:event_jbSalirActionPerformed
 
     private void jcbLectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbLectorActionPerformed
@@ -322,15 +331,16 @@ public class ManejoPrestamoDevolucion extends javax.swing.JInternalFrame {
 
     private void jcbEjemplarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbEjemplarActionPerformed
         // TODO add your handling code here:
-//        borrarTabla();
-//        try {
-//            Ejemplar ejemplar = (Ejemplar) jcbEjemplar.getSelectedItem();
-//
-//            TreeSet<Prestamo> listaPrestamosEjemplar = prestamoData.
-//                    cargarTablaLista(listaPrestamosEjemplar);
-//        } catch (NullPointerException ex) {
-//            borrarTabla();
-//        }
+        borrarTabla();
+        try {
+            Ejemplar ejemplar = (Ejemplar) jcbEjemplar.getSelectedItem();
+            int idLibro = ejemplar.getLibro().getIdLibro();
+
+            TreeSet<Prestamo> listaPrestamosEjemplar = prestamoData.listarPrestamosPorEjemplar(idLibro);
+            cargarTablaLista(listaPrestamosEjemplar);
+        } catch (NullPointerException ex) {
+            borrarTabla();
+        }
 
     }//GEN-LAST:event_jcbEjemplarActionPerformed
 
@@ -427,6 +437,8 @@ public class ManejoPrestamoDevolucion extends javax.swing.JInternalFrame {
     }
 
     private void cargarComboEjemplar() {
+
+        jcbEjemplar.removeAllItems();
         try {
             listaEjemplar = ejemplarData.listarEjemplaresPorCondicion(Condicion.DISPONIBLE);
 

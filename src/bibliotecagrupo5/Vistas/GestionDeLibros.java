@@ -89,6 +89,7 @@ public class GestionDeLibros extends javax.swing.JInternalFrame {
         jbModificar = new javax.swing.JButton();
         jbEliminar = new javax.swing.JButton();
         jbClear = new javax.swing.JButton();
+        jbSalir = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -273,22 +274,33 @@ public class GestionDeLibros extends javax.swing.JInternalFrame {
             }
         });
 
+        jbSalir.setText("Salir");
+        jbSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbSalirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(165, 165, 165)
-                .addComponent(jbModificar)
-                .addGap(57, 57, 57)
-                .addComponent(jbEliminar)
-                .addGap(59, 59, 59)
-                .addComponent(jbClear)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGap(129, 129, 129)
+                                .addComponent(jbModificar)
+                                .addGap(45, 45, 45)
+                                .addComponent(jbEliminar)
+                                .addGap(53, 53, 53)
+                                .addComponent(jbClear)
+                                .addGap(58, 58, 58)
+                                .addComponent(jbSalir))
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addGap(287, 287, 287)
                                 .addComponent(jLabel8))
@@ -304,10 +316,7 @@ public class GestionDeLibros extends javax.swing.JInternalFrame {
                                         .addGap(23, 23, 23)
                                         .addComponent(jbBuscarISBN))
                                     .addComponent(jtfPorTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 87, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1)))
+                        .addGap(0, 87, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -330,7 +339,8 @@ public class GestionDeLibros extends javax.swing.JInternalFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbModificar)
                     .addComponent(jbEliminar)
-                    .addComponent(jbClear))
+                    .addComponent(jbClear)
+                    .addComponent(jbSalir))
                 .addGap(84, 84, 84))
         );
 
@@ -452,13 +462,13 @@ public class GestionDeLibros extends javax.swing.JInternalFrame {
 
                         if (respuesta == 0) {
                             libro = libroData.buscarLibro(idLibro);
-                            
+
                             libro.setTitulo(titulo);
                             libro.setAutor(autor);
                             libro.setAnio(anio);
                             libro.setTipo(tipo);
                             libro.setEditorial(editorial);
-                            
+
                             libroData.modificarLibro(libro);
                         }
 
@@ -487,14 +497,9 @@ public class GestionDeLibros extends javax.swing.JInternalFrame {
         try {
             if (filaSeleccionada != -1) {
                 int idLibro = (Integer) jTLibros.getValueAt(filaSeleccionada, 0);
-                
+
                 TreeSet<Ejemplar> listaEjemplares = ejemplarData.listarEjemplaresNoDisponibles(idLibro, Condicion.DISPONIBLE);
-                
-//                for(Ejemplar aux:listaEjemplares){
-//                    System.out.println(aux);
-                
-//                }
-                
+
                 //SI NO ENCUENTRA LIBROS NO DISPONIBLES (PRESTADOS, REPARACION, RETRASO) RECIEN PERMITE ELIMINAR
                 if (listaEjemplares.isEmpty()) {
                     int respuesta = JOptionPane.showConfirmDialog(this, "¿Desea eliminar el libro con id " + idLibro + " ?",
@@ -528,6 +533,16 @@ public class GestionDeLibros extends javax.swing.JInternalFrame {
         borrarTabla();
     }//GEN-LAST:event_jbClearActionPerformed
 
+    private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
+        // TODO add your handling code here:
+        int respuesta = JOptionPane.showConfirmDialog(this, "¿Desea Salir?",
+                "Salir", JOptionPane.YES_NO_OPTION,
+                JOptionPane.INFORMATION_MESSAGE);
+        if (respuesta == 0) {
+            dispose();
+        }
+    }//GEN-LAST:event_jbSalirActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
@@ -550,6 +565,7 @@ public class GestionDeLibros extends javax.swing.JInternalFrame {
     private javax.swing.JButton jbGuardar;
     private javax.swing.JButton jbModificar;
     private javax.swing.JButton jbNuevo;
+    private javax.swing.JButton jbSalir;
     private javax.swing.JComboBox<Tipo> jcbTipo;
     private javax.swing.JTextField jtfAutor;
     private javax.swing.JTextField jtfEditorial;

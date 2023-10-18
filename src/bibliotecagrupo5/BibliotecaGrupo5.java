@@ -79,6 +79,12 @@ public class BibliotecaGrupo5 {
 //         for(Ejemplar aux:ll){
 //             System.out.println(aux);
 //         }
+//          PrestamoData pd=new PrestamoData();
+//          TreeSet<Prestamo> lista=pd.listarPrestamosPorEjemplar(16);
+//          
+//          for(Prestamo aux:lista){
+//              System.out.println(aux);
+//          }
 //          TreeSet<Prestamo> lista=pd.listarPrestamosPorEjemplar(16);
           
  //         for(Prestamo aux:lista){
