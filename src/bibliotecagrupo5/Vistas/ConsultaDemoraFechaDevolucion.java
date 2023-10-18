@@ -5,6 +5,7 @@ import bibliotecagrupo5.AccesoADatos.PrestamoData;
 import bibliotecagrupo5.Entidades.Condicion;
 import bibliotecagrupo5.Entidades.Ejemplar;
 import bibliotecagrupo5.Entidades.Prestamo;
+import java.awt.Color;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.TreeSet;
@@ -36,7 +37,7 @@ public class ConsultaDemoraFechaDevolucion extends javax.swing.JInternalFrame {
         initComponents();
         armarCabecera();
         ajustarTamañoColumnas();
-
+        this.setBackground(Color.getHSBColor(0, 255, 255));
         prestamoData = new PrestamoData();
         ejemplarData = new EjemplarData();
     }
@@ -50,17 +51,40 @@ public class ConsultaDemoraFechaDevolucion extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jbLimpiar = new javax.swing.JButton();
+        jbSalir = new javax.swing.JButton();
+        jbConsultar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTLectores = new javax.swing.JTable();
-        jbConsultar = new javax.swing.JButton();
-        jbSalir = new javax.swing.JButton();
-        jbLimpiar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(0, 255, 255));
         setClosable(true);
         setTitle("Consulta Demora Fecha de Devolucion");
 
-        jLabel1.setText("Lectores con Prestamos Vencidos");
+        jPanel1.setBackground(new java.awt.Color(0, 255, 255));
+
+        jbLimpiar.setText("Limpiar Tabla");
+        jbLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbLimpiarActionPerformed(evt);
+            }
+        });
+
+        jbSalir.setText("Salir");
+        jbSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbSalirActionPerformed(evt);
+            }
+        });
+
+        jbConsultar.setText("Consultar");
+        jbConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbConsultarActionPerformed(evt);
+            }
+        });
 
         jTLectores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -74,62 +98,54 @@ public class ConsultaDemoraFechaDevolucion extends javax.swing.JInternalFrame {
         jTLectores.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTLectores);
 
-        jbConsultar.setText("Consultar");
-        jbConsultar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbConsultarActionPerformed(evt);
-            }
-        });
+        jLabel1.setText("Lectores con Prestamos Vencidos");
 
-        jbSalir.setText("Salir");
-        jbSalir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbSalirActionPerformed(evt);
-            }
-        });
-
-        jbLimpiar.setText("Limpiar Tabla");
-        jbLimpiar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbLimpiarActionPerformed(evt);
-            }
-        });
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(354, 354, 354)
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 826, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(39, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(67, 67, 67)
+                .addComponent(jbConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(227, 227, 227)
+                .addComponent(jbLimpiar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jbSalir)
+                .addGap(71, 71, 71))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(13, 13, 13)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jbConsultar)
+                    .addComponent(jbSalir)
+                    .addComponent(jbLimpiar))
+                .addContainerGap(38, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(103, 103, 103)
-                .addComponent(jbLimpiar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jbConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(279, 279, 279)
-                .addComponent(jbSalir)
-                .addGap(76, 76, 76))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 826, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(358, 358, 358)
-                        .addComponent(jLabel1)))
-                .addContainerGap(40, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbConsultar)
-                    .addComponent(jbSalir)
-                    .addComponent(jbLimpiar))
-                .addContainerGap(33, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -188,6 +204,7 @@ public class ConsultaDemoraFechaDevolucion extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTLectores;
     private javax.swing.JButton jbConsultar;

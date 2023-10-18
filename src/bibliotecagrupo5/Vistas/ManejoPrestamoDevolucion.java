@@ -76,6 +76,7 @@ public class ManejoPrestamoDevolucion extends javax.swing.JInternalFrame {
         jbMostrarPrestamos = new javax.swing.JButton();
         jbLimpiar = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(51, 105, 242));
         setClosable(true);
         setTitle("Prestamos y Devoluciones");
 

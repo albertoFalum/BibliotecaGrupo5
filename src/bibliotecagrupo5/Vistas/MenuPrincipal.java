@@ -4,6 +4,7 @@
  */
 package bibliotecagrupo5.Vistas;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.JOptionPane;
 
@@ -18,6 +19,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
      */
     public MenuPrincipal() {
         initComponents();
+        this.setBackground(Color.yellow);
     }
 
     /**
@@ -46,16 +48,21 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jdpEscritorio.setBackground(new java.awt.Color(112, 146, 172));
+        jdpEscritorio.setPreferredSize(new java.awt.Dimension(1250, 800));
+
         javax.swing.GroupLayout jdpEscritorioLayout = new javax.swing.GroupLayout(jdpEscritorio);
         jdpEscritorio.setLayout(jdpEscritorioLayout);
         jdpEscritorioLayout.setHorizontalGroup(
             jdpEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1114, Short.MAX_VALUE)
+            .addGap(0, 1148, Short.MAX_VALUE)
         );
         jdpEscritorioLayout.setVerticalGroup(
             jdpEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 562, Short.MAX_VALUE)
+            .addGap(0, 648, Short.MAX_VALUE)
         );
+
+        jMenuBar1.setBackground(new java.awt.Color(153, 255, 255));
 
         jMenu1.setText("Libros");
 
@@ -139,13 +146,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jdpEscritorio)
-                .addContainerGap())
+            .addComponent(jdpEscritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 1148, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jdpEscritorio, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(jdpEscritorio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 648, Short.MAX_VALUE)
         );
 
         pack();

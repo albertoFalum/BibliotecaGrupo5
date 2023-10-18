@@ -94,7 +94,7 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setPreferredSize(new java.awt.Dimension(900, 550));
 
-        jPanel1.setBackground(new java.awt.Color(153, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(0, 255, 255));
 
         jLabel1.setText("Lector");
 
@@ -194,7 +194,7 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
                 .addGap(69, 69, 69))
         );
 
-        jPanel2.setBackground(new java.awt.Color(204, 255, 204));
+        jPanel2.setBackground(new java.awt.Color(0, 255, 255));
 
         jLabel7.setText("Busqueda");
 
