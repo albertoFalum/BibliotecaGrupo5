@@ -66,7 +66,7 @@ public class EjemplarData {
             if (exito == 1) {
 //                JOptionPane.showMessageDialog(null, "Modificado Exitosamente.");
             } else {
-                JOptionPane.showMessageDialog(null, "El Ejemplar no existe");
+//                JOptionPane.showMessageDialog(null, "El Ejemplar no existe");
             }
 
         } catch (SQLException ex) {
