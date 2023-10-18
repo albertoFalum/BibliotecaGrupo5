@@ -26,7 +26,7 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
 
     private DefaultTableModel modelo = new DefaultTableModel() {
         public boolean isCellEditable(int f, int c) {
-            if (c == 0) {
+            if (c == 0 || c == 3) {
                 return false;
             }
             return true;
@@ -384,6 +384,7 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
                 if (lectorAux == null) {
                     lector = new Lector(nombre, apellido, dni, domicilio, mail, estado);
                     lecData.guardarLector(lector);
+                    JOptionPane.showMessageDialog(this, "Lector Guardado con exito");
 
                 } else {
                     JOptionPane.showMessageDialog(this, "Los campos de datos  no deben estar vacíos");
@@ -460,6 +461,8 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
                             lectorAux.setDomicilio(domicilio);
                             lectorAux.setMail(mail);
                             lecData.modificarLector(lectorAux);
+                            
+                            JOptionPane.showMessageDialog(this, "Lector modificado con exito");
                         }
                         borrarTabla();
                         borrarJtfBusqueda();
@@ -490,19 +493,8 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
         if (filaSeleccionada != -1) {
             int nroSocio = (Integer) jtaLector.getValueAt(filaSeleccionada, 0);
 
-            //TreeSet<Lector> listarLector = lecData.listarLector();
             TreeSet<Ejemplar> listaPrestamos = presData.obtenerEjemplaresPrestadosPorLector(nroSocio);
 
-            // for (Ejemplar aux : listarPrestamo) {
-            //  System.out.println(aux);
-            // }
-            /*if (!comprobarFilasVacias(filaSeleccionada)) {
-                int respuesta = JOptionPane.showConfirmDialog(this, "Desea eliminar lector?",
-                        "Eliminar", JOptionPane.YES_OPTION, JOptionPane.INFORMATION_MESSAGE);
-                if (respuesta == 0) {
-                    lecData.desactivarLector(nroSocio);
-
-                }*/
             if (listaPrestamos.isEmpty()) {
 
                 int respuesta = JOptionPane.showConfirmDialog(this, "Desea eliminar lector",
@@ -510,6 +502,8 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
 
                 if (respuesta == 0) {
                     lecData.desactivarLector(nroSocio);
+                    
+                    JOptionPane.showMessageDialog(this, "Lector eliminado con exito");
 
                 } else {
                     JOptionPane.showMessageDialog(this, "ha elegido no eliminar lector " + nroSocio + " si decea vuelva a intentarlo");
