@@ -9,10 +9,9 @@ import bibliotecagrupo5.AccesoADatos.LibroData;
 import bibliotecagrupo5.Entidades.Condicion;
 import bibliotecagrupo5.Entidades.Ejemplar;
 import bibliotecagrupo5.Entidades.Libro;
-import bibliotecagrupo5.Entidades.Tipo;
+
 import java.util.TreeSet;
-import javax.swing.DefaultCellEditor;
-import javax.swing.JComboBox;
+
 import javax.swing.JOptionPane;
 
 import javax.swing.SpinnerNumberModel;

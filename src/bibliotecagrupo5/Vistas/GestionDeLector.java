@@ -6,14 +6,14 @@ package bibliotecagrupo5.Vistas;
 
 import bibliotecagrupo5.AccesoADatos.EjemplarData;
 import javax.swing.JOptionPane;
-import java.util.Date;
+
 import bibliotecagrupo5.AccesoADatos.LectorData;
 import bibliotecagrupo5.AccesoADatos.PrestamoData;
-import bibliotecagrupo5.Entidades.Condicion;
+
 import bibliotecagrupo5.Entidades.Ejemplar;
 import bibliotecagrupo5.Entidades.Lector;
-import bibliotecagrupo5.Entidades.Prestamo;
-import java.util.ArrayList;
+
+
 import java.util.TreeSet;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -37,7 +37,7 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
     Lector lector = null;
     Lector lectorAux = null;
     PrestamoData presData = new PrestamoData();
-    EjemplarData ejemData = new EjemplarData();
+   
 
     /**
      * Creates new form FormularioLector
