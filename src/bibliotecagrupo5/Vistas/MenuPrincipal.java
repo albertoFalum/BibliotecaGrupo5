@@ -41,14 +41,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
-
-
-
-
         jMenuItem6 = new javax.swing.JMenuItem();
-
         jMenu5 = new javax.swing.JMenu();
-
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -64,11 +58,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         );
 
         jMenu1.setText("Libros");
-        jMenu1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu1ActionPerformed(evt);
-            }
-        });
 
         jMenuItem1.setText("Formulario Libros");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -126,10 +115,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         jMenu6.add(jMenuItem4);
 
-
-
-        jMenuBar1.add(jMenu3);
-
         jMenuItem6.setText("Consulta Fecha Devolucion Prestamo");
         jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -137,7 +122,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
         jMenu6.add(jMenuItem6);
-
 
         jMenuBar1.add(jMenu6);
 
@@ -148,7 +132,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
         jMenuBar1.add(jMenu5);
-
 
         setJMenuBar(jMenuBar1);
 
@@ -168,12 +151,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
-        // TODO add your handling code here:
-
-
-    }//GEN-LAST:event_jMenu1ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
