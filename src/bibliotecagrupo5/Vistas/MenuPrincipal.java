@@ -4,7 +4,6 @@
  */
 package bibliotecagrupo5.Vistas;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.JOptionPane;
 
@@ -19,7 +18,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
      */
     public MenuPrincipal() {
         initComponents();
-        this.setBackground(Color.yellow);
     }
 
     /**
@@ -48,23 +46,23 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jdpEscritorio.setBackground(new java.awt.Color(112, 146, 172));
-        jdpEscritorio.setPreferredSize(new java.awt.Dimension(1250, 800));
-
         javax.swing.GroupLayout jdpEscritorioLayout = new javax.swing.GroupLayout(jdpEscritorio);
         jdpEscritorio.setLayout(jdpEscritorioLayout);
         jdpEscritorioLayout.setHorizontalGroup(
             jdpEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1148, Short.MAX_VALUE)
+            .addGap(0, 1100, Short.MAX_VALUE)
         );
         jdpEscritorioLayout.setVerticalGroup(
             jdpEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 648, Short.MAX_VALUE)
+            .addGap(0, 562, Short.MAX_VALUE)
         );
 
-        jMenuBar1.setBackground(new java.awt.Color(153, 255, 255));
-
         jMenu1.setText("Libros");
+        jMenu1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu1ActionPerformed(evt);
+            }
+        });
 
         jMenuItem1.setText("Formulario Libros");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -146,16 +144,25 @@ public class MenuPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jdpEscritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 1148, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jdpEscritorio)
+                .addGap(14, 14, 14))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jdpEscritorio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 648, Short.MAX_VALUE)
+            .addComponent(jdpEscritorio, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
+        // TODO add your handling code here:
+
+
+    }//GEN-LAST:event_jMenu1ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
@@ -180,6 +187,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         gde.setVisible(true);
         jdpEscritorio.add(gde);
         jdpEscritorio.moveToFront(gde);
+        
+        Dimension desktopSize = jdpEscritorio.getSize();
+        Dimension FrameSize = gde.getSize();
+        gde.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
+        gde.show();
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
@@ -190,6 +202,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         flec.setVisible(true);
         jdpEscritorio.add(flec);
         jdpEscritorio.moveToFront(flec);
+        
+        Dimension desktopSize = jdpEscritorio.getSize();
+        Dimension FrameSize = flec.getSize();
+        flec.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
+        flec.show();
 
 
     }//GEN-LAST:event_jMenuItem3ActionPerformed

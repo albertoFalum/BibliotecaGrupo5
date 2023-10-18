@@ -7,12 +7,19 @@ package bibliotecagrupo5.Vistas;
 import bibliotecagrupo5.AccesoADatos.EjemplarData;
 import javax.swing.JOptionPane;
 
+
 import bibliotecagrupo5.AccesoADatos.LectorData;
 import bibliotecagrupo5.AccesoADatos.PrestamoData;
 
 import bibliotecagrupo5.Entidades.Ejemplar;
 import bibliotecagrupo5.Entidades.Lector;
 
+
+
+import bibliotecagrupo5.AccesoADatos.LectorData;
+import bibliotecagrupo5.AccesoADatos.PrestamoData;
+import bibliotecagrupo5.Entidades.Ejemplar;
+import bibliotecagrupo5.Entidades.Lector;
 
 import java.util.TreeSet;
 import javax.swing.table.DefaultTableModel;
@@ -351,7 +358,7 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
                 jrbModificar.setEnabled(true);
                 jtfNroSocio.setText("");
             } else {
-                //JOptionPane.showMessageDialog(this, "debe ingresar solo letras");
+                JOptionPane.showMessageDialog(this, "debe ingresar solo letras");
 
             }
 
