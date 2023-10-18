@@ -34,7 +34,7 @@ public class PrestamoData {
 
     public void guardarPrestamo(Prestamo prestamo) {
         String sql = "INSERT INTO prestamo(fechaInicio, fechaFin, codigo, nroSocio, estado) VALUES( ?, ?, ?, ?, ?)";
-        
+
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
@@ -194,14 +194,14 @@ public class PrestamoData {
         }
         return listaEjemplaresPrestados;
     }
-    
+
     public TreeSet<Ejemplar> obtenerEjemplaresPrestadosPorLector(int nroSocio) {
         TreeSet<Ejemplar> listaEjemplaresPrestadosPorLector = new TreeSet<>();
 
         try {
             String sql = "SELECT prestamo.codigo, idLibro, cantidad, prestamo.estado, condicion FROM prestamo, "
                     + "ejemplar WHERE prestamo.codigo=ejemplar.codigo AND prestamo.nroSocio=?";
- 
+
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, nroSocio);
 
@@ -252,7 +252,7 @@ public class PrestamoData {
         }
         return Prestamos;
     }
-    
+
     public TreeSet<Prestamo> listarPrestamosPorLector(int nroSocioABuscar) {
         String sql = "SELECT * FROM prestamo WHERE nroSocio=? AND estado = 1";
 
@@ -281,8 +281,8 @@ public class PrestamoData {
         }
         return Prestamos;
     }
-    
-     public TreeSet<Prestamo> listarPrestamosPorEjemplar(int idLibro) {
+
+    public TreeSet<Prestamo> listarPrestamosPorEjemplar(int idLibro) {
         String sql = "SELECT * FROM prestamo p JOIN ejemplar e ON(p.codigo=e.codigo) WHERE e.idLibro=? AND (e.condicion=? OR e.condicion=?)";
         TreeSet<Prestamo> Prestamos = new TreeSet<>();
         try {
@@ -303,6 +303,14 @@ public class PrestamoData {
                 prestamo.setEstado(rs.getBoolean("estado"));
                 Prestamos.add(prestamo);
 
+                // Verificar si el préstamo está vencido
+                LocalDate fechaActual = LocalDate.now();
+                if (prestamo.getFechaFin().isBefore(fechaActual)) {
+                    // Actualizar la condición del ejemplar a "Retrasado"
+                    Ejemplar ejemplar = prestamo.getEjemplar();
+                    ejemplar.setCondicion(Condicion.RETRASO);
+                    ejemplarData.modificarEjemplar(ejemplar);
+                }
             }
             ps.close();
 
@@ -311,6 +319,5 @@ public class PrestamoData {
         }
         return Prestamos;
     }
- 
 
 }

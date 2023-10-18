@@ -395,6 +395,7 @@ public class GestionDeLibros extends javax.swing.JInternalFrame {
             }
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(this, "Debe ingresar un número entero positivo en el ISBN");
+            jtfISBN.setText("");
         }
     }//GEN-LAST:event_jbGuardarActionPerformed
 
@@ -424,6 +425,7 @@ public class GestionDeLibros extends javax.swing.JInternalFrame {
             }
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(this, "Debe ingresar un número entero positivo en el ISBN ");
+            jtfPorISBN.setText("");
         }
 
     }//GEN-LAST:event_jbBuscarISBNActionPerformed

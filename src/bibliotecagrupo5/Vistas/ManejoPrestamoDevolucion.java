@@ -75,6 +75,7 @@ public class ManejoPrestamoDevolucion extends javax.swing.JInternalFrame {
         jLabel5 = new javax.swing.JLabel();
         jbMostrarPrestamos = new javax.swing.JButton();
 
+        setClosable(true);
         setTitle("Prestamos y Devoluciones");
 
         jLabel1.setText("Seleccione un Lector:");
@@ -283,7 +284,7 @@ public class ManejoPrestamoDevolucion extends javax.swing.JInternalFrame {
                 Ejemplar ejemplarPrestado = ejemplarData.buscarEjemplar(codigo);
 
                 prestamoData.eliminarPrestamo(idPrestamo);
-                
+
                 ejemplarPrestado.setCantidad(ejemplarPrestado.getCantidad() - 1);
                 ejemplarData.modificarEjemplar(ejemplarPrestado);
 
@@ -345,8 +346,13 @@ public class ManejoPrestamoDevolucion extends javax.swing.JInternalFrame {
 
     private void jbMostrarPrestamosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbMostrarPrestamosActionPerformed
         // TODO add your handling code here:
-        borrarTabla();
-        cargarTablaLista(prestamoData.listarPrestamos());
+        try {
+            borrarTabla();
+            cargarTablaLista(prestamoData.listarPrestamos());
+        } catch (NullPointerException e) {
+            JOptionPane.showMessageDialog(this, "No hay prestamos para mostrar");
+        }
+
     }//GEN-LAST:event_jbMostrarPrestamosActionPerformed
 
 
