@@ -347,7 +347,7 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
                 jrbModificar.setEnabled(true);
                 jtfNroSocio.setText("");
             } else {
-                //JOptionPane.showMessageDialog(this, "debe ingresar solo letras");
+                JOptionPane.showMessageDialog(this, "debe ingresar solo letras");
 
             }
 
