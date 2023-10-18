@@ -284,7 +284,6 @@ public class ManejoPrestamoDevolucion extends javax.swing.JInternalFrame {
 
                 prestamoData.eliminarPrestamo(idPrestamo);
                 
-
                 ejemplarPrestado.setCantidad(ejemplarPrestado.getCantidad() - 1);
                 ejemplarData.modificarEjemplar(ejemplarPrestado);
 
