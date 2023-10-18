@@ -43,6 +43,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuItem4 = new javax.swing.JMenuItem();
 
 
+
+
+        jMenuItem6 = new javax.swing.JMenuItem();
+
         jMenu5 = new javax.swing.JMenu();
 
 
@@ -114,7 +118,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jMenu6.setText("Consultas");
 
-        jMenuItem4.setText("de Libros");
+        jMenuItem4.setText("De Libros");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem4ActionPerformed(evt);
@@ -123,7 +127,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenu6.add(jMenuItem4);
 
 
+
         jMenuBar1.add(jMenu3);
+
+        jMenuItem6.setText("Consulta Fecha Devolucion Prestamo");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
+        jMenu6.add(jMenuItem6);
+
 
         jMenuBar1.add(jMenu6);
 
@@ -224,6 +238,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenu5MouseClicked
 
+
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         jdpEscritorio.removeAll();
         jdpEscritorio.repaint();
@@ -236,6 +251,22 @@ public class MenuPrincipal extends javax.swing.JFrame {
         cl.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
         cl.show();
     }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        // TODO add your handling code here:
+        jdpEscritorio.removeAll();
+        jdpEscritorio.repaint();
+        ConsultaDemoraFechaDevolucion cdfd = new ConsultaDemoraFechaDevolucion();
+        cdfd.setVisible(true);
+        jdpEscritorio.add(cdfd);
+
+        Dimension desktopSize = jdpEscritorio.getSize();
+        Dimension FrameSize = cdfd.getSize();
+        cdfd.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
+        cdfd.show();
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+
 
     /**
      * @param args the command line arguments
@@ -288,6 +319,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JDesktopPane jdpEscritorio;
     // End of variables declaration//GEN-END:variables
 }

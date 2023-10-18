@@ -395,6 +395,7 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
             }
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(this, "Debe ingresar un Dni válido");
+           
     }//GEN-LAST:event_jrbGuardarActionPerformed
     }
 
@@ -427,6 +428,7 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
             }
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(this, "Debe ingresar un numero entero");
+           
 
     }//GEN-LAST:event_jrbBuscarActionPerformed
     }
