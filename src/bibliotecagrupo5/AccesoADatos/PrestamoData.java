@@ -304,13 +304,13 @@ public class PrestamoData {
                 Prestamos.add(prestamo);
 
                 // Verificar si el préstamo está vencido
-                LocalDate fechaActual = LocalDate.now();
-                if (prestamo.getFechaFin().isBefore(fechaActual) && prestamo.getEjemplar().getCondicion() != Condicion.RETRASO) {
-                    // Actualizar la condición del ejemplar a "Retrasado"
-                    Ejemplar ejemplar = prestamo.getEjemplar();
-                    ejemplar.setCondicion(Condicion.RETRASO);
-                    ejemplarData.modificarEjemplar(ejemplar);
-                }
+//                LocalDate fechaActual = LocalDate.now();
+//                if (prestamo.getFechaFin().isBefore(fechaActual) && prestamo.getEjemplar().getCondicion() != Condicion.RETRASO) {
+//                    // Actualizar la condición del ejemplar a "Retrasado"
+//                    Ejemplar ejemplar = prestamo.getEjemplar();
+//                    ejemplar.setCondicion(Condicion.RETRASO);
+//                    ejemplarData.modificarEjemplar(ejemplar);
+//                }
             }
             ps.close();
 

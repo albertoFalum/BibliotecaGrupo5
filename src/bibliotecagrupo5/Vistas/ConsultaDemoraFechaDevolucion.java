@@ -133,7 +133,7 @@ public class ConsultaDemoraFechaDevolucion extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         borrarTabla();
         LocalDate fechaActual = LocalDate.now();
-//        long diferenciaEnDias = fecha1.until(fecha2, ChronoUnit.DAYS);
+
 
         try {
             listaPrestamo = prestamoData.obtenerPrestamosVencidos(fechaActual);
