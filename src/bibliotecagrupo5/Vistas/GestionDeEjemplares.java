@@ -417,18 +417,25 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
             Ejemplar ejemplar = new Ejemplar(libroSeleccionado, cantLibros, estado, condicion);
             ejemplardata.guardarEjemplar(ejemplar);
             JOptionPane.showMessageDialog(this, "Ejemplar Guardado");
+
             jcbEjemplarLibro.setSelectedItem(0);
             jsCantidad1.setValue(1);
             jcbCondicion.setSelectedItem(0);
+
+
         } else {
             int cantNueva = ejemplarNuevo.getCantidad() + cantLibros;
             ejemplarNuevo.setCantidad(cantNueva);
             ejemplardata.modificarEjemplar(ejemplarNuevo);
+
             JOptionPane.showMessageDialog(this, "Ejemplar Guardado");
             jcbEjemplarLibro.setSelectedIndex(0);
             jsCantidad1.setValue(1);
             jcbCondicion.setSelectedIndex(0);
             jcbEjemplarLibro2.setSelectedIndex(0);
+
+            JOptionPane.showMessageDialog(this, "Ejemplar Modificado");
+
         }
 
 

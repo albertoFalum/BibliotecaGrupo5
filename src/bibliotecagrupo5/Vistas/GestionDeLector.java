@@ -338,11 +338,12 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
     private void jtexApellidoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtexApellidoKeyReleased
         // TODO add your handling code here:
         borrarTabla();
+        jtfNroSocio.setText("");
         TreeSet<Lector> listarLector = lecData.listarLector();
 
         for (Lector lec : listarLector) {
 
-            if (lec.getApellido().startsWith(jtexApellido.getText()) && !jtexApellido.getText().isEmpty()) {
+            if (lec.getApellido().toLowerCase().startsWith(jtexApellido.getText().toLowerCase()) && !jtexApellido.getText().isEmpty()) {
 
                 cargarTabla(lec);
 

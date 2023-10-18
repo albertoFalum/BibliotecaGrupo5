@@ -283,12 +283,13 @@ public class PrestamoData {
     }
     
      public TreeSet<Prestamo> listarPrestamosPorEjemplar(int idLibro) {
-        String sql = "SELECT * FROM prestamo p JOIN ejemplar e ON(p.codigo=e.codigo) WHERE e.idLibro=? AND e.condicion=?";
+        String sql = "SELECT * FROM prestamo p JOIN ejemplar e ON(p.codigo=e.codigo) WHERE e.idLibro=? AND (e.condicion=? OR e.condicion=?)";
         TreeSet<Prestamo> Prestamos = new TreeSet<>();
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, idLibro);
             ps.setString(2, "PRESTADO");
+            ps.setString(3, "RETRASO");
 
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {

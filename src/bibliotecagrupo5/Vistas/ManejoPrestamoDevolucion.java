@@ -89,13 +89,13 @@ public class ManejoPrestamoDevolucion extends javax.swing.JInternalFrame {
 
         jTPrestamo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6"
             }
         ));
         jTPrestamo.getTableHeader().setResizingAllowed(false);
@@ -170,16 +170,16 @@ public class ManejoPrestamoDevolucion extends javax.swing.JInternalFrame {
                         .addGap(244, 244, 244)
                         .addComponent(jLabel3))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(39, 39, 39)
                         .addComponent(jbMostrarPrestamos)
                         .addGap(124, 124, 124)
                         .addComponent(jbDevolver)
                         .addGap(173, 173, 173)
-                        .addComponent(jbSalir)))
-                .addContainerGap(149, Short.MAX_VALUE))
+                        .addComponent(jbSalir))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -283,7 +283,7 @@ public class ManejoPrestamoDevolucion extends javax.swing.JInternalFrame {
                 Ejemplar ejemplarPrestado = ejemplarData.buscarEjemplar(codigo);
 
                 prestamoData.eliminarPrestamo(idPrestamo);
-                cargarComboEjemplar();
+                
 
                 ejemplarPrestado.setCantidad(ejemplarPrestado.getCantidad() - 1);
                 ejemplarData.modificarEjemplar(ejemplarPrestado);
@@ -291,6 +291,7 @@ public class ManejoPrestamoDevolucion extends javax.swing.JInternalFrame {
                 Ejemplar ejemplarDisponible = ejemplarData.BuscarEjemplarIdLibroYCondicion(ejemplarPrestado.getLibro().getIdLibro(), Condicion.DISPONIBLE);
                 ejemplarDisponible.setCantidad(ejemplarDisponible.getCantidad() + 1);
                 ejemplarData.modificarEjemplar(ejemplarDisponible);
+                cargarComboEjemplar();
 
                 borrarTabla();
                 cargarTablaLista(prestamoData.listarPrestamos());
