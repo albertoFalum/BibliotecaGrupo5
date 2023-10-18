@@ -44,7 +44,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenu5 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(900, 500));
 
         javax.swing.GroupLayout jdpEscritorioLayout = new javax.swing.GroupLayout(jdpEscritorio);
         jdpEscritorio.setLayout(jdpEscritorioLayout);
@@ -193,20 +192,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
 
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        jdpEscritorio.removeAll();
-        jdpEscritorio.repaint();
-        ConsultasLibro cl = new ConsultasLibro();
-        cl.setVisible(true);
-        jdpEscritorio.add(cl);
-
-        Dimension desktopSize = jdpEscritorio.getSize();
-        Dimension FrameSize = cl.getSize();
-        cl.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
-        cl.show();
-
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
-
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
         // TODO add your handling code here:
         jdpEscritorio.removeAll();
@@ -231,6 +216,18 @@ public class MenuPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenu5MouseClicked
 
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        jdpEscritorio.removeAll();
+        jdpEscritorio.repaint();
+        ConsultasLibro cl = new ConsultasLibro();
+        cl.setVisible(true);
+        jdpEscritorio.add(cl);
+
+        Dimension desktopSize = jdpEscritorio.getSize();
+        Dimension FrameSize = cl.getSize();
+        cl.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
+        cl.show();
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     /**
      * @param args the command line arguments
