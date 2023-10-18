@@ -175,6 +175,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         gde.setVisible(true);
         jdpEscritorio.add(gde);
         jdpEscritorio.moveToFront(gde);
+        
+        Dimension desktopSize = jdpEscritorio.getSize();
+        Dimension FrameSize = gde.getSize();
+        gde.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
+        gde.show();
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
@@ -185,6 +190,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         flec.setVisible(true);
         jdpEscritorio.add(flec);
         jdpEscritorio.moveToFront(flec);
+        
+        Dimension desktopSize = jdpEscritorio.getSize();
+        Dimension FrameSize = flec.getSize();
+        flec.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
+        flec.show();
 
 
     }//GEN-LAST:event_jMenuItem3ActionPerformed
