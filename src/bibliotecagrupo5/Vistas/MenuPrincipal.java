@@ -7,12 +7,13 @@ package bibliotecagrupo5.Vistas;
 import java.awt.Dimension;
 import javax.swing.JOptionPane;
 
+
 /**
  *
  * @author BETO
  */
 public class MenuPrincipal extends javax.swing.JFrame {
-
+     
     /**
      * Creates new form Menú
      */
@@ -187,7 +188,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         gde.setVisible(true);
         jdpEscritorio.add(gde);
         jdpEscritorio.moveToFront(gde);
-        
+
         Dimension desktopSize = jdpEscritorio.getSize();
         Dimension FrameSize = gde.getSize();
         gde.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
@@ -202,7 +203,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         flec.setVisible(true);
         jdpEscritorio.add(flec);
         jdpEscritorio.moveToFront(flec);
-        
+
         Dimension desktopSize = jdpEscritorio.getSize();
         Dimension FrameSize = flec.getSize();
         flec.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
@@ -264,8 +265,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         cdfd.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
         cdfd.show();
     }//GEN-LAST:event_jMenuItem6ActionPerformed
-
-
 
     /**
      * @param args the command line arguments
