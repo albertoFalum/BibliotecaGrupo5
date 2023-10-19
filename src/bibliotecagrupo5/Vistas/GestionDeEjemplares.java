@@ -59,8 +59,9 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
             jcbEjemplarLibro.setSelectedIndex(-1);
             jcbEjemplarLibro2.setSelectedIndex(-1);
             jcbCondicion1.setSelectedIndex(-1);
+            
         } catch (NullPointerException ex) {
-            JOptionPane.showMessageDialog(this, "Debes Seleccionar un Libro del ComboBox o Ingresar un nuevo libro desde Gestion de Libros");
+            
         }
     }
 
@@ -427,9 +428,9 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
             ejemplardata.guardarEjemplar(ejemplar);
             JOptionPane.showMessageDialog(this, "Ejemplar Guardado");
 
-            jcbEjemplarLibro.setSelectedItem(0);
+            jcbEjemplarLibro.setSelectedItem(-1);
             jsCantidad1.setValue(1);
-            jcbCondicion.setSelectedItem(0);
+            jcbCondicion.setSelectedItem(-1);
 
 
         } else {
