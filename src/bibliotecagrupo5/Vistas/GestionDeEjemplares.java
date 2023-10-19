@@ -55,8 +55,11 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
             SpinnerNumberModel modeloSpinner1 = new SpinnerNumberModel();
             modeloSpinner1.setMinimum(1);
             jsCantidad2.setModel(modeloSpinner1);
+            jcbEjemplarLibro.setSelectedIndex(-1);
+            jcbEjemplarLibro2.setSelectedIndex(-1);
+            jcbCondicion1.setSelectedIndex(-1);
         } catch (NullPointerException ex) {
-            JOptionPane.showMessageDialog(this, "Debes cargar libros en gestion de libros");
+            JOptionPane.showMessageDialog(this, "Debes Seleccionar un Libro del ComboBox o Ingresar un nuevo libro desde Gestion de Libros");
         }
     }
 
@@ -400,6 +403,7 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
 
     private void jcbEjemplarLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbEjemplarLibroActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_jcbEjemplarLibroActionPerformed
 
     private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
@@ -446,10 +450,10 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
 
     private void jcbEjemplarLibro2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbEjemplarLibro2ActionPerformed
         borrarTabla();
-        Libro libroSeleccionado = (Libro) jcbEjemplarLibro2.getSelectedItem();
+//        Libro libroSeleccionado = (Libro) jcbEjemplarLibro2.getSelectedItem();
 
-        TreeSet<Ejemplar> ejemplares = ejemplardata.listarEjemplaresPorLibro(libroSeleccionado.getIdLibro());
-        cargarTabla(ejemplares);
+//        TreeSet<Ejemplar> ejemplares = ejemplardata.listarEjemplaresPorLibro(libroSeleccionado.getIdLibro());
+//        cargarTabla(ejemplares);
         jsCantidad2.setValue(1);
         jcbCondicion1.setVisible(true);
         jsCantidad2.setVisible(true);
@@ -461,6 +465,7 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
     private void jcbCondicion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbCondicion1ActionPerformed
         borrarTabla();
         jtTabla.setEnabled(true);
+        
         Libro libroSeleccionado = (Libro) jcbEjemplarLibro2.getSelectedItem();
         Condicion condicion = (Condicion) jcbCondicion1.getSelectedItem();
 
