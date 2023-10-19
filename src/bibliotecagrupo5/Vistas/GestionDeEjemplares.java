@@ -49,13 +49,13 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
             borrarTabla();
 //        crearComboBox();
            
-            SpinnerNumberModel modeloSpinner = new SpinnerNumberModel();
-            modeloSpinner.setMinimum(1);
-            modeloSpinner.setValue(1);
-            jsCantidad1.setModel(modeloSpinner);
             SpinnerNumberModel modeloSpinner1 = new SpinnerNumberModel();
             modeloSpinner1.setMinimum(1);
-            jsCantidad2.setModel(modeloSpinner1);
+            modeloSpinner1.setValue(1);
+            jsCantidad1.setModel(modeloSpinner1);
+            SpinnerNumberModel modeloSpinner2 = new SpinnerNumberModel();
+            modeloSpinner2.setMinimum(1);
+            jsCantidad2.setModel(modeloSpinner2);
             jcbEjemplarLibro.setSelectedIndex(-1);
             jcbEjemplarLibro2.setSelectedIndex(-1);
             jcbCondicion1.setSelectedIndex(-1);
@@ -439,10 +439,10 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
             ejemplardata.modificarEjemplar(ejemplarNuevo);
 
             JOptionPane.showMessageDialog(this, "Ejemplar Guardado");
-            jcbEjemplarLibro.setSelectedIndex(0);
+            jcbEjemplarLibro.setSelectedIndex(-1);
             jsCantidad1.setValue(1);
-            jcbCondicion.setSelectedIndex(0);
-            jcbEjemplarLibro2.setSelectedIndex(0);
+            jcbCondicion.setSelectedIndex(-1);
+            jcbEjemplarLibro2.setSelectedIndex(-1);
 
             JOptionPane.showMessageDialog(this, "Ejemplar Modificado");
 
@@ -453,14 +453,14 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
 
     private void jcbEjemplarLibro2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbEjemplarLibro2ActionPerformed
         borrarTabla();
-//        Libro libroSeleccionado = (Libro) jcbEjemplarLibro2.getSelectedItem();
+        Libro libroSeleccionado = (Libro) jcbEjemplarLibro2.getSelectedItem();
 
-//        TreeSet<Ejemplar> ejemplares = ejemplardata.listarEjemplaresPorLibro(libroSeleccionado.getIdLibro());
-//        cargarTabla(ejemplares);
-        jsCantidad2.setValue(1);
-        jcbCondicion1.setVisible(true);
-        jsCantidad2.setVisible(true);
-        jtTabla.setEnabled(iconable);
+        TreeSet<Ejemplar> ejemplares = ejemplardata.listarEjemplaresPorLibro(libroSeleccionado.getIdLibro());
+        cargarTabla(ejemplares);
+//        jsCantidad2.setValue(1);
+//        jcbCondicion1.setVisible(true);
+//        jsCantidad2.setVisible(true);
+//        jtTabla.setEnabled(iconable);
 
 
     }//GEN-LAST:event_jcbEjemplarLibro2ActionPerformed
@@ -549,13 +549,13 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
                                 ejem.setCantidad(resul);
                                 ejemplardata.modificarEjemplar(ejem);
                                 JOptionPane.showMessageDialog(this, "Ejemplar modificado");
-                                jcbEjemplarLibro2.setSelectedItem(0);
-                                jcbCondicion1.setSelectedItem(0);
+                                jcbEjemplarLibro2.setSelectedItem(-1);
+                                jcbCondicion1.setSelectedItem(-1);
                                 jsCantidadModificar.setValue(1);
                                 jsCantidad2.setValue(1);
                                 borrarTabla();
-                                jcbCondicion1.setSelectedIndex(0);
-                                jcbEjemplarLibro2.setSelectedIndex(0);
+                                jcbCondicion1.setSelectedIndex(-1);
+                                jcbEjemplarLibro2.setSelectedIndex(-1);
                             } else {
                                 int result = ejemplar1.getCantidad() + cantidadMod;
                                 ejemplar1.setCantidad(result);
@@ -563,13 +563,13 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
                                 ejem.setCantidad(resul);
                                 ejemplardata.modificarEjemplar(ejem);
                                 JOptionPane.showMessageDialog(this, "Ejemplar Modificado");
-                                jcbEjemplarLibro2.setSelectedItem(0);
-                                jcbCondicion1.setSelectedItem(0);
+                                jcbEjemplarLibro2.setSelectedItem(-1);
+                                jcbCondicion1.setSelectedItem(-1);
                                 jsCantidadModificar.setValue(1);
                                 jsCantidad2.setValue(1);
                                 borrarTabla();
-                                jcbCondicion1.setSelectedIndex(0);
-                                jcbEjemplarLibro2.setSelectedIndex(0);
+                                jcbCondicion1.setSelectedIndex(-1);
+                                jcbEjemplarLibro2.setSelectedIndex(-1);
                             }
                         } else if (condicion.ordinal() == 2 && jrbDisponible.isSelected()) {
                             Condicion nuevaCondicion = Condicion.DISPONIBLE;
@@ -580,8 +580,8 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
                             ejem.setCantidad(resul);
                             ejemplardata.modificarEjemplar(ejem);
                             JOptionPane.showMessageDialog(this, "Ejemplar Modificado");
-                            jcbCondicion1.setSelectedIndex(0);
-                            jcbEjemplarLibro2.setSelectedIndex(0);
+                            jcbCondicion1.setSelectedIndex(-1);
+                            jcbEjemplarLibro2.setSelectedIndex(-1);
                             jsCantidadModificar.setValue(1);
                             jsCantidad2.setValue(1);
                             borrarTabla();
