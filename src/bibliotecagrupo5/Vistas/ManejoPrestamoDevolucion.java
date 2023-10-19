@@ -269,10 +269,9 @@ public class ManejoPrestamoDevolucion extends javax.swing.JInternalFrame {
                     ejemplarData.modificarEjemplar(ejemplar);
 
                     JOptionPane.showMessageDialog(this, "Prestamo Guardado");
-                    
+                    borrarTabla();
 
                     cargarComboEjemplar();
-                    borrarCampos();
 
                 } else {
                     JOptionPane.showMessageDialog(this, "No exiten ejemplares para prestar");
@@ -307,9 +306,8 @@ public class ManejoPrestamoDevolucion extends javax.swing.JInternalFrame {
                 ejemplarData.modificarEjemplar(ejemplarDisponible);
                 cargarComboEjemplar();
 
-               
+                borrarTabla();
                 cargarTablaLista(prestamoData.listarPrestamos());
-                borrarCampos();
 
             } else {
                 JOptionPane.showMessageDialog(this, "Debe seleccionar una fila");
