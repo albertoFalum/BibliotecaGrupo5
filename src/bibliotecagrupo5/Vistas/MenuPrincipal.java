@@ -43,6 +43,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenu6 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
+        jMenuItem7 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -128,6 +129,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
         jMenu6.add(jMenuItem6);
+
+        jMenuItem7.setText("Ejemplares prestados por fecha");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
+        jMenu6.add(jMenuItem7);
 
         jMenuBar1.add(jMenu6);
 
@@ -266,6 +275,20 @@ public class MenuPrincipal extends javax.swing.JFrame {
         cdfd.show();
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        // TODO add your handling code here:
+        jdpEscritorio.removeAll();
+        jdpEscritorio.repaint();
+        ConsultaEjemplaresPrestadosPorFecha ceppf=new ConsultaEjemplaresPrestadosPorFecha();
+        ceppf.setVisible(true);
+        jdpEscritorio.add(ceppf);
+
+        Dimension desktopSize = jdpEscritorio.getSize();
+        Dimension FrameSize = ceppf.getSize();
+        ceppf.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
+        ceppf.show();
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -318,6 +341,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JDesktopPane jdpEscritorio;
     // End of variables declaration//GEN-END:variables
 }

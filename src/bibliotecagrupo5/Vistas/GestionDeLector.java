@@ -90,7 +90,7 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setPreferredSize(new java.awt.Dimension(900, 550));
 
-        jPanel1.setBackground(new java.awt.Color(153, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(0, 255, 255));
 
         jLabel1.setText("Lector");
 
@@ -190,7 +190,7 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
                 .addGap(69, 69, 69))
         );
 
-        jPanel2.setBackground(new java.awt.Color(204, 255, 204));
+        jPanel2.setBackground(new java.awt.Color(0, 255, 255));
 
         jLabel7.setText("Busqueda");
 
@@ -347,7 +347,7 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
                 jrbModificar.setEnabled(true);
                 jtfNroSocio.setText("");
             } else {
-                JOptionPane.showMessageDialog(this, "debe ingresar solo letras");
+               // JOptionPane.showMessageDialog(this, "debe ingresar solo letras");
 
             }
 
@@ -504,7 +504,7 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
                     JOptionPane.showMessageDialog(this, "Lector eliminado con exito");
 
                 } else {
-                    JOptionPane.showMessageDialog(this, "ha elegido no eliminar lector " + nroSocio + " si decea vuelva a intentarlo");
+                    JOptionPane.showMessageDialog(this, "Ha elegido NO eliminar el lector socio " + nroSocio + ", si desea vuelva a intentarlo");
 
                 }
                 borrarTabla();
@@ -513,10 +513,11 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
                 jrbModificar.setEnabled(false);
 
             } else {
-                JOptionPane.showMessageDialog(this, "No puede eliminar lector con nroSocio" + nroSocio + " Tiene libros prestados");
-
+                JOptionPane.showMessageDialog(this, "No puede eliminar al lector socio" + nroSocio + ", Tiene libros prestados");
+                
             }
-            //borrarTabla();
+            jtaLector.clearSelection();
+            borrarTabla();
             borrarJtfBusqueda();
         } else {
             JOptionPane.showMessageDialog(this, "Debe selecionar una fila");

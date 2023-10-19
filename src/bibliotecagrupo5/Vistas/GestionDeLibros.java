@@ -95,7 +95,7 @@ public class GestionDeLibros extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setTitle("Gestion de Libros");
 
-        jPanel3.setBackground(new java.awt.Color(102, 204, 255));
+        jPanel3.setBackground(new java.awt.Color(0, 255, 255));
 
         jLabel1.setText("Formulario Libros");
 
@@ -194,7 +194,7 @@ public class GestionDeLibros extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel4.setBackground(new java.awt.Color(102, 204, 255));
+        jPanel4.setBackground(new java.awt.Color(0, 255, 255));
 
         jLabel8.setText("Modificacion");
 
