@@ -303,7 +303,7 @@ public class ConsultasLibro extends javax.swing.JInternalFrame {
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(this, "Debe ingresar un valor numerico ");
         } catch (NullPointerException ex) {
-
+            
         }
     }//GEN-LAST:event_jcbOpcionesBusquedaActionPerformed
 

@@ -319,5 +319,38 @@ public class PrestamoData {
         }
         return Prestamos;
     }
+    
+    public TreeSet<Prestamo> obtenerPrestamosPorRangoDeFechas(LocalDate fecha1, LocalDate fecha2) {
+    TreeSet<Prestamo> listaPrestamos = new TreeSet<>();
+
+    try {
+        String sql = "SELECT * FROM prestamo WHERE fechaInicio BETWEEN ? AND ?";
+
+        PreparedStatement ps = con.prepareStatement(sql);
+        Date fechaInicio1 = Date.valueOf(fecha1);
+        Date fechaInicio2 = Date.valueOf(fecha2);
+        ps.setDate(1, fechaInicio1);
+        ps.setDate(2, fechaInicio2);
+
+        ResultSet rs = ps.executeQuery();
+
+        while (rs.next()) {
+            Prestamo prestamo = new Prestamo();
+            prestamo.setIdPrestamo(rs.getInt("idPrestamo"));
+            prestamo.setFechaInicio(rs.getDate("fechaInicio").toLocalDate());
+            prestamo.setFechaFin(rs.getDate("fechaFin").toLocalDate());
+            prestamo.setEjemplar(ejemplarData.buscarEjemplar(rs.getInt("codigo")));
+            prestamo.setLector(lectorData.buscarLectorPorNroSocio(rs.getInt("nroSocio")));
+            prestamo.setEstado(rs.getBoolean("estado"));
+            listaPrestamos.add(prestamo);
+        }
+        ps.close();
+
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Error PD11 - Error al acceder a la tabla Prestamo: " + ex.getMessage());
+    }
+    return listaPrestamos;
+}
+
 
 }
