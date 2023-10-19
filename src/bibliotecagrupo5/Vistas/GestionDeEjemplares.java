@@ -46,6 +46,7 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
             cargarComboCondicion();
             armarCabecera();
             ajustarTamañoColumnas();
+            borrarTabla();
 //        crearComboBox();
            
             SpinnerNumberModel modeloSpinner = new SpinnerNumberModel();
@@ -101,6 +102,8 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
         jLabel10 = new javax.swing.JLabel();
 
         jButton1.setText("jButton1");
+
+        setClosable(true);
 
         jPanel1.setBackground(new java.awt.Color(0, 255, 255));
 
@@ -242,15 +245,14 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
 
         jtTabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "Titulo", "Autor", "Tipo"
             }
         ));
+        jtTabla.getTableHeader().setResizingAllowed(false);
+        jtTabla.getTableHeader().setReorderingAllowed(false);
         jtTabla.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jtTablaMouseClicked(evt);
