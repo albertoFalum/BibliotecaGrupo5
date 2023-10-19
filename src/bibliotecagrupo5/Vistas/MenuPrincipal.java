@@ -7,14 +7,9 @@ package bibliotecagrupo5.Vistas;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.io.File;
-import javafx.application.Platform;
+
 import javax.swing.JOptionPane;
-import javafx.embed.swing.JFXPanel;
-import javafx.scene.Group;
-import javafx.scene.Scene;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
-import javafx.scene.media.MediaView;
+
 /**
  *
  * @author BETO

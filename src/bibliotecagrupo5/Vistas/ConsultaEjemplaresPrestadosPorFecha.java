@@ -78,7 +78,7 @@ public class ConsultaEjemplaresPrestadosPorFecha extends javax.swing.JInternalFr
         setIconifiable(true);
         setTitle("Consulta Prestamo por Fecha");
 
-        jPanel1.setBackground(new java.awt.Color(0, 153, 255));
+        jPanel1.setBackground(new java.awt.Color(0, 255, 255));
 
         jLabel1.setText("Ejemplares Prestados");
 
