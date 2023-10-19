@@ -269,7 +269,7 @@ public class ManejoPrestamoDevolucion extends javax.swing.JInternalFrame {
                     ejemplarData.modificarEjemplar(ejemplar);
 
                     JOptionPane.showMessageDialog(this, "Prestamo Guardado");
-                    borrarTabla();
+                    
 
                     cargarComboEjemplar();
                     borrarCampos();
@@ -307,7 +307,7 @@ public class ManejoPrestamoDevolucion extends javax.swing.JInternalFrame {
                 ejemplarData.modificarEjemplar(ejemplarDisponible);
                 cargarComboEjemplar();
 
-                borrarTabla();
+               
                 cargarTablaLista(prestamoData.listarPrestamos());
                 borrarCampos();
 
