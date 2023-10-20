@@ -102,7 +102,7 @@ public class ManejoPrestamoDevolucion extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(jTPrestamo);
 
         jbMostrarPrestamos.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
-        jbMostrarPrestamos.setIcon(new javax.swing.ImageIcon("C:\\Users\\Leandro\\Documents\\GitHub\\BibliotecaGrupo5\\src\\bibliotecagrupo5\\ImagenesVideosGif\\icons8-mostrar-propiedad-24.png")); // NOI18N
+        jbMostrarPrestamos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotecagrupo5/ImagenesVideosGif/icons8-mostrar-propiedad-24.png"))); // NOI18N
         jbMostrarPrestamos.setText("Mostrar Prestamos");
         jbMostrarPrestamos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -111,7 +111,7 @@ public class ManejoPrestamoDevolucion extends javax.swing.JInternalFrame {
         });
 
         jbLimpiar.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
-        jbLimpiar.setIcon(new javax.swing.ImageIcon("C:\\Users\\Leandro\\Documents\\GitHub\\BibliotecaGrupo5\\src\\bibliotecagrupo5\\ImagenesVideosGif\\limpiar.png")); // NOI18N
+        jbLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotecagrupo5/ImagenesVideosGif/limpiar.png"))); // NOI18N
         jbLimpiar.setText("Limpiar");
         jbLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -171,7 +171,7 @@ public class ManejoPrestamoDevolucion extends javax.swing.JInternalFrame {
         jLabel3.setText("Formulario Prestamos y Devoluciones");
 
         jbActualizarCondicion.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
-        jbActualizarCondicion.setIcon(new javax.swing.ImageIcon("C:\\Users\\Leandro\\Documents\\GitHub\\BibliotecaGrupo5\\src\\bibliotecagrupo5\\ImagenesVideosGif\\icons8-actualizar-24.png")); // NOI18N
+        jbActualizarCondicion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotecagrupo5/ImagenesVideosGif/icons8-actualizar-24.png"))); // NOI18N
         jbActualizarCondicion.setText("Actualizar Condicion");
         jbActualizarCondicion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

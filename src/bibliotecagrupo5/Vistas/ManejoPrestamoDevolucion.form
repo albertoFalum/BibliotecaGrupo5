@@ -213,7 +213,7 @@
               <Font name="Yu Gothic UI Semilight" size="14" style="0"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\Leandro\Documents\GitHub\BibliotecaGrupo5\src\bibliotecagrupo5\ImagenesVideosGif\icons8-mostrar-propiedad-24.png"/>
+              <Image iconType="3" name="/bibliotecagrupo5/ImagenesVideosGif/icons8-mostrar-propiedad-24.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Mostrar Prestamos"/>
           </Properties>
@@ -227,7 +227,7 @@
               <Font name="Yu Gothic UI Semilight" size="14" style="0"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\Leandro\Documents\GitHub\BibliotecaGrupo5\src\bibliotecagrupo5\ImagenesVideosGif\limpiar.png"/>
+              <Image iconType="3" name="/bibliotecagrupo5/ImagenesVideosGif/limpiar.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Limpiar"/>
           </Properties>
@@ -344,7 +344,7 @@
               <Font name="Yu Gothic UI Semilight" size="14" style="0"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\Leandro\Documents\GitHub\BibliotecaGrupo5\src\bibliotecagrupo5\ImagenesVideosGif\icons8-actualizar-24.png"/>
+              <Image iconType="3" name="/bibliotecagrupo5/ImagenesVideosGif/icons8-actualizar-24.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Actualizar Condicion"/>
           </Properties>
