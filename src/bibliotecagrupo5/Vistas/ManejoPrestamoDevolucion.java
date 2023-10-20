@@ -9,6 +9,7 @@ import bibliotecagrupo5.Entidades.Lector;
 import bibliotecagrupo5.Entidades.Prestamo;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.time.temporal.ChronoUnit;
 import java.util.TreeSet;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -30,6 +31,7 @@ public class ManejoPrestamoDevolucion extends javax.swing.JInternalFrame {
     private PrestamoData prestamoData = null;
     private TreeSet<Lector> listaLector = null;
     private TreeSet<Ejemplar> listaEjemplar = null;
+    private boolean recargarListaPrestamos = false;
 
     /**
      * Creates new form ManejoPrestamoDevolucion
@@ -76,6 +78,7 @@ public class ManejoPrestamoDevolucion extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jcbLector = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
+        jbActualizarCondicion = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(51, 105, 242));
         setClosable(true);
@@ -165,46 +168,59 @@ public class ManejoPrestamoDevolucion extends javax.swing.JInternalFrame {
         jLabel3.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel3.setText("Formulario Prestamos y Devoluciones");
 
+        jbActualizarCondicion.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
+        jbActualizarCondicion.setText("Actualizar Condicion");
+        jbActualizarCondicion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbActualizarCondicionActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jbMostrarPrestamos)
-                        .addGap(69, 69, 69)
-                        .addComponent(jbLimpiar)
-                        .addGap(102, 102, 102)
-                        .addComponent(jbDevolver)
-                        .addGap(118, 118, 118)
-                        .addComponent(jbSalir))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel4))
-                        .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jdchFechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jdchFechaFin, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(34, 34, 34))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(16, 16, 16)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel3)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jcbEjemplar, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jcbLector, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addComponent(jbPrestar)))
-                .addContainerGap(34, Short.MAX_VALUE))
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel4))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jdchFechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jdchFechaFin, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(34, 34, 34))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(16, 16, 16)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel3)
+                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(jcbEjemplar, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(jcbLector, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(jbPrestar))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 851, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(39, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jbMostrarPrestamos)
+                        .addGap(58, 58, 58)
+                        .addComponent(jbActualizarCondicion)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jbDevolver)
+                        .addGap(74, 74, 74)
+                        .addComponent(jbLimpiar)
+                        .addGap(58, 58, 58)
+                        .addComponent(jbSalir)
+                        .addGap(106, 106, 106))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -237,7 +253,8 @@ public class ManejoPrestamoDevolucion extends javax.swing.JInternalFrame {
                     .addComponent(jbMostrarPrestamos)
                     .addComponent(jbDevolver)
                     .addComponent(jbSalir)
-                    .addComponent(jbLimpiar))
+                    .addComponent(jbLimpiar)
+                    .addComponent(jbActualizarCondicion))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
 
@@ -312,7 +329,7 @@ public class ManejoPrestamoDevolucion extends javax.swing.JInternalFrame {
                 Ejemplar ejemplarPrestado = ejemplarData.buscarEjemplar(codigo);
 
                 prestamoData.eliminarPrestamo(idPrestamo);
-
+                System.out.println(""+ejemplarPrestado.getCodigo());
                 ejemplarData.eliminarEjemplar(ejemplarPrestado.getCodigo());
 
                 Ejemplar ejemplarDisponible = ejemplarData.BuscarEjemplarIdLibroYCondicion(ejemplarPrestado.getLibro().getIdLibro(), Condicion.DISPONIBLE);
@@ -387,6 +404,28 @@ public class ManejoPrestamoDevolucion extends javax.swing.JInternalFrame {
         borrarTabla();
     }//GEN-LAST:event_jbLimpiarActionPerformed
 
+    private void jbActualizarCondicionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbActualizarCondicionActionPerformed
+        // TODO add your handling code here:
+        borrarTabla();
+        LocalDate fechaActual = LocalDate.now();
+
+        try {
+            TreeSet<Prestamo> listaPrestamo2 = prestamoData.obtenerPrestamosVencidos(fechaActual);
+
+            for (Prestamo aux : listaPrestamo2) {
+                aux.getEjemplar().setCondicion(Condicion.RETRASO);
+                ejemplarData.modificarEjemplar(aux.getEjemplar());
+                recargarListaPrestamos = true;
+            }
+
+            if (recargarListaPrestamos) {
+                cargarTablaLista(listaPrestamo2);
+            }
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "No hay datos para mostrar: " + ex.getMessage());
+        }
+    }//GEN-LAST:event_jbActualizarCondicionActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
@@ -397,6 +436,7 @@ public class ManejoPrestamoDevolucion extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTPrestamo;
+    private javax.swing.JButton jbActualizarCondicion;
     private javax.swing.JButton jbDevolver;
     private javax.swing.JButton jbLimpiar;
     private javax.swing.JButton jbMostrarPrestamos;
@@ -414,6 +454,7 @@ public class ManejoPrestamoDevolucion extends javax.swing.JInternalFrame {
         modelo.addColumn("Titulo Libro");
         modelo.addColumn("Fecha Prestamo");
         modelo.addColumn("Fecha Finalizacion");
+        modelo.addColumn("Condicion");
         jTPrestamo.setModel(modelo);
     }
 
@@ -436,6 +477,9 @@ public class ManejoPrestamoDevolucion extends javax.swing.JInternalFrame {
         TableColumn columnaFechaFin = jTPrestamo.getColumnModel().getColumn(4);
         columnaFechaFin.setPreferredWidth(90);
 
+        TableColumn columnaCondicion = jTPrestamo.getColumnModel().getColumn(4);
+        columnaCondicion.setPreferredWidth(100);
+
     }
 
     private void cargarTabla(Prestamo prestamo) {
@@ -444,7 +488,8 @@ public class ManejoPrestamoDevolucion extends javax.swing.JInternalFrame {
             prestamo.getLector().getNroSocio(),
             prestamo.getEjemplar().getCodigo(),
             prestamo.getEjemplar().getLibro().getTitulo(),
-            prestamo.getFechaInicio(), prestamo.getFechaFin()});
+            prestamo.getFechaInicio(), prestamo.getFechaFin(),
+            prestamo.getEjemplar().getCondicion()});
 
     }
 
