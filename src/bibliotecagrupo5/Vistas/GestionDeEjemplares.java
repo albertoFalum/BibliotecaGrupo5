@@ -55,12 +55,8 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
             SpinnerNumberModel modeloSpinner1 = new SpinnerNumberModel();
             modeloSpinner1.setMinimum(1);
             jsCantidad2.setModel(modeloSpinner1);
-            jcbEjemplarLibro.setSelectedIndex(-1);
-            jcbEjemplarLibro2.setSelectedIndex(-1);
-            jcbCondicion.setSelectedIndex(-1);
-            jcbCondicion1.setSelectedIndex(-1);
         } catch (NullPointerException ex) {
-          
+            JOptionPane.showMessageDialog(this, "Debes cargar libros en gestion de libros");
         }
     }
 
@@ -425,9 +421,9 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
             ejemplardata.guardarEjemplar(ejemplar);
             JOptionPane.showMessageDialog(this, "Ejemplar Guardado");
 
-            jcbEjemplarLibro.setSelectedIndex(-1);
+            jcbEjemplarLibro.setSelectedItem(0);
             jsCantidad1.setValue(1);
-            jcbCondicion.setSelectedIndex(-1);
+            jcbCondicion.setSelectedItem(0);
 
 
         } else {
@@ -436,10 +432,10 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
             ejemplardata.modificarEjemplar(ejemplarNuevo);
 
             JOptionPane.showMessageDialog(this, "Ejemplar Guardado");
-            jcbEjemplarLibro.setSelectedIndex(-1);
+            jcbEjemplarLibro.setSelectedIndex(0);
             jsCantidad1.setValue(1);
-            jcbCondicion.setSelectedIndex(-1);
-            jcbEjemplarLibro2.setSelectedIndex(-1);
+            jcbCondicion.setSelectedIndex(0);
+            jcbEjemplarLibro2.setSelectedIndex(0);
 
             JOptionPane.showMessageDialog(this, "Ejemplar Modificado");
 
@@ -449,7 +445,15 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbGuardarActionPerformed
 
     private void jcbEjemplarLibro2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbEjemplarLibro2ActionPerformed
-       
+        borrarTabla();
+        Libro libroSeleccionado = (Libro) jcbEjemplarLibro2.getSelectedItem();
+
+        TreeSet<Ejemplar> ejemplares = ejemplardata.listarEjemplaresPorLibro(libroSeleccionado.getIdLibro());
+        cargarTabla(ejemplares);
+        jsCantidad2.setValue(1);
+        jcbCondicion1.setVisible(true);
+        jsCantidad2.setVisible(true);
+        jtTabla.setEnabled(iconable);
 
 
     }//GEN-LAST:event_jcbEjemplarLibro2ActionPerformed
@@ -499,8 +503,8 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
                 if (respuesta == 0) {
                     ejemplardata.eliminarEjemplar(codigo);
                     borrarTabla();
-                    jcbEjemplarLibro2.setSelectedIndex(-1);
-                    jcbCondicion1.setSelectedIndex(-1);
+                    jcbEjemplarLibro2.setSelectedIndex(0);
+                    jcbCondicion1.setSelectedIndex(0);
                     JOptionPane.showMessageDialog(this, "Ejemplar Eliminado");
                 }
             } else {
@@ -537,12 +541,13 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
                                 ejem.setCantidad(resul);
                                 ejemplardata.modificarEjemplar(ejem);
                                 JOptionPane.showMessageDialog(this, "Ejemplar modificado");
-                                jcbEjemplarLibro2.setSelectedIndex(-1);
-                                jcbCondicion1.setSelectedIndex(-1);
+                                jcbEjemplarLibro2.setSelectedItem(0);
+                                jcbCondicion1.setSelectedItem(0);
                                 jsCantidadModificar.setValue(1);
                                 jsCantidad2.setValue(1);
                                 borrarTabla();
-                               
+                                jcbCondicion1.setSelectedIndex(0);
+                                jcbEjemplarLibro2.setSelectedIndex(0);
                             } else {
                                 int result = ejemplar1.getCantidad() + cantidadMod;
                                 ejemplar1.setCantidad(result);
@@ -550,13 +555,13 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
                                 ejem.setCantidad(resul);
                                 ejemplardata.modificarEjemplar(ejem);
                                 JOptionPane.showMessageDialog(this, "Ejemplar Modificado");
-                                jcbEjemplarLibro2.setSelectedIndex(-1);
-                                jcbCondicion1.setSelectedIndex(-1);
+                                jcbEjemplarLibro2.setSelectedItem(0);
+                                jcbCondicion1.setSelectedItem(0);
                                 jsCantidadModificar.setValue(1);
                                 jsCantidad2.setValue(1);
-                               
                                 borrarTabla();
-                                
+                                jcbCondicion1.setSelectedIndex(0);
+                                jcbEjemplarLibro2.setSelectedIndex(0);
                             }
                         } else if (condicion.ordinal() == 2 && jrbDisponible.isSelected()) {
                             Condicion nuevaCondicion = Condicion.DISPONIBLE;
@@ -567,8 +572,8 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
                             ejem.setCantidad(resul);
                             ejemplardata.modificarEjemplar(ejem);
                             JOptionPane.showMessageDialog(this, "Ejemplar Modificado");
-                            jcbCondicion1.setSelectedIndex(-1);
-                            jcbEjemplarLibro2.setSelectedIndex(-1);
+                            jcbCondicion1.setSelectedIndex(0);
+                            jcbEjemplarLibro2.setSelectedIndex(0);
                             jsCantidadModificar.setValue(1);
                             jsCantidad2.setValue(1);
                             borrarTabla();
