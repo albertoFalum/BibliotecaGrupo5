@@ -102,6 +102,7 @@ public class ManejoPrestamoDevolucion extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(jTPrestamo);
 
         jbMostrarPrestamos.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
+        jbMostrarPrestamos.setIcon(new javax.swing.ImageIcon("C:\\Users\\Leandro\\Documents\\GitHub\\BibliotecaGrupo5\\src\\bibliotecagrupo5\\ImagenesVideosGif\\icons8-mostrar-propiedad-24.png")); // NOI18N
         jbMostrarPrestamos.setText("Mostrar Prestamos");
         jbMostrarPrestamos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -110,6 +111,7 @@ public class ManejoPrestamoDevolucion extends javax.swing.JInternalFrame {
         });
 
         jbLimpiar.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
+        jbLimpiar.setIcon(new javax.swing.ImageIcon("C:\\Users\\Leandro\\Documents\\GitHub\\BibliotecaGrupo5\\src\\bibliotecagrupo5\\ImagenesVideosGif\\limpiar.png")); // NOI18N
         jbLimpiar.setText("Limpiar");
         jbLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -169,6 +171,7 @@ public class ManejoPrestamoDevolucion extends javax.swing.JInternalFrame {
         jLabel3.setText("Formulario Prestamos y Devoluciones");
 
         jbActualizarCondicion.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
+        jbActualizarCondicion.setIcon(new javax.swing.ImageIcon("C:\\Users\\Leandro\\Documents\\GitHub\\BibliotecaGrupo5\\src\\bibliotecagrupo5\\ImagenesVideosGif\\icons8-actualizar-24.png")); // NOI18N
         jbActualizarCondicion.setText("Actualizar Condicion");
         jbActualizarCondicion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -182,45 +185,43 @@ public class ManejoPrestamoDevolucion extends javax.swing.JInternalFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jbMostrarPrestamos)
+                        .addGap(29, 29, 29)
+                        .addComponent(jbActualizarCondicion)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jbDevolver)
+                        .addGap(87, 87, 87)
+                        .addComponent(jbLimpiar)
+                        .addGap(62, 62, 62)
+                        .addComponent(jbSalir))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel4))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jLabel4))
-                                .addGap(18, 18, 18)
+                                .addGap(26, 26, 26)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jcbEjemplar, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jcbLector, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel3)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jdchFechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jdchFechaFin, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(34, 34, 34))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(16, 16, 16)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLabel3)
-                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                .addComponent(jcbEjemplar, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(jcbLector, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                .addComponent(jbPrestar))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 851, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(39, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jbMostrarPrestamos)
-                        .addGap(58, 58, 58)
-                        .addComponent(jbActualizarCondicion)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jbDevolver)
-                        .addGap(74, 74, 74)
-                        .addComponent(jbLimpiar)
-                        .addGap(58, 58, 58)
-                        .addComponent(jbSalir)
-                        .addGap(106, 106, 106))))
+                                        .addComponent(jdchFechaFin, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(34, 34, 34)))
+                        .addComponent(jbPrestar))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 851, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -255,7 +256,7 @@ public class ManejoPrestamoDevolucion extends javax.swing.JInternalFrame {
                     .addComponent(jbSalir)
                     .addComponent(jbLimpiar)
                     .addComponent(jbActualizarCondicion))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

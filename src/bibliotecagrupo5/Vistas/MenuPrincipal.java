@@ -61,16 +61,18 @@ public class MenuPrincipal extends javax.swing.JFrame {
         );
         jdpEscritorioLayout.setVerticalGroup(
             jdpEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 562, Short.MAX_VALUE)
+            .addGap(0, 561, Short.MAX_VALUE)
         );
 
         jMenu1.setText("Libros");
+        jMenu1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jMenu1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenu1ActionPerformed(evt);
             }
         });
 
+        jMenuItem1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jMenuItem1.setText("Formulario Libros");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -82,7 +84,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuBar1.add(jMenu1);
 
         jMenu3.setText("Ejemplar");
+        jMenu3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
 
+        jMenuItem2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jMenuItem2.setText("Formulario Ejemplares");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -94,7 +98,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuBar1.add(jMenu3);
 
         jMenu2.setText("Lector");
+        jMenu2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
 
+        jMenuItem3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jMenuItem3.setText("Formulario Lector");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -106,7 +112,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuBar1.add(jMenu2);
 
         jMenu4.setText("Prestamos y Devoluciones");
+        jMenu4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
 
+        jMenuItem5.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jMenuItem5.setText("Formulario Prestamo y Devoluciones");
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -118,7 +126,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuBar1.add(jMenu4);
 
         jMenu6.setText("Consultas");
+        jMenu6.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
 
+        jMenuItem4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jMenuItem4.setText("De Libros");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -127,6 +137,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         jMenu6.add(jMenuItem4);
 
+        jMenuItem6.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jMenuItem6.setText("Consulta Fecha Devolucion Prestamo");
         jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -135,6 +146,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         jMenu6.add(jMenuItem6);
 
+        jMenuItem7.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jMenuItem7.setText("Ejemplares prestados por fecha");
         jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -146,6 +158,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuBar1.add(jMenu6);
 
         jMenu5.setText("Salir");
+        jMenu5.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jMenu5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jMenu5MouseClicked(evt);

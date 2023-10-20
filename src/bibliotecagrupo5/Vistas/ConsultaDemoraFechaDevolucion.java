@@ -65,6 +65,7 @@ public class ConsultaDemoraFechaDevolucion extends javax.swing.JInternalFrame {
 
         jPanel1.setBackground(new java.awt.Color(0, 255, 255));
 
+        jbLimpiar.setFont(new java.awt.Font("Microsoft JhengHei UI Light", 0, 14)); // NOI18N
         jbLimpiar.setText("Limpiar Tabla");
         jbLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -72,6 +73,7 @@ public class ConsultaDemoraFechaDevolucion extends javax.swing.JInternalFrame {
             }
         });
 
+        jbSalir.setFont(new java.awt.Font("Microsoft JhengHei UI Light", 0, 14)); // NOI18N
         jbSalir.setText("Salir");
         jbSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -79,6 +81,7 @@ public class ConsultaDemoraFechaDevolucion extends javax.swing.JInternalFrame {
             }
         });
 
+        jbConsultar.setFont(new java.awt.Font("Microsoft JhengHei UI Light", 0, 14)); // NOI18N
         jbConsultar.setText("Consultar");
         jbConsultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,6 +101,7 @@ public class ConsultaDemoraFechaDevolucion extends javax.swing.JInternalFrame {
         jTLectores.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTLectores);
 
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel1.setText("Lectores con Prestamos Vencidos");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -105,22 +109,21 @@ public class ConsultaDemoraFechaDevolucion extends javax.swing.JInternalFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(354, 354, 354)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 826, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(34, 34, 34)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 826, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(39, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(67, 67, 67)
-                .addComponent(jbConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(227, 227, 227)
+                .addComponent(jbConsultar)
+                .addGap(226, 226, 226)
                 .addComponent(jbLimpiar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jbSalir)
                 .addGap(71, 71, 71))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(268, 268, 268))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -134,7 +137,7 @@ public class ConsultaDemoraFechaDevolucion extends javax.swing.JInternalFrame {
                     .addComponent(jbConsultar)
                     .addComponent(jbSalir)
                     .addComponent(jbLimpiar))
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

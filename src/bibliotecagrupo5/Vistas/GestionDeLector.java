@@ -105,7 +105,7 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
 
         jPanel1.setBackground(new java.awt.Color(0, 255, 255));
 
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel1.setText("Formulario Lector");
 
         jLabel3.setFont(new java.awt.Font("Bahnschrift", 0, 14)); // NOI18N
@@ -222,7 +222,7 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
 
         jPanel2.setBackground(new java.awt.Color(0, 255, 255));
 
-        jLabel7.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel7.setText("Busqueda");
 
         jLabel8.setFont(new java.awt.Font("Bahnschrift", 0, 14)); // NOI18N
@@ -294,8 +294,8 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
                 .addGap(66, 66, 66)
                 .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(183, 183, 183))
+                .addComponent(jLabel7)
+                .addGap(216, 216, 216))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
