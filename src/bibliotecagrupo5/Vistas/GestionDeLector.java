@@ -547,7 +547,7 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
                     JOptionPane.showMessageDialog(this, "Lector eliminado con exito");
 
                 } else {
-                    JOptionPane.showMessageDialog(this, "Ha elegido NO eliminar el lector socio " + nroSocio + ", si desea vuelva a intentarlo");
+                    JOptionPane.showMessageDialog(this, "Ha elegido NO eliminar el lector con nrosocio " + nroSocio + ", si desea vuelva a intentarlo");
 
                 }
                 borrarTabla();
