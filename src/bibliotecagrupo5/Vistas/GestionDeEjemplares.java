@@ -111,7 +111,7 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
 
         jPanel1.setBackground(new java.awt.Color(0, 255, 255));
 
-        jLabel1.setText("Ejemplares");
+        jLabel1.setText("Formulario Ejemplares");
 
         jcbEjemplarLibro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -168,10 +168,8 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
                                         .addGap(64, 64, 64)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jrbEstado)
-                                                    .addComponent(jLabel1))
-                                                .addGap(0, 0, Short.MAX_VALUE))
+                                                .addComponent(jrbEstado)
+                                                .addGap(0, 132, Short.MAX_VALUE))
                                             .addComponent(jcbCondicion, 0, 151, Short.MAX_VALUE)))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -182,6 +180,10 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jbGuardar)))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(83, 83, 83))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -467,14 +469,14 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
 
     private void jcbCondicion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbCondicion1ActionPerformed
         borrarTabla();
-        jtTabla.setEnabled(true);
+//        jtTabla.setEnabled(true);
         
         Libro libroSeleccionado = (Libro) jcbEjemplarLibro2.getSelectedItem();
         Condicion condicion = (Condicion) jcbCondicion1.getSelectedItem();
 
         Ejemplar ejemplaresC = ejemplardata.BuscarEjemplarIdLibroYCondicion(libroSeleccionado.getIdLibro(), condicion);
         if (ejemplaresC != null) {
-            jsCantidadModificar.setValue(ejemplaresC.getCantidad());
+            jsCantidadModificar.setValue(0);
             jsCantidad2.setValue(ejemplaresC.getCantidad());
             cargarTabla(ejemplaresC);
             if (condicion.equals(Condicion.DISPONIBLE)) {
