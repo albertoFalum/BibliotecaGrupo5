@@ -46,22 +46,21 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
             cargarComboCondicion();
             armarCabecera();
             ajustarTamañoColumnas();
-            borrarTabla();
 //        crearComboBox();
            
+            SpinnerNumberModel modeloSpinner = new SpinnerNumberModel();
+            modeloSpinner.setMinimum(1);
+            modeloSpinner.setValue(1);
+            jsCantidad1.setModel(modeloSpinner);
             SpinnerNumberModel modeloSpinner1 = new SpinnerNumberModel();
             modeloSpinner1.setMinimum(1);
-            modeloSpinner1.setValue(1);
-            jsCantidad1.setModel(modeloSpinner1);
-            SpinnerNumberModel modeloSpinner2 = new SpinnerNumberModel();
-            modeloSpinner2.setMinimum(1);
-            jsCantidad2.setModel(modeloSpinner2);
+            jsCantidad2.setModel(modeloSpinner1);
             jcbEjemplarLibro.setSelectedIndex(-1);
             jcbEjemplarLibro2.setSelectedIndex(-1);
+            jcbCondicion.setSelectedIndex(-1);
             jcbCondicion1.setSelectedIndex(-1);
-            
         } catch (NullPointerException ex) {
-            
+          
         }
     }
 
@@ -107,11 +106,9 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
 
         jButton1.setText("jButton1");
 
-        setClosable(true);
-
         jPanel1.setBackground(new java.awt.Color(0, 255, 255));
 
-        jLabel1.setText("Formulario Ejemplares");
+        jLabel1.setText("Ejemplares");
 
         jcbEjemplarLibro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -168,8 +165,10 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
                                         .addGap(64, 64, 64)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addComponent(jrbEstado)
-                                                .addGap(0, 132, Short.MAX_VALUE))
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jrbEstado)
+                                                    .addComponent(jLabel1))
+                                                .addGap(0, 0, Short.MAX_VALUE))
                                             .addComponent(jcbCondicion, 0, 151, Short.MAX_VALUE)))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -180,10 +179,6 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jbGuardar)))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(83, 83, 83))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -206,7 +201,7 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(jcbCondicion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 312, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbNuevo)
                     .addComponent(jbGuardar))
@@ -251,14 +246,15 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
 
         jtTabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
                 "Titulo", "Autor", "Tipo"
             }
         ));
-        jtTabla.getTableHeader().setResizingAllowed(false);
-        jtTabla.getTableHeader().setReorderingAllowed(false);
         jtTabla.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jtTablaMouseClicked(evt);
@@ -302,7 +298,7 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 473, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 462, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(21, 21, 21)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -366,7 +362,7 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(jsCantidad2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jsCantidadModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10)
@@ -390,14 +386,14 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -408,7 +404,6 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
 
     private void jcbEjemplarLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbEjemplarLibroActionPerformed
         // TODO add your handling code here:
-        
     }//GEN-LAST:event_jcbEjemplarLibroActionPerformed
 
     private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
@@ -430,9 +425,9 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
             ejemplardata.guardarEjemplar(ejemplar);
             JOptionPane.showMessageDialog(this, "Ejemplar Guardado");
 
-            jcbEjemplarLibro.setSelectedItem(-1);
+            jcbEjemplarLibro.setSelectedIndex(-1);
             jsCantidad1.setValue(1);
-            jcbCondicion.setSelectedItem(-1);
+            jcbCondicion.setSelectedIndex(-1);
 
 
         } else {
@@ -454,29 +449,20 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbGuardarActionPerformed
 
     private void jcbEjemplarLibro2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbEjemplarLibro2ActionPerformed
-        borrarTabla();
-        Libro libroSeleccionado = (Libro) jcbEjemplarLibro2.getSelectedItem();
-
-        TreeSet<Ejemplar> ejemplares = ejemplardata.listarEjemplaresPorLibro(libroSeleccionado.getIdLibro());
-        cargarTabla(ejemplares);
-//        jsCantidad2.setValue(1);
-//        jcbCondicion1.setVisible(true);
-//        jsCantidad2.setVisible(true);
-//        jtTabla.setEnabled(iconable);
+       
 
 
     }//GEN-LAST:event_jcbEjemplarLibro2ActionPerformed
 
     private void jcbCondicion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbCondicion1ActionPerformed
         borrarTabla();
-//        jtTabla.setEnabled(true);
-        
+        jtTabla.setEnabled(true);
         Libro libroSeleccionado = (Libro) jcbEjemplarLibro2.getSelectedItem();
         Condicion condicion = (Condicion) jcbCondicion1.getSelectedItem();
 
         Ejemplar ejemplaresC = ejemplardata.BuscarEjemplarIdLibroYCondicion(libroSeleccionado.getIdLibro(), condicion);
         if (ejemplaresC != null) {
-            jsCantidadModificar.setValue(0);
+            jsCantidadModificar.setValue(ejemplaresC.getCantidad());
             jsCantidad2.setValue(ejemplaresC.getCantidad());
             cargarTabla(ejemplaresC);
             if (condicion.equals(Condicion.DISPONIBLE)) {
@@ -513,8 +499,8 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
                 if (respuesta == 0) {
                     ejemplardata.eliminarEjemplar(codigo);
                     borrarTabla();
-                    jcbEjemplarLibro2.setSelectedIndex(0);
-                    jcbCondicion1.setSelectedIndex(0);
+                    jcbEjemplarLibro2.setSelectedIndex(-1);
+                    jcbCondicion1.setSelectedIndex(-1);
                     JOptionPane.showMessageDialog(this, "Ejemplar Eliminado");
                 }
             } else {
@@ -551,13 +537,12 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
                                 ejem.setCantidad(resul);
                                 ejemplardata.modificarEjemplar(ejem);
                                 JOptionPane.showMessageDialog(this, "Ejemplar modificado");
-                                jcbEjemplarLibro2.setSelectedItem(-1);
-                                jcbCondicion1.setSelectedItem(-1);
+                                jcbEjemplarLibro2.setSelectedIndex(-1);
+                                jcbCondicion1.setSelectedIndex(-1);
                                 jsCantidadModificar.setValue(1);
                                 jsCantidad2.setValue(1);
                                 borrarTabla();
-                                jcbCondicion1.setSelectedIndex(-1);
-                                jcbEjemplarLibro2.setSelectedIndex(-1);
+                               
                             } else {
                                 int result = ejemplar1.getCantidad() + cantidadMod;
                                 ejemplar1.setCantidad(result);
@@ -565,13 +550,13 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
                                 ejem.setCantidad(resul);
                                 ejemplardata.modificarEjemplar(ejem);
                                 JOptionPane.showMessageDialog(this, "Ejemplar Modificado");
-                                jcbEjemplarLibro2.setSelectedItem(-1);
-                                jcbCondicion1.setSelectedItem(-1);
+                                jcbEjemplarLibro2.setSelectedIndex(-1);
+                                jcbCondicion1.setSelectedIndex(-1);
                                 jsCantidadModificar.setValue(1);
                                 jsCantidad2.setValue(1);
+                               
                                 borrarTabla();
-                                jcbCondicion1.setSelectedIndex(-1);
-                                jcbEjemplarLibro2.setSelectedIndex(-1);
+                                
                             }
                         } else if (condicion.ordinal() == 2 && jrbDisponible.isSelected()) {
                             Condicion nuevaCondicion = Condicion.DISPONIBLE;
