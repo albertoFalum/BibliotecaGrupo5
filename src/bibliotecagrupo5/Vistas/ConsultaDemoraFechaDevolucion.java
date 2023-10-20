@@ -27,7 +27,7 @@ public class ConsultaDemoraFechaDevolucion extends javax.swing.JInternalFrame {
 
     private PrestamoData prestamoData = null;
     private EjemplarData ejemplarData = null;
-    private Ejemplar ejemplarNuevo=null;
+    private Ejemplar ejemplarNuevo = null;
     private TreeSet<Prestamo> listaPrestamo = null;
 
     /**
@@ -156,13 +156,13 @@ public class ConsultaDemoraFechaDevolucion extends javax.swing.JInternalFrame {
         borrarTabla();
         LocalDate fechaActual = LocalDate.now();
 
-
         try {
             listaPrestamo = prestamoData.obtenerPrestamosVencidos(fechaActual);
 
             for (Prestamo aux : listaPrestamo) {
                 long diferenciaEnDias = aux.getFechaFin().until(fechaActual, ChronoUnit.DAYS);
-                
+                aux.getEjemplar().setCondicion(Condicion.RETRASO);
+                ejemplarData.modificarEjemplar(aux.getEjemplar());
 
                 modelo.addRow(new Object[]{
                     aux.getLector().getNroSocio(),
@@ -172,13 +172,7 @@ public class ConsultaDemoraFechaDevolucion extends javax.swing.JInternalFrame {
                     aux.getFechaFin(),
                     fechaActual,
                     diferenciaEnDias,});
-                
-//                ejemplarNuevo=aux.getEjemplar();
-//                ejemplarNuevo.setCondicion(Condicion.RETRASO);
-//                ejemplarNuevo.setCantidad(1);
-//                ejemplarData.
-//                
-//                aux.getEjemplar().setCantidad(aux.getEjemplar().getCantidad()-1);
+
             }
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(this, "No hay datos para mostrar: " + ex.getMessage());
@@ -241,7 +235,7 @@ public class ConsultaDemoraFechaDevolucion extends javax.swing.JInternalFrame {
 
         TableColumn columnaFechaActual = jTLectores.getColumnModel().getColumn(4);
         columnaFechaActual.setPreferredWidth(40);
-        
+
         TableColumn columnaRetraso = jTLectores.getColumnModel().getColumn(4);
         columnaRetraso.setPreferredWidth(80);
 

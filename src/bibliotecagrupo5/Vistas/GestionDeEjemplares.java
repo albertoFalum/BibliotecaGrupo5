@@ -52,7 +52,13 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
             modeloSpinner.setMinimum(1);
             modeloSpinner.setValue(1);
             jsCantidad1.setModel(modeloSpinner);
+
             jsCantidadModificar.setModel(modeloSpinner);
+
+            SpinnerNumberModel modeloSpinner1 = new SpinnerNumberModel();
+            modeloSpinner1.setMinimum(1);
+            jsCantidadModificar.setModel(modeloSpinner1);
+
             jcbCondicion.setSelectedIndex(0);
             jcbCondicion1.setSelectedIndex(0);
             jcbEjemplarLibro.setSelectedIndex(0);
