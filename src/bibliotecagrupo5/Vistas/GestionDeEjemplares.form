@@ -162,9 +162,6 @@
               <StringArray count="0"/>
             </Property>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jcbEjemplarLibroActionPerformed"/>
-          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Libro&gt;"/>
           </AuxValues>
@@ -255,7 +252,9 @@
                                           <Component id="jsCantidad2" min="-2" pref="76" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="1" attributes="0">
-                                          <EmptySpace min="-2" pref="103" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                                          <Component id="jbLimpiar" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Component id="jbEliminar" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="32767" attributes="0"/>
                                           <Component id="jbSalir" min="-2" max="-2" attributes="0"/>
@@ -341,6 +340,7 @@
                       <Component id="jbModificar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jbEliminar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jbSalir" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jbLimpiar" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
               </Group>
@@ -451,9 +451,6 @@
                   <TableHeader reorderingAllowed="false" resizingAllowed="false"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jtTablaMouseClicked"/>
-              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -493,6 +490,14 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Cantidad a modificar:"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="jbLimpiar">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Limpiar"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbLimpiarActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
