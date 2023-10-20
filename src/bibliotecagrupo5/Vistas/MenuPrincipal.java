@@ -4,7 +4,10 @@
  */
 package bibliotecagrupo5.Vistas;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.io.File;
+
 import javax.swing.JOptionPane;
 
 
@@ -13,12 +16,12 @@ import javax.swing.JOptionPane;
  * @author BETO
  */
 public class MenuPrincipal extends javax.swing.JFrame {
-     
+
     /**
      * Creates new form Menú
      */
     public MenuPrincipal() {
-        initComponents();
+        initComponents();    
     }
 
     /**

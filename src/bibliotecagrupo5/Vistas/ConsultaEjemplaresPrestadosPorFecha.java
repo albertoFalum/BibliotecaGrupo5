@@ -78,8 +78,9 @@ public class ConsultaEjemplaresPrestadosPorFecha extends javax.swing.JInternalFr
         setIconifiable(true);
         setTitle("Consulta Prestamo por Fecha");
 
-        jPanel1.setBackground(new java.awt.Color(0, 153, 255));
+        jPanel1.setBackground(new java.awt.Color(0, 255, 255));
 
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel1.setText("Ejemplares Prestados");
 
         jLabel2.setText("Fecha de Inicio:");
@@ -157,7 +158,7 @@ public class ConsultaEjemplaresPrestadosPorFecha extends javax.swing.JInternalFr
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbNuevo)
                     .addComponent(jbSalir))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
