@@ -329,7 +329,7 @@ public class ManejoPrestamoDevolucion extends javax.swing.JInternalFrame {
                 Ejemplar ejemplarPrestado = ejemplarData.buscarEjemplar(codigo);
 
                 prestamoData.eliminarPrestamo(idPrestamo);
-
+                System.out.println(""+ejemplarPrestado.getCodigo());
                 ejemplarData.eliminarEjemplar(ejemplarPrestado.getCodigo());
 
                 Ejemplar ejemplarDisponible = ejemplarData.BuscarEjemplarIdLibroYCondicion(ejemplarPrestado.getLibro().getIdLibro(), Condicion.DISPONIBLE);
