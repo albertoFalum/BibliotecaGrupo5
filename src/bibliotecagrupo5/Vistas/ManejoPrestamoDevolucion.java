@@ -272,21 +272,9 @@ public class ManejoPrestamoDevolucion extends javax.swing.JInternalFrame {
 
                     Prestamo prestamo = null;
 
-                    Ejemplar ejemplarBuscado = ejemplarData.BuscarEjemplarIdLibroYCondicion(ejemplar.getLibro().getIdLibro(), Condicion.PRESTADO);
-
-                    if (ejemplarBuscado == null) {
-
-                        Ejemplar ejemplarPrestado = new Ejemplar(ejemplar.getLibro(), 1, true, Condicion.PRESTADO);
-                        ejemplarData.guardarEjemplar(ejemplarPrestado);
-                        prestamo = new Prestamo(fechaInicio, fechaFin, ejemplarPrestado, lector, true);
-
-                    } else {
-
-                        ejemplarBuscado.setCantidad(ejemplarBuscado.getCantidad() + 1);
-                        ejemplarData.modificarEjemplar(ejemplarBuscado);
-                        prestamo = new Prestamo(fechaInicio, fechaFin, ejemplarBuscado, lector, true);
-
-                    }
+                    Ejemplar ejemplarPrestado = new Ejemplar(ejemplar.getLibro(), 1, true, Condicion.PRESTADO);
+                    ejemplarData.guardarEjemplar(ejemplarPrestado);
+                    prestamo = new Prestamo(fechaInicio, fechaFin, ejemplarPrestado, lector, true);
 
                     prestamoData.guardarPrestamo(prestamo);
                     borrarCampos();
@@ -325,8 +313,7 @@ public class ManejoPrestamoDevolucion extends javax.swing.JInternalFrame {
 
                 prestamoData.eliminarPrestamo(idPrestamo);
 
-                ejemplarPrestado.setCantidad(ejemplarPrestado.getCantidad() - 1);
-                ejemplarData.modificarEjemplar(ejemplarPrestado);
+                ejemplarData.eliminarEjemplar(ejemplarPrestado.getCodigo());
 
                 Ejemplar ejemplarDisponible = ejemplarData.BuscarEjemplarIdLibroYCondicion(ejemplarPrestado.getLibro().getIdLibro(), Condicion.DISPONIBLE);
                 ejemplarDisponible.setCantidad(ejemplarDisponible.getCantidad() + 1);
@@ -475,7 +462,6 @@ public class ManejoPrestamoDevolucion extends javax.swing.JInternalFrame {
         jdchFechaInicio.setDate(null);
         jdchFechaFin.setDate(null);
         jcbLector.setSelectedIndex(-1);
-        jcbEjemplar.setSelectedIndex(-1);
     }
 
     private void cargarComboLector() {
