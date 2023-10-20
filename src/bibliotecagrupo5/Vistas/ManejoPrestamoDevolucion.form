@@ -56,9 +56,9 @@
                           <Component id="jbMostrarPrestamos" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                           <Component id="jbActualizarCondicion" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
                           <Component id="jbDevolver" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Component id="jbLimpiar" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
                           <Component id="jbSalir" min="-2" max="-2" attributes="0"/>
@@ -210,7 +210,7 @@
         <Component class="javax.swing.JButton" name="jbMostrarPrestamos">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Yu Gothic UI Semilight" size="14" style="0"/>
+              <Font name="Yu Gothic UI Light" size="14" style="0"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/bibliotecagrupo5/ImagenesVideosGif/icons8-mostrar-propiedad-24.png"/>
@@ -224,7 +224,7 @@
         <Component class="javax.swing.JButton" name="jbLimpiar">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Yu Gothic UI Semilight" size="14" style="0"/>
+              <Font name="Yu Gothic UI Light" size="14" style="0"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/bibliotecagrupo5/ImagenesVideosGif/limpiar.png"/>
@@ -238,7 +238,10 @@
         <Component class="javax.swing.JButton" name="jbDevolver">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Yu Gothic UI Semilight" size="14" style="0"/>
+              <Font name="Yu Gothic UI Light" size="14" style="0"/>
+            </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/bibliotecagrupo5/ImagenesVideosGif/icons8-devolver-libro-24.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Devolver"/>
           </Properties>
@@ -249,7 +252,10 @@
         <Component class="javax.swing.JButton" name="jbSalir">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Yu Gothic UI Semilight" size="14" style="0"/>
+              <Font name="Yu Gothic UI Light" size="14" style="0"/>
+            </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/bibliotecagrupo5/ImagenesVideosGif/salir.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Salir"/>
           </Properties>
@@ -280,7 +286,10 @@
         <Component class="javax.swing.JButton" name="jbPrestar">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Yu Gothic UI Semilight" size="14" style="0"/>
+              <Font name="Yu Gothic UI Light" size="14" style="0"/>
+            </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/bibliotecagrupo5/ImagenesVideosGif/prestar.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="PRESTAR"/>
           </Properties>
@@ -341,7 +350,7 @@
         <Component class="javax.swing.JButton" name="jbActualizarCondicion">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Yu Gothic UI Semilight" size="14" style="0"/>
+              <Font name="Yu Gothic UI Light" size="14" style="0"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/bibliotecagrupo5/ImagenesVideosGif/icons8-actualizar-24.png"/>

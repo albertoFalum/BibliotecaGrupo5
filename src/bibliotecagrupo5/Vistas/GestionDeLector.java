@@ -120,7 +120,8 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
         jLabel6.setFont(new java.awt.Font("Bahnschrift", 0, 14)); // NOI18N
         jLabel6.setText("Mail:");
 
-        jrbNuevo.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
+        jrbNuevo.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
+        jrbNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotecagrupo5/ImagenesVideosGif/nuevo.png"))); // NOI18N
         jrbNuevo.setText("Nuevo");
         jrbNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -128,7 +129,8 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
             }
         });
 
-        jrbGuardar.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
+        jrbGuardar.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
+        jrbGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotecagrupo5/ImagenesVideosGif/guardar.png"))); // NOI18N
         jrbGuardar.setText("Guardar");
         jrbGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -167,14 +169,15 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
                                         .addComponent(jtfDomicilio)))
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addGap(1, 1, 1)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                         .addGroup(jPanel1Layout.createSequentialGroup()
                                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGap(18, 18, 18)
                                             .addComponent(jtfDni, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addComponent(jrbNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(125, 125, 125)
+                                            .addGap(10, 10, 10)
+                                            .addComponent(jrbNuevo)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(jrbGuardar)))))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(97, 97, 97)
@@ -251,7 +254,8 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
         jtaLector.setVerifyInputWhenFocusTarget(false);
         jScrollPane1.setViewportView(jtaLector);
 
-        jrbModificar.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
+        jrbModificar.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
+        jrbModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotecagrupo5/ImagenesVideosGif/escribir.png"))); // NOI18N
         jrbModificar.setText("Modificar");
         jrbModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -259,15 +263,17 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
             }
         });
 
-        jrbSalir.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
-        jrbSalir.setText("salir");
+        jrbSalir.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
+        jrbSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotecagrupo5/ImagenesVideosGif/salir.png"))); // NOI18N
+        jrbSalir.setText("Salir");
         jrbSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jrbSalirActionPerformed(evt);
             }
         });
 
-        jrbEliminar.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
+        jrbEliminar.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
+        jrbEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotecagrupo5/ImagenesVideosGif/eliminar.png"))); // NOI18N
         jrbEliminar.setText("Eliminar");
         jrbEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -278,7 +284,8 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
         jLabel9.setFont(new java.awt.Font("Bahnschrift", 0, 14)); // NOI18N
         jLabel9.setText("Buscar por Nro Socio:");
 
-        jrbBuscar.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
+        jrbBuscar.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
+        jrbBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotecagrupo5/ImagenesVideosGif/buscar.png"))); // NOI18N
         jrbBuscar.setText("Buscar");
         jrbBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -311,15 +318,14 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
                                 .addComponent(jtfNroSocio, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(43, 43, 43)
                         .addComponent(jrbBuscar))
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addComponent(jrbModificar)
-                            .addGap(132, 132, 132)
-                            .addComponent(jrbEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jrbSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 508, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(18, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jrbModificar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jrbEliminar)
+                        .addGap(113, 113, 113)
+                        .addComponent(jrbSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 508, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

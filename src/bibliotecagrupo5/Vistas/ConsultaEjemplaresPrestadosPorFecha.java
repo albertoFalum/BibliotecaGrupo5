@@ -102,6 +102,7 @@ public class ConsultaEjemplaresPrestadosPorFecha extends javax.swing.JInternalFr
         jLabelEntre.setText("entre");
 
         jbNuevo.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
+        jbNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotecagrupo5/ImagenesVideosGif/nuevo.png"))); // NOI18N
         jbNuevo.setText("Nuevo");
         jbNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -110,6 +111,7 @@ public class ConsultaEjemplaresPrestadosPorFecha extends javax.swing.JInternalFr
         });
 
         jbSalir.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
+        jbSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotecagrupo5/ImagenesVideosGif/salir.png"))); // NOI18N
         jbSalir.setText("Salir");
         jbSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -138,8 +140,8 @@ public class ConsultaEjemplaresPrestadosPorFecha extends javax.swing.JInternalFr
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(204, 204, 204)
                         .addComponent(jbNuevo)
-                        .addGap(213, 213, 213)
-                        .addComponent(jbSalir))
+                        .addGap(193, 193, 193)
+                        .addComponent(jbSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(302, 302, 302)
                         .addComponent(jLabel1)))
@@ -162,7 +164,7 @@ public class ConsultaEjemplaresPrestadosPorFecha extends javax.swing.JInternalFr
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbNuevo)
                     .addComponent(jbSalir))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(11, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

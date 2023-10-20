@@ -141,7 +141,7 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
         jLabel7.setText("Condicion:");
 
         jbNuevo.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
-        jbNuevo.setIcon(new javax.swing.ImageIcon("C:\\Users\\Leandro\\Documents\\GitHub\\BibliotecaGrupo5\\src\\bibliotecagrupo5\\ImagenesVideosGif\\nuevo.png")); // NOI18N
+        jbNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotecagrupo5/ImagenesVideosGif/nuevo.png"))); // NOI18N
         jbNuevo.setText("Nuevo");
         jbNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -150,7 +150,7 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
         });
 
         jbGuardar.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
-        jbGuardar.setIcon(new javax.swing.ImageIcon("C:\\Users\\Leandro\\Documents\\GitHub\\BibliotecaGrupo5\\src\\bibliotecagrupo5\\ImagenesVideosGif\\guardar.png")); // NOI18N
+        jbGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotecagrupo5/ImagenesVideosGif/guardar.png"))); // NOI18N
         jbGuardar.setText("Guardar");
         jbGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -158,7 +158,7 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel11.setIcon(new javax.swing.ImageIcon("C:\\Users\\Leandro\\Documents\\GitHub\\BibliotecaGrupo5\\src\\bibliotecagrupo5\\ImagenesVideosGif\\Image20231018165055 (2).png")); // NOI18N
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotecagrupo5/ImagenesVideosGif/Image20231018165055 (2).png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -263,7 +263,7 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
         jLabel9.setText("Cantidad:");
 
         jbModificar.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
-        jbModificar.setIcon(new javax.swing.ImageIcon("C:\\Users\\Leandro\\Documents\\GitHub\\BibliotecaGrupo5\\src\\bibliotecagrupo5\\ImagenesVideosGif\\escribir.png")); // NOI18N
+        jbModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotecagrupo5/ImagenesVideosGif/escribir.png"))); // NOI18N
         jbModificar.setText("Modificar");
         jbModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -272,7 +272,7 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
         });
 
         jbEliminar.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
-        jbEliminar.setIcon(new javax.swing.ImageIcon("C:\\Users\\Leandro\\Documents\\GitHub\\BibliotecaGrupo5\\src\\bibliotecagrupo5\\ImagenesVideosGif\\eliminar.png")); // NOI18N
+        jbEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotecagrupo5/ImagenesVideosGif/eliminar.png"))); // NOI18N
         jbEliminar.setText("Eliminar");
         jbEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -298,7 +298,7 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
         }
 
         jbSalir.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
-        jbSalir.setIcon(new javax.swing.ImageIcon("C:\\Users\\Leandro\\Documents\\GitHub\\BibliotecaGrupo5\\src\\bibliotecagrupo5\\ImagenesVideosGif\\salir.png")); // NOI18N
+        jbSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotecagrupo5/ImagenesVideosGif/salir.png"))); // NOI18N
         jbSalir.setText("Salir");
         jbSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -326,7 +326,7 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
         jLabel10.setText("Cantidad a modificar:");
 
         jbLimpiar.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
-        jbLimpiar.setIcon(new javax.swing.ImageIcon("C:\\Users\\Leandro\\Documents\\GitHub\\BibliotecaGrupo5\\src\\bibliotecagrupo5\\ImagenesVideosGif\\limpiar.png")); // NOI18N
+        jbLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotecagrupo5/ImagenesVideosGif/limpiar.png"))); // NOI18N
         jbLimpiar.setText("Limpiar");
         jbLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -334,7 +334,7 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel12.setIcon(new javax.swing.ImageIcon("C:\\Users\\Leandro\\Documents\\GitHub\\BibliotecaGrupo5\\src\\bibliotecagrupo5\\ImagenesVideosGif\\Image20231018165055 (1).png")); // NOI18N
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotecagrupo5/ImagenesVideosGif/Image20231018165055 (1).png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);

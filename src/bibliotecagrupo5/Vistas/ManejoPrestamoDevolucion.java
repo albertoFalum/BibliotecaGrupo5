@@ -101,7 +101,7 @@ public class ManejoPrestamoDevolucion extends javax.swing.JInternalFrame {
         jTPrestamo.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTPrestamo);
 
-        jbMostrarPrestamos.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
+        jbMostrarPrestamos.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
         jbMostrarPrestamos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotecagrupo5/ImagenesVideosGif/icons8-mostrar-propiedad-24.png"))); // NOI18N
         jbMostrarPrestamos.setText("Mostrar Prestamos");
         jbMostrarPrestamos.addActionListener(new java.awt.event.ActionListener() {
@@ -110,7 +110,7 @@ public class ManejoPrestamoDevolucion extends javax.swing.JInternalFrame {
             }
         });
 
-        jbLimpiar.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
+        jbLimpiar.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
         jbLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotecagrupo5/ImagenesVideosGif/limpiar.png"))); // NOI18N
         jbLimpiar.setText("Limpiar");
         jbLimpiar.addActionListener(new java.awt.event.ActionListener() {
@@ -119,7 +119,8 @@ public class ManejoPrestamoDevolucion extends javax.swing.JInternalFrame {
             }
         });
 
-        jbDevolver.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
+        jbDevolver.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
+        jbDevolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotecagrupo5/ImagenesVideosGif/icons8-devolver-libro-24.png"))); // NOI18N
         jbDevolver.setText("Devolver");
         jbDevolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -127,7 +128,8 @@ public class ManejoPrestamoDevolucion extends javax.swing.JInternalFrame {
             }
         });
 
-        jbSalir.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
+        jbSalir.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
+        jbSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotecagrupo5/ImagenesVideosGif/salir.png"))); // NOI18N
         jbSalir.setText("Salir");
         jbSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -141,7 +143,8 @@ public class ManejoPrestamoDevolucion extends javax.swing.JInternalFrame {
         jLabel5.setFont(new java.awt.Font("Bahnschrift", 0, 14)); // NOI18N
         jLabel5.setText("Fecha Fin:");
 
-        jbPrestar.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
+        jbPrestar.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
+        jbPrestar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotecagrupo5/ImagenesVideosGif/prestar.png"))); // NOI18N
         jbPrestar.setText("PRESTAR");
         jbPrestar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -170,7 +173,7 @@ public class ManejoPrestamoDevolucion extends javax.swing.JInternalFrame {
         jLabel3.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel3.setText("Formulario Prestamos y Devoluciones");
 
-        jbActualizarCondicion.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
+        jbActualizarCondicion.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
         jbActualizarCondicion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotecagrupo5/ImagenesVideosGif/icons8-actualizar-24.png"))); // NOI18N
         jbActualizarCondicion.setText("Actualizar Condicion");
         jbActualizarCondicion.addActionListener(new java.awt.event.ActionListener() {
@@ -190,9 +193,9 @@ public class ManejoPrestamoDevolucion extends javax.swing.JInternalFrame {
                         .addComponent(jbMostrarPrestamos)
                         .addGap(29, 29, 29)
                         .addComponent(jbActualizarCondicion)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(51, 51, 51)
                         .addComponent(jbDevolver)
-                        .addGap(87, 87, 87)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jbLimpiar)
                         .addGap(62, 62, 62)
                         .addComponent(jbSalir))
