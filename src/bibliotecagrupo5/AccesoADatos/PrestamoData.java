@@ -94,7 +94,7 @@ public class PrestamoData {
             int exito = ps.executeUpdate();
             if (exito == 1) {
 
-                JOptionPane.showMessageDialog(null, "Prestamo eliminado");
+                JOptionPane.showMessageDialog(null, "Libro devuelto");
 
             }
 
