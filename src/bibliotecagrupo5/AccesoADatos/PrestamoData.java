@@ -26,7 +26,7 @@ public class PrestamoData {
     private LectorData lectorData;
 
     public PrestamoData() {
-        con = Conexion.getConexion();
+        con = Conexion.getConexion("bibliotecagrupo5");
         libroData = new LibroData();
         ejemplarData = new EjemplarData();
         lectorData = new LectorData();

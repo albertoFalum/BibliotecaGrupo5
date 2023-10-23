@@ -20,7 +20,7 @@ public class EjemplarData {
     private LibroData librodata;
 
     public EjemplarData() {
-        con = Conexion.getConexion();
+        con = Conexion.getConexion("bibliotecagrupo5");
         librodata = new LibroData();
     }
 

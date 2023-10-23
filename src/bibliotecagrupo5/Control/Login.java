@@ -25,7 +25,7 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
         this.setLocationRelativeTo(null);
-        con = Conexion.getConexion2("login");
+        con = Conexion.getConexion("login");
     }
 
     /**
@@ -65,6 +65,7 @@ public class Login extends javax.swing.JFrame {
         jLabel6.setText("Contraseña:");
 
         jbIniciarSesion.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
+        jbIniciarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotecagrupo5/ImagenesVideosGif/iniciar sesion.png"))); // NOI18N
         jbIniciarSesion.setText("Iniciar Sesion");
         jbIniciarSesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -73,6 +74,7 @@ public class Login extends javax.swing.JFrame {
         });
 
         jbNuevoUsuario.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
+        jbNuevoUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotecagrupo5/ImagenesVideosGif/nuevo-usuario.png"))); // NOI18N
         jbNuevoUsuario.setText("Nuevo Usuario");
         jbNuevoUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -81,6 +83,7 @@ public class Login extends javax.swing.JFrame {
         });
 
         jbCancelar.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
+        jbCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotecagrupo5/ImagenesVideosGif/cancelar.png"))); // NOI18N
         jbCancelar.setText("Cancelar");
         jbCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,17 +98,14 @@ public class Login extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(36, 36, 36)
-                                .addComponent(jLabel6))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel5)))
+                        .addGap(58, 58, 58)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jpfContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jtfUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jtfUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jpfContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(32, 32, 32)
                         .addComponent(jbIniciarSesion)
@@ -114,7 +114,7 @@ public class Login extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jbCancelar))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
+                        .addGap(60, 60, 60)
                         .addComponent(jLabel1)))
                 .addContainerGap(44, Short.MAX_VALUE))
         );
@@ -146,7 +146,7 @@ public class Login extends javax.swing.JFrame {
         jdpEscritorioLoginLayout.setHorizontalGroup(
             jdpEscritorioLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jdpEscritorioLoginLayout.createSequentialGroup()
-                .addContainerGap(125, Short.MAX_VALUE)
+                .addContainerGap(75, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(123, 123, 123))
         );
@@ -155,7 +155,7 @@ public class Login extends javax.swing.JFrame {
             .addGroup(jdpEscritorioLoginLayout.createSequentialGroup()
                 .addGap(112, 112, 112)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(152, Short.MAX_VALUE))
+                .addContainerGap(148, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -189,7 +189,9 @@ public class Login extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "Bienvenido al Sistema de Gestion Biblioteca ANTONIO ESTEBAN AGÜERO");
                     JFrame menuPrincipal = new MenuPrincipal();
                     dispose();
+                    Conexion.desconectar(con);
                     menuPrincipal.setVisible(true);
+                    
                 } else {
                     JOptionPane.showMessageDialog(this, "Usuario y/o contraseñas incorrectos");
                     jtfUsuario.setText("");
