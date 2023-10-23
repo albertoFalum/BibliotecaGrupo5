@@ -27,7 +27,7 @@ public class ConsultaDemoraFechaDevolucion extends javax.swing.JInternalFrame {
 
     private PrestamoData prestamoData = null;
     private EjemplarData ejemplarData = null;
-    private Ejemplar ejemplarNuevo=null;
+    private Ejemplar ejemplarNuevo = null;
     private TreeSet<Prestamo> listaPrestamo = null;
 
     /**
@@ -65,6 +65,8 @@ public class ConsultaDemoraFechaDevolucion extends javax.swing.JInternalFrame {
 
         jPanel1.setBackground(new java.awt.Color(0, 255, 255));
 
+        jbLimpiar.setFont(new java.awt.Font("Microsoft JhengHei UI Light", 0, 14)); // NOI18N
+        jbLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotecagrupo5/ImagenesVideosGif/limpiar.png"))); // NOI18N
         jbLimpiar.setText("Limpiar Tabla");
         jbLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -72,6 +74,8 @@ public class ConsultaDemoraFechaDevolucion extends javax.swing.JInternalFrame {
             }
         });
 
+        jbSalir.setFont(new java.awt.Font("Microsoft JhengHei UI Light", 0, 14)); // NOI18N
+        jbSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotecagrupo5/ImagenesVideosGif/salir.png"))); // NOI18N
         jbSalir.setText("Salir");
         jbSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -79,6 +83,8 @@ public class ConsultaDemoraFechaDevolucion extends javax.swing.JInternalFrame {
             }
         });
 
+        jbConsultar.setFont(new java.awt.Font("Microsoft JhengHei UI Light", 0, 14)); // NOI18N
+        jbConsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotecagrupo5/ImagenesVideosGif/buscar.png"))); // NOI18N
         jbConsultar.setText("Consultar");
         jbConsultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,6 +104,7 @@ public class ConsultaDemoraFechaDevolucion extends javax.swing.JInternalFrame {
         jTLectores.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTLectores);
 
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel1.setText("Lectores con Prestamos Vencidos");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -105,22 +112,21 @@ public class ConsultaDemoraFechaDevolucion extends javax.swing.JInternalFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(354, 354, 354)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 826, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(34, 34, 34)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 826, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(39, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(67, 67, 67)
-                .addComponent(jbConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(227, 227, 227)
-                .addComponent(jbLimpiar)
+                .addComponent(jbConsultar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jbSalir)
+                .addComponent(jbLimpiar)
+                .addGap(184, 184, 184)
+                .addComponent(jbSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(71, 71, 71))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(268, 268, 268))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -134,7 +140,7 @@ public class ConsultaDemoraFechaDevolucion extends javax.swing.JInternalFrame {
                     .addComponent(jbConsultar)
                     .addComponent(jbSalir)
                     .addComponent(jbLimpiar))
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -156,13 +162,13 @@ public class ConsultaDemoraFechaDevolucion extends javax.swing.JInternalFrame {
         borrarTabla();
         LocalDate fechaActual = LocalDate.now();
 
-
         try {
             listaPrestamo = prestamoData.obtenerPrestamosVencidos(fechaActual);
 
             for (Prestamo aux : listaPrestamo) {
                 long diferenciaEnDias = aux.getFechaFin().until(fechaActual, ChronoUnit.DAYS);
-                
+                aux.getEjemplar().setCondicion(Condicion.RETRASO);
+                ejemplarData.modificarEjemplar(aux.getEjemplar());
 
                 modelo.addRow(new Object[]{
                     aux.getLector().getNroSocio(),
@@ -172,13 +178,7 @@ public class ConsultaDemoraFechaDevolucion extends javax.swing.JInternalFrame {
                     aux.getFechaFin(),
                     fechaActual,
                     diferenciaEnDias,});
-                
-//                ejemplarNuevo=aux.getEjemplar();
-//                ejemplarNuevo.setCondicion(Condicion.RETRASO);
-//                ejemplarNuevo.setCantidad(1);
-//                ejemplarData.
-//                
-//                aux.getEjemplar().setCantidad(aux.getEjemplar().getCantidad()-1);
+
             }
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(this, "No hay datos para mostrar: " + ex.getMessage());
@@ -241,7 +241,7 @@ public class ConsultaDemoraFechaDevolucion extends javax.swing.JInternalFrame {
 
         TableColumn columnaFechaActual = jTLectores.getColumnModel().getColumn(4);
         columnaFechaActual.setPreferredWidth(40);
-        
+
         TableColumn columnaRetraso = jTLectores.getColumnModel().getColumn(4);
         columnaRetraso.setPreferredWidth(80);
 
