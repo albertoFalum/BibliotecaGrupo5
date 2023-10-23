@@ -24,7 +24,7 @@ public class FormularioUsuario extends javax.swing.JInternalFrame {
      */
     public FormularioUsuario() {
         initComponents();
-        con = Conexion.getConexion2("login");
+        con = Conexion.getConexion("login");
         jbEliminar.setEnabled(false);
         habilitarCampos();
         llenarListaUsuarios();

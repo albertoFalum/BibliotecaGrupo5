@@ -25,7 +25,7 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
         this.setLocationRelativeTo(null);
-        con = Conexion.getConexion2("login");
+        con = Conexion.getConexion("login");
     }
 
     /**
@@ -189,6 +189,7 @@ public class Login extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "Bienvenido al Sistema de Gestion Biblioteca ANTONIO ESTEBAN AGÜERO");
                     JFrame menuPrincipal = new MenuPrincipal();
                     dispose();
+                    Conexion.desconectar(con);
                     menuPrincipal.setVisible(true);
                     
                 } else {

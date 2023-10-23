@@ -23,7 +23,7 @@ public class LectorData {
 
     public LectorData() {
 
-        con = Conexion.getConexion();
+        con = Conexion.getConexion("bibliotecagrupo5");
 
     }
 
