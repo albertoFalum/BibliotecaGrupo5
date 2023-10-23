@@ -70,6 +70,7 @@ public class FormularioUsuario extends javax.swing.JInternalFrame {
         jLabel5.setText("Usuario:");
 
         jbBuscar.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
+        jbBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotecagrupo5/ImagenesVideosGif/buscar.png"))); // NOI18N
         jbBuscar.setText("Buscar");
         jbBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -93,6 +94,7 @@ public class FormularioUsuario extends javax.swing.JInternalFrame {
         jLabel4.setText("Email:");
 
         jbNuevo.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
+        jbNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotecagrupo5/ImagenesVideosGif/nuevo.png"))); // NOI18N
         jbNuevo.setText("Nuevo");
         jbNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -101,6 +103,7 @@ public class FormularioUsuario extends javax.swing.JInternalFrame {
         });
 
         jbGuardar.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
+        jbGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotecagrupo5/ImagenesVideosGif/guardar.png"))); // NOI18N
         jbGuardar.setText("Guardar");
         jbGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,6 +112,7 @@ public class FormularioUsuario extends javax.swing.JInternalFrame {
         });
 
         jbEliminar.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
+        jbEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotecagrupo5/ImagenesVideosGif/eliminar.png"))); // NOI18N
         jbEliminar.setText("Eliminar");
         jbEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -117,6 +121,7 @@ public class FormularioUsuario extends javax.swing.JInternalFrame {
         });
 
         jbSalir.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
+        jbSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotecagrupo5/ImagenesVideosGif/salir.png"))); // NOI18N
         jbSalir.setText("Salir");
         jbSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -135,15 +140,16 @@ public class FormularioUsuario extends javax.swing.JInternalFrame {
                         .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jbNuevo)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel7)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel4))
                                 .addGap(12, 12, 12)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -157,15 +163,13 @@ public class FormularioUsuario extends javax.swing.JInternalFrame {
                                         .addGap(287, 287, 287)
                                         .addComponent(jbBuscar))))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(52, 52, 52)
-                                .addComponent(jbNuevo)
-                                .addGap(28, 28, 28)
+                                .addGap(32, 32, 32)
                                 .addComponent(jbEliminar)
-                                .addGap(31, 31, 31)
+                                .addGap(38, 38, 38)
                                 .addComponent(jbGuardar)
-                                .addGap(18, 18, 18)
+                                .addGap(35, 35, 35)
                                 .addComponent(jbSalir)))))
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -203,7 +207,7 @@ public class FormularioUsuario extends javax.swing.JInternalFrame {
                     .addComponent(jbGuardar)
                     .addComponent(jbEliminar)
                     .addComponent(jbSalir))
-                .addContainerGap(69, Short.MAX_VALUE))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

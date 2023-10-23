@@ -190,6 +190,7 @@ public class Login extends javax.swing.JFrame {
                     JFrame menuPrincipal = new MenuPrincipal();
                     dispose();
                     menuPrincipal.setVisible(true);
+                    
                 } else {
                     JOptionPane.showMessageDialog(this, "Usuario y/o contraseñas incorrectos");
                     jtfUsuario.setText("");
