@@ -476,25 +476,25 @@ public class ManejoPrestamoDevolucion extends javax.swing.JInternalFrame {
 
     private void ajustarTamañoColumnas() {
         TableColumn columnaIdPrestamo = jTPrestamo.getColumnModel().getColumn(0);
-        columnaIdPrestamo.setPreferredWidth(50);
+        columnaIdPrestamo.setPreferredWidth(30);
 
         TableColumn columnaNroSocio = jTPrestamo.getColumnModel().getColumn(1);
-        columnaNroSocio.setPreferredWidth(40);
+        columnaNroSocio.setPreferredWidth(30);
 
         TableColumn columnaCodigoEjemplar = jTPrestamo.getColumnModel().getColumn(2);
-        columnaCodigoEjemplar.setPreferredWidth(40);
+        columnaCodigoEjemplar.setPreferredWidth(30);
 
-        TableColumn columnaTitulo = jTPrestamo.getColumnModel().getColumn(5);
-        columnaTitulo.setPreferredWidth(150);
+        TableColumn columnaTitulo = jTPrestamo.getColumnModel().getColumn(3);
+        columnaTitulo.setPreferredWidth(200);
 
-        TableColumn columnaFechaInicio = jTPrestamo.getColumnModel().getColumn(3);
-        columnaFechaInicio.setPreferredWidth(90);
+        TableColumn columnaFechaInicio = jTPrestamo.getColumnModel().getColumn(4);
+        columnaFechaInicio.setPreferredWidth(30);
 
-        TableColumn columnaFechaFin = jTPrestamo.getColumnModel().getColumn(4);
-        columnaFechaFin.setPreferredWidth(90);
+        TableColumn columnaFechaFin = jTPrestamo.getColumnModel().getColumn(5);
+        columnaFechaFin.setPreferredWidth(40);
 
-        TableColumn columnaCondicion = jTPrestamo.getColumnModel().getColumn(4);
-        columnaCondicion.setPreferredWidth(100);
+        TableColumn columnaCondicion = jTPrestamo.getColumnModel().getColumn(6);
+        columnaCondicion.setPreferredWidth(30);
 
     }
 
