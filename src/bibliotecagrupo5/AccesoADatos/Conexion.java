@@ -14,18 +14,19 @@ public class Conexion {
 
     public static Connection getConexion(String BD) {
         Connection connection = null;
-
-        try {
-            Class.forName(DRIVER);
-            connection = DriverManager.getConnection(URL + BD, USUARIO, PASSWORD);
-            System.out.println("Conexión exitosa a la base de datos " + BD);
-        } catch (ClassNotFoundException ex) {
-            JOptionPane.showMessageDialog(null, "Error al cargar el driver: " + ex.getMessage());
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al conectarse a la base de datos: " + ex.getMessage());
+        if (connection == null) {
+            try {
+                Class.forName(DRIVER);
+                connection = DriverManager.getConnection(URL + BD, USUARIO, PASSWORD);
+                System.out.println("Conexión exitosa a la base de datos " + BD);
+            } catch (ClassNotFoundException ex) {
+                JOptionPane.showMessageDialog(null, "Error al cargar el driver: " + ex.getMessage());
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Error al conectarse a la base de datos: " + ex.getMessage());
+            }
         }
-
         return connection;
+
     }
 
     public static void desconectar(Connection connection) {
