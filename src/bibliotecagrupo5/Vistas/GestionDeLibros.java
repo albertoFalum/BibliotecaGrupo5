@@ -654,25 +654,25 @@ public class GestionDeLibros extends javax.swing.JInternalFrame {
 
     private void ajustarTamañoColumnas() {
         TableColumn columnaIdLibro = jTLibros.getColumnModel().getColumn(0);
-        columnaIdLibro.setPreferredWidth(40);
+        columnaIdLibro.setPreferredWidth(5);
 
         TableColumn columnaIsbn = jTLibros.getColumnModel().getColumn(1);
-        columnaIsbn.setPreferredWidth(100);
+        columnaIsbn.setPreferredWidth(70);
 
         TableColumn columnaTitulo = jTLibros.getColumnModel().getColumn(2);
         columnaTitulo.setPreferredWidth(150);
 
         TableColumn columnaAutor = jTLibros.getColumnModel().getColumn(3);
-        columnaAutor.setPreferredWidth(150);
+        columnaAutor.setPreferredWidth(100);
 
         TableColumn columnaAño = jTLibros.getColumnModel().getColumn(4);
-        columnaAño.setPreferredWidth(50);
+        columnaAño.setPreferredWidth(20);
 
         TableColumn columnaTipo = jTLibros.getColumnModel().getColumn(5);
-        columnaTipo.setPreferredWidth(80);
+        columnaTipo.setPreferredWidth(50);
 
         TableColumn columnaEditorial = jTLibros.getColumnModel().getColumn(6);
-        columnaEditorial.setPreferredWidth(120);
+        columnaEditorial.setPreferredWidth(70);
     }
 
     private void borrarCampos() {

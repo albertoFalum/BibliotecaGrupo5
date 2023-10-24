@@ -752,13 +752,13 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
     private void ajustarTamañoColumnas() {
 
         TableColumn columnaCodigo = jtTabla.getColumnModel().getColumn(0);
-        columnaCodigo.setPreferredWidth(20);
+        columnaCodigo.setPreferredWidth(10);
         TableColumn columnaTitulo = jtTabla.getColumnModel().getColumn(1);
-        columnaTitulo.setPreferredWidth(50);
+        columnaTitulo.setPreferredWidth(100);
         TableColumn columnaAutor = jtTabla.getColumnModel().getColumn(2);
-        columnaAutor.setPreferredWidth(40);
+        columnaAutor.setPreferredWidth(50);
         TableColumn columnaCondicion = jtTabla.getColumnModel().getColumn(3);
-        columnaCondicion.setPreferredWidth(50);
+        columnaCondicion.setPreferredWidth(30);
         TableColumn columnaCantidad = jtTabla.getColumnModel().getColumn(4);
         columnaCantidad.setPreferredWidth(10);
 
