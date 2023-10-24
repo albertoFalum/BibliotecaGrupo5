@@ -18,7 +18,7 @@ public class Conexion {
             try {
                 Class.forName(DRIVER);
                 connection = DriverManager.getConnection(URL + BD, USUARIO, PASSWORD);
-                System.out.println("Conexión exitosa a la base de datos " + BD);
+               // System.out.println("Conexión exitosa a la base de datos " + BD);
             } catch (ClassNotFoundException ex) {
                 JOptionPane.showMessageDialog(null, "Error al cargar el driver: " + ex.getMessage());
             } catch (SQLException ex) {
