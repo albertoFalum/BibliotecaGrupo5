@@ -623,7 +623,7 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
         columnaApellido.setPreferredWidth(100);
 
         TableColumn columnaDni = jtaLector.getColumnModel().getColumn(3);
-        columnaDni.setPreferredWidth(80);
+        columnaDni.setPreferredWidth(70);
 
         TableColumn columnaDomicilio = jtaLector.getColumnModel().getColumn(4);
         columnaDomicilio.setPreferredWidth(80);
