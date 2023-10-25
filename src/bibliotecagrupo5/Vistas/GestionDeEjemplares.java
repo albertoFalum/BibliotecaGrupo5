@@ -454,37 +454,39 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbNuevoActionPerformed
 
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
+        try {
+            Libro libroSeleccionado = (Libro) jcbEjemplarLibro.getSelectedItem();
 
-        Libro libroSeleccionado = (Libro) jcbEjemplarLibro.getSelectedItem();
+            int cantLibros = (Integer) jsCantidad1.getValue();
+            boolean estado = jrbEstado.isSelected();
+            Condicion condicion = (Condicion) jcbCondicion.getSelectedItem();
+            Ejemplar ejemplarNuevo = ejemplardata.BuscarEjemplarIdLibroYCondicion(libroSeleccionado.getIdLibro(), condicion);
+            if (ejemplarNuevo == null) {
+                Ejemplar ejemplar = new Ejemplar(libroSeleccionado, cantLibros, estado, condicion);
+                ejemplardata.guardarEjemplar(ejemplar);
+                JOptionPane.showMessageDialog(this, "Ejemplar Guardado");
 
-        int cantLibros = (Integer) jsCantidad1.getValue();
-        boolean estado = jrbEstado.isSelected();
-        Condicion condicion = (Condicion) jcbCondicion.getSelectedItem();
-        Ejemplar ejemplarNuevo = ejemplardata.BuscarEjemplarIdLibroYCondicion(libroSeleccionado.getIdLibro(), condicion);
-        if (ejemplarNuevo == null) {
-            Ejemplar ejemplar = new Ejemplar(libroSeleccionado, cantLibros, estado, condicion);
-            ejemplardata.guardarEjemplar(ejemplar);
-            JOptionPane.showMessageDialog(this, "Ejemplar Guardado");
+                jcbEjemplarLibro.setSelectedItem(0);
+                jsCantidad1.setValue(1);
+                jcbCondicion.setSelectedItem(0);
 
-            jcbEjemplarLibro.setSelectedItem(0);
-            jsCantidad1.setValue(1);
-            jcbCondicion.setSelectedItem(0);
+            } else {
+                int cantNueva = ejemplarNuevo.getCantidad() + cantLibros;
+                ejemplarNuevo.setCantidad(cantNueva);
+                ejemplardata.modificarEjemplar(ejemplarNuevo);
 
-        } else {
-            int cantNueva = ejemplarNuevo.getCantidad() + cantLibros;
-            ejemplarNuevo.setCantidad(cantNueva);
-            ejemplardata.modificarEjemplar(ejemplarNuevo);
+                JOptionPane.showMessageDialog(this, "Ejemplar Guardado");
+                jcbEjemplarLibro.setSelectedIndex(0);
+                jsCantidad1.setValue(1);
+                jcbCondicion.setSelectedIndex(0);
+                jcbEjemplarLibro2.setSelectedIndex(0);
 
-            JOptionPane.showMessageDialog(this, "Ejemplar Guardado");
-            jcbEjemplarLibro.setSelectedIndex(0);
-            jsCantidad1.setValue(1);
-            jcbCondicion.setSelectedIndex(0);
-            jcbEjemplarLibro2.setSelectedIndex(0);
+                JOptionPane.showMessageDialog(this, "Ejemplar Modificado");
 
-            JOptionPane.showMessageDialog(this, "Ejemplar Modificado");
-
-        }
-
+            }
+        } catch (NullPointerException ex) {
+            JOptionPane.showMessageDialog(this, "No se encontraron libros guardados");
+        } 
 
     }//GEN-LAST:event_jbGuardarActionPerformed
 
@@ -556,78 +558,77 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
 
             if (filaSeleccionada != -1) {
 
-                try {
-                    int cantidad = (Integer) jsCantidad2.getValue();
-                    int cantidadMod = (Integer) jsCantidadModificar.getValue();
-                    int resul = cantidad - cantidadMod;
-                    if (cantidad >= cantidadMod) {//control de cantidad
+                int cantidad = (Integer) jsCantidad2.getValue();
+                int cantidadMod = (Integer) jsCantidadModificar.getValue();
+                int resul = cantidad - cantidadMod;
+                if (cantidad >= cantidadMod) {//control de cantidad
 
-                        if (condicion.ordinal() == 3 && jrbReparacion.isSelected()) {
-                            Condicion nuevaCondicion = Condicion.REPARACION;
-                            Ejemplar ejemplar1 = ejemplardata.BuscarEjemplarIdLibroYCondicion(libro.getIdLibro(), nuevaCondicion);
-                            if (ejemplar1 == null) {
-                                Ejemplar ejemplar2 = new Ejemplar(libro, cantidadMod, true, nuevaCondicion);
-                                ejemplardata.guardarEjemplar(ejemplar2);
-                                ejem.setCantidad(resul);
-                                ejemplardata.modificarEjemplar(ejem);
-                                JOptionPane.showMessageDialog(this, "Ejemplar modificado");
-                                jcbEjemplarLibro2.setSelectedItem(0);
-                                jcbCondicion1.setSelectedItem(0);
-                                jsCantidadModificar.setValue(1);
-                                jsCantidad2.setValue(1);
-                                borrarTabla();
-                                jcbCondicion1.setSelectedIndex(0);
-                                jcbEjemplarLibro2.setSelectedIndex(0);
-                            } else {
-                                int result = ejemplar1.getCantidad() + cantidadMod;
-                                ejemplar1.setCantidad(result);
-                                ejemplardata.modificarEjemplar(ejemplar1);
-                                ejem.setCantidad(resul);
-                                ejemplardata.modificarEjemplar(ejem);
-                                JOptionPane.showMessageDialog(this, "Ejemplar Modificado");
-                                jcbEjemplarLibro2.setSelectedItem(0);
-                                jcbCondicion1.setSelectedItem(0);
-                                jsCantidadModificar.setValue(1);
-                                jsCantidad2.setValue(1);
-                                borrarTabla();
-                                jcbCondicion1.setSelectedIndex(0);
-                                jcbEjemplarLibro2.setSelectedIndex(0);
-                            }
-                        } else if (condicion.ordinal() == 2 && jrbDisponible.isSelected()) {
-                            Condicion nuevaCondicion = Condicion.DISPONIBLE;
-                            Ejemplar ejemplar1 = ejemplardata.BuscarEjemplarIdLibroYCondicion(libro.getIdLibro(), nuevaCondicion);
+                    if (condicion.ordinal() == 3 && jrbReparacion.isSelected()) {
+                        Condicion nuevaCondicion = Condicion.REPARACION;
+                        Ejemplar ejemplar1 = ejemplardata.BuscarEjemplarIdLibroYCondicion(libro.getIdLibro(), nuevaCondicion);
+                        if (ejemplar1 == null) {
+                            Ejemplar ejemplar2 = new Ejemplar(libro, cantidadMod, true, nuevaCondicion);
+                            ejemplardata.guardarEjemplar(ejemplar2);
+                            ejem.setCantidad(resul);
+                            ejemplardata.modificarEjemplar(ejem);
+                            JOptionPane.showMessageDialog(this, "Ejemplar modificado");
+                            jcbEjemplarLibro2.setSelectedItem(0);
+                            jcbCondicion1.setSelectedItem(0);
+                            jsCantidadModificar.setValue(1);
+                            jsCantidad2.setValue(1);
+                            borrarTabla();
+                            jcbCondicion1.setSelectedIndex(0);
+                            jcbEjemplarLibro2.setSelectedIndex(0);
+                        } else {
                             int result = ejemplar1.getCantidad() + cantidadMod;
                             ejemplar1.setCantidad(result);
                             ejemplardata.modificarEjemplar(ejemplar1);
                             ejem.setCantidad(resul);
                             ejemplardata.modificarEjemplar(ejem);
                             JOptionPane.showMessageDialog(this, "Ejemplar Modificado");
-                            jcbCondicion1.setSelectedIndex(0);
-                            jcbEjemplarLibro2.setSelectedIndex(0);
+                            jcbEjemplarLibro2.setSelectedItem(0);
+                            jcbCondicion1.setSelectedItem(0);
                             jsCantidadModificar.setValue(1);
                             jsCantidad2.setValue(1);
                             borrarTabla();
-                        } else if (condicion.ordinal() == 3 && jrbDisponible.isSelected()) {
-                            JOptionPane.showMessageDialog(this, "Seleccione la opcion de Reparacion");
-
-                        } else {
-                            JOptionPane.showMessageDialog(this, "Seleccione la opcion de Disponible");
+                            jcbCondicion1.setSelectedIndex(0);
+                            jcbEjemplarLibro2.setSelectedIndex(0);
                         }
+                    } else if (condicion.ordinal() == 2 && jrbDisponible.isSelected()) {
+                        Condicion nuevaCondicion = Condicion.DISPONIBLE;
+                        Ejemplar ejemplar1 = ejemplardata.BuscarEjemplarIdLibroYCondicion(libro.getIdLibro(), nuevaCondicion);
+                        int result = ejemplar1.getCantidad() + cantidadMod;
+                        ejemplar1.setCantidad(result);
+                        ejemplardata.modificarEjemplar(ejemplar1);
+                        ejem.setCantidad(resul);
+                        ejemplardata.modificarEjemplar(ejem);
+                        JOptionPane.showMessageDialog(this, "Ejemplar Modificado");
+                        jcbCondicion1.setSelectedIndex(0);
+                        jcbEjemplarLibro2.setSelectedIndex(0);
+                        jsCantidadModificar.setValue(1);
+                        jsCantidad2.setValue(1);
+                        borrarTabla();
+                    } else if (condicion.ordinal() == 3 && jrbDisponible.isSelected()) {
+                        JOptionPane.showMessageDialog(this, "Seleccione la opcion de Reparacion");
 
                     } else {
-                        JOptionPane.showMessageDialog(this, "la cantidad que desea modificar es mayor a la disponible");
-
+                        JOptionPane.showMessageDialog(this, "Seleccione la opcion de Disponible");
                     }
-                } catch (NumberFormatException ex) {
-                    JOptionPane.showMessageDialog(this, "Debe ingresar un numero");
-                } catch (NullPointerException ex) {
-                    JOptionPane.showMessageDialog(this, "el ejemplar no se encontro");
+
+                } else {
+                    JOptionPane.showMessageDialog(this, "la cantidad que desea modificar es mayor a la disponible");
+
                 }
+
             } else {
                 JOptionPane.showMessageDialog(this, "Debe seleccionar una fila");
             }
         } catch (ArrayIndexOutOfBoundsException ex) {
             JOptionPane.showMessageDialog(this, "Seleccione una fila");
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Debe ingresar un numero");
+        } catch (NullPointerException ex) {
+            JOptionPane.showMessageDialog(this, "el ejemplar no se encontro");
         }
 
     }//GEN-LAST:event_jbModificarActionPerformed
@@ -644,11 +645,11 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
 
     private void jbLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimpiarActionPerformed
         // TODO add your handling code here:
-        
-            borrarTabla();
-            jsCantidadModificar.setValue(0);
-            jsCantidad2.setValue(0);
-       
+
+        borrarTabla();
+        jsCantidadModificar.setValue(0);
+        jsCantidad2.setValue(0);
+
     }//GEN-LAST:event_jbLimpiarActionPerformed
 
 
@@ -741,8 +742,6 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
         columnaCantidad.setPreferredWidth(10);
 
     }
-
-
 
     private void cargarTabla(Ejemplar ejemplar) {
 
