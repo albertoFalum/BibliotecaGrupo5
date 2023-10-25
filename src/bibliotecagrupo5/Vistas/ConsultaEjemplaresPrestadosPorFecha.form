@@ -47,13 +47,13 @@
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="130" max="-2" attributes="0"/>
-                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jdchFechaInicio1" min="-2" pref="121" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                          <Component id="jLabelEntre" min="-2" pref="39" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="145" max="-2" attributes="0"/>
+                          <Component id="Desde" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="jdchFechaInicio1" min="-2" pref="121" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
+                          <Component id="jLabelEntre" min="-2" pref="39" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
                           <Component id="jdchFechaInicio2" min="-2" pref="131" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -83,8 +83,8 @@
                   <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Component id="jdchFechaInicio1" alignment="1" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel2" alignment="1" min="-2" max="-2" attributes="0"/>
-                      <Component id="jdchFechaInicio2" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="Desde" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="jdchFechaInicio2" alignment="1" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabelEntre" alignment="1" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
@@ -108,12 +108,12 @@
             <Property name="text" type="java.lang.String" value="Ejemplares Prestados"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel2">
+        <Component class="javax.swing.JLabel" name="Desde">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Bahnschrift" size="14" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Fecha de Inicio:"/>
+            <Property name="text" type="java.lang.String" value="Desde"/>
           </Properties>
         </Component>
         <Component class="com.toedter.calendar.JDateChooser" name="jdchFechaInicio1">
@@ -179,7 +179,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Bahnschrift" size="14" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="entre"/>
+            <Property name="text" type="java.lang.String" value="Hasta"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="jbNuevo">

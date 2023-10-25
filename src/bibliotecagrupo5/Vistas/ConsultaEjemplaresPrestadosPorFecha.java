@@ -65,7 +65,7 @@ public class ConsultaEjemplaresPrestadosPorFecha extends javax.swing.JInternalFr
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        Desde = new javax.swing.JLabel();
         jdchFechaInicio1 = new com.toedter.calendar.JDateChooser();
         jdchFechaInicio2 = new com.toedter.calendar.JDateChooser();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -83,8 +83,8 @@ public class ConsultaEjemplaresPrestadosPorFecha extends javax.swing.JInternalFr
         jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel1.setText("Ejemplares Prestados");
 
-        jLabel2.setFont(new java.awt.Font("Bahnschrift", 0, 14)); // NOI18N
-        jLabel2.setText("Fecha de Inicio:");
+        Desde.setFont(new java.awt.Font("Bahnschrift", 0, 14)); // NOI18N
+        Desde.setText("Desde");
 
         jTPrestamo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -99,7 +99,7 @@ public class ConsultaEjemplaresPrestadosPorFecha extends javax.swing.JInternalFr
         jScrollPane1.setViewportView(jTPrestamo);
 
         jLabelEntre.setFont(new java.awt.Font("Bahnschrift", 0, 14)); // NOI18N
-        jLabelEntre.setText("entre");
+        jLabelEntre.setText("Hasta");
 
         jbNuevo.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
         jbNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotecagrupo5/ImagenesVideosGif/nuevo.png"))); // NOI18N
@@ -126,13 +126,13 @@ public class ConsultaEjemplaresPrestadosPorFecha extends javax.swing.JInternalFr
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(130, 130, 130)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jdchFechaInicio1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28)
-                        .addComponent(jLabelEntre, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(145, 145, 145)
+                        .addComponent(Desde)
                         .addGap(18, 18, 18)
+                        .addComponent(jdchFechaInicio1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(49, 49, 49)
+                        .addComponent(jLabelEntre, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(56, 56, 56)
                         .addComponent(jdchFechaInicio2, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(35, 35, 35)
@@ -155,8 +155,8 @@ public class ConsultaEjemplaresPrestadosPorFecha extends javax.swing.JInternalFr
                 .addGap(27, 27, 27)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jdchFechaInicio1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2)
-                    .addComponent(jdchFechaInicio2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Desde)
+                    .addComponent(jdchFechaInicio2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelEntre))
                 .addGap(32, 32, 32)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -199,8 +199,8 @@ public class ConsultaEjemplaresPrestadosPorFecha extends javax.swing.JInternalFr
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Desde;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelEntre;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
