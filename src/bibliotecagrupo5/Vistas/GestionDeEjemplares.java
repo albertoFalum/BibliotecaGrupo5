@@ -508,6 +508,8 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
                 jrbReparacion.setSelected(true);
                 jrbDisponible.setSelected(false);
             }
+        }else{
+            JOptionPane.showMessageDialog(this, "No hay ejemplares cargados de ese libro");
         }
     }//GEN-LAST:event_jcbCondicion1ActionPerformed
 
