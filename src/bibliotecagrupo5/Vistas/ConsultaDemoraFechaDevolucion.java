@@ -27,7 +27,7 @@ public class ConsultaDemoraFechaDevolucion extends javax.swing.JInternalFrame {
 
     private PrestamoData prestamoData = null;
     private EjemplarData ejemplarData = null;
-    private Ejemplar ejemplarNuevo = null;
+    
     private TreeSet<Prestamo> listaPrestamo = null;
 
     /**

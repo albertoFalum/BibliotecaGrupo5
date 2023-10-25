@@ -41,7 +41,9 @@ public class ConsultasLibro extends javax.swing.JInternalFrame {
         ajustarTamañoColumnas();
         cargarComboTipo();
         borrarTabla();
-
+        /*sirve para detectar cambios en la propiedad "year" de un objeto
+        jyc1 y, en caso de que ocurra un cambio en esa propiedad, 
+        ejecuta el método actualizarTablaAnio().*/
         jyc1.addPropertyChangeListener(new PropertyChangeListener() {
             @Override
             public void propertyChange(PropertyChangeEvent evt) {
@@ -433,7 +435,7 @@ public class ConsultasLibro extends javax.swing.JInternalFrame {
             listaLibros= libroData.listarLibros();
             List<Libro> listaOrdenada = new ArrayList<>(listaLibros);
 
-            
+           
             Collections.sort(listaOrdenada, Libro.ComparadorPorAnio);
 
             boolean librosEncontrados = false;

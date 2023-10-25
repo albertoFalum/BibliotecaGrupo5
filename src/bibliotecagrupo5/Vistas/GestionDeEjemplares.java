@@ -30,8 +30,6 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
         }
     };
     private LibroData librodata = new LibroData();
-    private Libro libroAux = null;
-    private Ejemplar ejemplar = null;
     private EjemplarData ejemplardata = new EjemplarData();
 
     /**
@@ -243,12 +241,6 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
 
         jLabel5.setFont(new java.awt.Font("Bahnschrift", 0, 14)); // NOI18N
         jLabel5.setText("Libro:");
-
-        jcbEjemplarLibro2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jcbEjemplarLibro2ActionPerformed(evt);
-            }
-        });
 
         jLabel8.setFont(new java.awt.Font("Bahnschrift", 0, 14)); // NOI18N
         jLabel8.setText("Condicion:");
@@ -495,20 +487,6 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
 
 
     }//GEN-LAST:event_jbGuardarActionPerformed
-
-    private void jcbEjemplarLibro2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbEjemplarLibro2ActionPerformed
-//        borrarTabla();
-//        Libro libroSeleccionado = (Libro) jcbEjemplarLibro2.getSelectedItem();
-//
-//        TreeSet<Ejemplar> ejemplares = ejemplardata.listarEjemplaresPorLibro(libroSeleccionado.getIdLibro());
-//        cargarTabla(ejemplares);
-//        jsCantidad2.setValue(1);
-//        jcbCondicion1.setVisible(true);
-//        jsCantidad2.setVisible(true);
-//        jtTabla.setEnabled(iconable);
-
-
-    }//GEN-LAST:event_jcbEjemplarLibro2ActionPerformed
 
     private void jcbCondicion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbCondicion1ActionPerformed
         borrarTabla();
@@ -764,19 +742,7 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
 
     }
 
-//    private void crearComboBox() {
-//        JComboBox<Condicion> comboBox = new JComboBox<>();
-//        comboBox.addItem(Condicion.DISPONIBLE);
-//        comboBox.addItem(Condicion.REPARACION);
-//        DefaultCellEditor customEditor = new DefaultCellEditor(comboBox);
-//
-//        jtTabla.getColumnModel().getColumn(3).setCellEditor(customEditor);
-//    }
-//    private void cargarTabla(TreeSet<Ejemplar> ListarEjemplar) {
-//        for (Ejemplar aux : ListarEjemplar) {
-//            modelo.addRow(new Object[]{aux.getCodigo(), aux.getLibro().getTitulo(), aux.getLibro().getAutor(), aux.getCondicion(), aux.getCantidad()});
-//        }
-//    }
+
 
     private void cargarTabla(Ejemplar ejemplar) {
 

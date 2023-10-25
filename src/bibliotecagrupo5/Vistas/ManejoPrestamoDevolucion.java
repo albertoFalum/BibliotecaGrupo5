@@ -9,7 +9,6 @@ import bibliotecagrupo5.Entidades.Lector;
 import bibliotecagrupo5.Entidades.Prestamo;
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.time.temporal.ChronoUnit;
 import java.util.TreeSet;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -343,8 +342,8 @@ public class ManejoPrestamoDevolucion extends javax.swing.JInternalFrame {
                 Ejemplar ejemplarPrestado = ejemplarData.buscarEjemplar(codigo);
 
                 prestamoData.eliminarPrestamo(idPrestamo);
-                System.out.println(""+ejemplarPrestado.getCodigo());
-                ejemplarData.eliminarEjemplar(ejemplarPrestado.getCodigo());
+              
+                ejemplarData.eliminarEjemplar(codigo);
 
                 Ejemplar ejemplarDisponible = ejemplarData.BuscarEjemplarIdLibroYCondicion(ejemplarPrestado.getLibro().getIdLibro(), Condicion.DISPONIBLE);
                 ejemplarDisponible.setCantidad(ejemplarDisponible.getCantidad() + 1);

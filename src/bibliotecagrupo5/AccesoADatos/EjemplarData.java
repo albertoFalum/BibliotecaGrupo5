@@ -40,7 +40,7 @@ public class EjemplarData {
             if (rs.next()) {
 
                 ejemplar.setCodigo(rs.getInt(1));
-// 
+ 
 
 //JOptionPane.showMessageDialog(null, "Ejemplares Guardados");
 
