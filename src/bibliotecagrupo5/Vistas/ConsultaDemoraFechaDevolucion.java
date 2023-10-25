@@ -233,16 +233,16 @@ public class ConsultaDemoraFechaDevolucion extends javax.swing.JInternalFrame {
         TableColumn columnaApellido = jTLectores.getColumnModel().getColumn(2);
         columnaApellido.setPreferredWidth(80);
 
-        TableColumn columnaEjemplar = jTLectores.getColumnModel().getColumn(5);
+        TableColumn columnaEjemplar = jTLectores.getColumnModel().getColumn(3);
         columnaEjemplar.setPreferredWidth(40);
 
-        TableColumn columnaFinPrestamo = jTLectores.getColumnModel().getColumn(3);
+        TableColumn columnaFinPrestamo = jTLectores.getColumnModel().getColumn(4);
         columnaFinPrestamo.setPreferredWidth(40);
 
-        TableColumn columnaFechaActual = jTLectores.getColumnModel().getColumn(4);
+        TableColumn columnaFechaActual = jTLectores.getColumnModel().getColumn(5);
         columnaFechaActual.setPreferredWidth(40);
 
-        TableColumn columnaRetraso = jTLectores.getColumnModel().getColumn(4);
+        TableColumn columnaRetraso = jTLectores.getColumnModel().getColumn(6);
         columnaRetraso.setPreferredWidth(80);
 
     }
