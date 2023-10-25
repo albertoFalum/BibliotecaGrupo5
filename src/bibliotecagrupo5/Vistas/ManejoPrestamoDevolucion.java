@@ -297,8 +297,8 @@ public class ManejoPrestamoDevolucion extends javax.swing.JInternalFrame {
             LocalDate fechaInicio = jdchFechaInicio.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             LocalDate fechaFin = jdchFechaFin.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 
-            if (fechaFin.isAfter(fechaInicio)) {
-                if (ejemplar.getCantidad() >= 1) {
+            if (ejemplar.getCantidad() >= 1) {
+                if (fechaFin.isAfter(fechaInicio)) {
 
                     Prestamo prestamo = null;
 
@@ -319,10 +319,10 @@ public class ManejoPrestamoDevolucion extends javax.swing.JInternalFrame {
                     cargarComboEjemplar();
 
                 } else {
-                    JOptionPane.showMessageDialog(this, "No exiten ejemplares para prestar");
+                    JOptionPane.showMessageDialog(this, "La fecha de devolucion debe ser posterior a la fecha de prestamo");
                 }
             } else {
-                JOptionPane.showMessageDialog(this, "La fecha de devolucion debe ser posterior a la fecha de prestamo");
+                JOptionPane.showMessageDialog(this, "No exiten ejemplares para prestar");  
             }
 
         } catch (NullPointerException ex) {
