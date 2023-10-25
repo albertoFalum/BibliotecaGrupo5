@@ -356,6 +356,9 @@ public class ConsultasLibro extends javax.swing.JInternalFrame {
 
     private void jbLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimpiarActionPerformed
         borrarTabla();
+        jcbOpcionesBusqueda.setSelectedIndex(-1);
+        activarDesactivar(false);
+        jcbTipo.setVisible(false);
     }//GEN-LAST:event_jbLimpiarActionPerformed
 
 
