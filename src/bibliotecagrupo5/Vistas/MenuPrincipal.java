@@ -146,7 +146,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenu6.add(jMenuItem4);
 
         jMenuItem6.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jMenuItem6.setText("Consulta Fecha Devolucion Prestamo");
+        jMenuItem6.setText("Prestamos Vencidos");
         jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem6ActionPerformed(evt);
@@ -155,7 +155,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenu6.add(jMenuItem6);
 
         jMenuItem7.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jMenuItem7.setText("Ejemplares prestados por fecha");
+        jMenuItem7.setText("Prestamos por Fecha");
         jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem7ActionPerformed(evt);
