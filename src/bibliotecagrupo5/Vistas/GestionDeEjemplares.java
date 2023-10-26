@@ -242,6 +242,12 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
         jLabel5.setFont(new java.awt.Font("Bahnschrift", 0, 14)); // NOI18N
         jLabel5.setText("Libro:");
 
+        jcbEjemplarLibro2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbEjemplarLibro2ActionPerformed(evt);
+            }
+        });
+
         jLabel8.setFont(new java.awt.Font("Bahnschrift", 0, 14)); // NOI18N
         jLabel8.setText("Condicion:");
 
@@ -509,7 +515,7 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
                 jrbDisponible.setSelected(false);
             }
         }else{
-            JOptionPane.showMessageDialog(this, "No hay ejemplares cargados de ese libro");
+            JOptionPane.showMessageDialog(this, "No hay ejemplares con esa condicion cargada");
         }
     }//GEN-LAST:event_jcbCondicion1ActionPerformed
 
@@ -653,6 +659,10 @@ public class GestionDeEjemplares extends javax.swing.JInternalFrame {
         jsCantidad2.setValue(0);
 
     }//GEN-LAST:event_jbLimpiarActionPerformed
+
+    private void jcbEjemplarLibro2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbEjemplarLibro2ActionPerformed
+        borrarTabla();
+    }//GEN-LAST:event_jcbEjemplarLibro2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
