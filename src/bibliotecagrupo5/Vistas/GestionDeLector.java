@@ -32,13 +32,12 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
     Lector lector = null;
     Lector lectorAux = null;
     PrestamoData presData = new PrestamoData();
-    
 
     /**
      * Creates new form FormularioLector
      */
     public GestionDeLector() {
-        
+
         initComponents();
         armarCabecera();
         ajustarTamañoColumnas();
@@ -388,7 +387,7 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
                 jrbModificar.setEnabled(true);
                 jtfNroSocio.setText("");
             } else {
-               // JOptionPane.showMessageDialog(this, "debe ingresar solo letras");
+                // JOptionPane.showMessageDialog(this, "debe ingresar solo letras");
 
             }
 
@@ -417,25 +416,28 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
                 String domicilio = jtfDomicilio.getText();
                 String mail = jtfMail.getText();
                 boolean estado = jrbEstado.isSelected();
+                if (dni > 0) {
+                    
+                    if (lectorAux == null) {
+                        lector = new Lector(nombre, apellido, dni, domicilio, mail, estado);
+                        lecData.guardarLector(lector);
+                        JOptionPane.showMessageDialog(this, "Lector Guardado con exito");
 
-                if (lectorAux == null) {
-                    lector = new Lector(nombre, apellido, dni, domicilio, mail, estado);
-                    lecData.guardarLector(lector);
-                    JOptionPane.showMessageDialog(this, "Lector Guardado con exito");
-
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Los campos de datos  no deben estar vacíos");
+                    }
+                    borrarJtfLector();
                 } else {
-                    JOptionPane.showMessageDialog(this, "Los campos de datos  no deben estar vacíos");
+                    JOptionPane.showMessageDialog(this, "EL numero de dni tiene q ser positivo");
                 }
-                borrarJtfLector();
             } else {
-                JOptionPane.showMessageDialog(this, "Los campos de datos  no deben estar vacíos");
+                JOptionPane.showMessageDialog(this, "Debe ingresar un Dni válido");
             }
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(this, "Debe ingresar un Dni válido");
-           
+
     }//GEN-LAST:event_jrbGuardarActionPerformed
     }
-
     private void jrbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbNuevoActionPerformed
         // TODO add your handling code here:
         borrarCampos();
@@ -457,6 +459,7 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
                     cargarTabla(lector);
                 } else {
                     jtfNroSocio.setText("");
+                    JOptionPane.showMessageDialog(this, "No existe socios con el numero ingresado");
                 }
             } else {
                 borrarTabla();
@@ -465,7 +468,7 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
             }
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(this, "Debe ingresar un numero entero");
-           
+
 
     }//GEN-LAST:event_jrbBuscarActionPerformed
     }
@@ -500,7 +503,7 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
                             lectorAux.setDomicilio(domicilio);
                             lectorAux.setMail(mail);
                             lecData.modificarLector(lectorAux);
-                            
+
                             JOptionPane.showMessageDialog(this, "Lector modificado con exito");
                         }
                         borrarTabla();
@@ -541,7 +544,7 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
 
                 if (respuesta == 0) {
                     lecData.desactivarLector(nroSocio);
-                    
+
                     JOptionPane.showMessageDialog(this, "Lector eliminado con exito");
 
                 } else {
@@ -555,7 +558,7 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
 
             } else {
                 JOptionPane.showMessageDialog(this, "No puede eliminar al lector socio" + nroSocio + ", Tiene libros prestados");
-                
+
             }
             jtaLector.clearSelection();
             borrarTabla();
