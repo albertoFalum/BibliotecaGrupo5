@@ -257,7 +257,13 @@ public class ConsultaEjemplaresPrestadosPorFecha extends javax.swing.JInternalFr
             if (fechaInicio1.isBefore(fechaInicio2)) {
                 borrarTabla();
                 TreeSet<Prestamo> listaprestamos = prestamoData.obtenerPrestamosPorRangoDeFechas(fechaInicio1, fechaInicio2);
-                cargarTablaLista(listaprestamos);
+                
+                if(!listaprestamos.isEmpty()){
+                    cargarTablaLista(listaprestamos);
+                }else{
+                    JOptionPane.showMessageDialog(this, "No existen prestamos vigentes en ese rango de fechas");
+                }
+                
             }else{
                 JOptionPane.showMessageDialog(this, "La segunda fecha debe ser igual o mayor a la primera");
                 jdchFechaInicio2.setDate(null);
