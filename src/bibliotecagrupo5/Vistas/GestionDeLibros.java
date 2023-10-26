@@ -466,15 +466,19 @@ public class GestionDeLibros extends javax.swing.JInternalFrame {
             if (!jtfPorISBN.getText().isEmpty()) {
 
                 long isbn = Long.parseLong(jtfPorISBN.getText());
-                Libro libro2 = libroData.buscarLibroPorIsbn(isbn);
 
-                if (libro2 != null) {
-                    cargarTabla(libro2);
+                if (isbn > 1) {
+                    Libro libro2 = libroData.buscarLibroPorIsbn(isbn);
+
+                    if (libro2 != null) {
+                        cargarTabla(libro2);
+                    } else {
+                        jtfPorISBN.setText("");
+                        JOptionPane.showMessageDialog(this, "No se encontró el libro con el isbn " + isbn);
+                    }
                 } else {
-                    jtfPorISBN.setText("");
-                    JOptionPane.showMessageDialog(this, "No se encontró el libro con el isbn "+isbn);
+                    JOptionPane.showMessageDialog(this, "Debe ingresar un número entero positivo en el ISBN ");
                 }
-
             } else {
                 JOptionPane.showMessageDialog(this, "El campo ISBN no debe estar vacio");
             }
