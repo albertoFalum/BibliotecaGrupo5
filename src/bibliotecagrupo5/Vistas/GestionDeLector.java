@@ -21,7 +21,7 @@ public class GestionDeLector extends javax.swing.JInternalFrame {
 
     private DefaultTableModel modelo = new DefaultTableModel() {
         public boolean isCellEditable(int f, int c) {
-            if (c == 0 || c == 3) {
+            if (c == 0 || c == 3 || c == 5) {
                 return false;
             }
             return true;
